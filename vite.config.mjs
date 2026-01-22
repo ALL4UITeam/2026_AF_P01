@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const projectName = 'vite-full-template'
 
-  const basePath = '/2026_AF_P01/'
+  const basePath = '/./'
   
 
   const pagesPath = path.resolve(__dirname, 'src')
