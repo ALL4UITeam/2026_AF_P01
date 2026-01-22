@@ -76,7 +76,7 @@ body {
 }
 
 .app {
-  background-image: url("../images/body-bg.png");
+  background-image: url("/2026_AF_P01/assets/images/body-bg.png");
   background-size: cover;
 }
 
@@ -137,7 +137,7 @@ body {
   height: 15px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../images/ico-admin.png");
+  background-image: url("/2026_AF_P01/assets/images/ico-admin.png");
 }
 
 .icon-btn {
@@ -147,7 +147,7 @@ body {
   height: 15px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../images/ico-logout.png");
+  background-image: url("/2026_AF_P01/assets/images/ico-logout.png");
   width: 32px;
   height: 32px;
   border-radius: 999px;
@@ -279,7 +279,7 @@ body {
   padding: 12px;
   background-color: #253b53;
   border-radius: 10px;
-  background-image: url("../images/bg.png");
+  background-image: url("/2026_AF_P01/assets/images/bg.png");
   background-position: 0 bottom;
   background-repeat: no-repeat;
 }
@@ -371,25 +371,25 @@ body {
   background-position: center;
 }
 .side-nav__link .icon.sni01 {
-  background-image: url("../images/side-nav-ico01.png");
+  background-image: url("/2026_AF_P01/assets/images/side-nav-ico01.png");
 }
 .side-nav__link .icon.sni02 {
-  background-image: url("../images/side-nav-ico02.png");
+  background-image: url("/2026_AF_P01/assets/images/side-nav-ico02.png");
 }
 .side-nav__link .icon.sni03 {
-  background-image: url("../images/side-nav-ico03.png");
+  background-image: url("/2026_AF_P01/assets/images/side-nav-ico03.png");
 }
 .side-nav__link .icon.sni04 {
-  background-image: url("../images/side-nav-ico04.png");
+  background-image: url("/2026_AF_P01/assets/images/side-nav-ico04.png");
 }
 .side-nav__link .icon.sni05 {
-  background-image: url("../images/side-nav-ico05.png");
+  background-image: url("/2026_AF_P01/assets/images/side-nav-ico05.png");
 }
 .side-nav__link .icon.sni06 {
-  background-image: url("../images/side-nav-ico06.png");
+  background-image: url("/2026_AF_P01/assets/images/side-nav-ico06.png");
 }
 .side-nav__link .icon.sni07 {
-  background-image: url("../images/side-nav-ico07.png");
+  background-image: url("/2026_AF_P01/assets/images/side-nav-ico07.png");
 }
 
 @media (max-width: 900px) {
@@ -443,7 +443,7 @@ body {
   width: 24px;
   height: 24px;
   background-repeat: no-repeat;
-  background-image: url("../images/modal-close.png");
+  background-image: url("/2026_AF_P01/assets/images/modal-close.png");
 }
 .modal .modal-dialog .modal-content {
   padding: 20px;

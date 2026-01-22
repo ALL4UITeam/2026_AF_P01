@@ -1,5 +1,5 @@
 {
-  "name": "livebus",
+  "name": "2026_AF_P01",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,7 @@
     "sass": "^1.70.0",
     "gh-pages": "^6.0.0"
   },
-  "description": "AF_P16_LiveBus",
+  "description": "2026_AF_P01",
   "main": "index.js",
   "author": "",
   "license": "ISC"
