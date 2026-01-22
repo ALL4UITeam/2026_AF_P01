@@ -22,7 +22,8 @@ jobs:
           node-version: 20
 
       - run: npm install
-      - run: npm run build
+      - run: chmod +x node_modules/.bin/vite
+      - run: npm run build- run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
         with:
