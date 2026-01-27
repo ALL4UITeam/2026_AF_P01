@@ -1,0 +1,63 @@
+@use '../abstracts' as *;
+
+// ====== button ======
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;    
+    &--primary {
+        background: #0b4a80;
+        color: #fff;
+        span{
+            color: #fff;
+        }
+        &:hover {
+            background: #1976D2;
+        }
+        
+        &:active {
+            background: #1565C0;
+        }
+    }
+    
+    &--secondary {
+        background: #5496c8;
+        color: #fff;
+        span{
+            color: #fff;
+        }
+        &:hover {
+            background: #757575;
+        }
+        
+        &:active {
+            background: #616161;
+        }
+    }
+    &--tertiary{
+        background: #e3edfa;
+        color: #315a9a;
+        span{
+            color: #315a9a;
+        }
+    }
+}
+
+
+// 작은 버튼
+.btn--small {
+    padding: 8px 16px;
+    font-size: 13px;
+    
+    .ico {
+        width: 14px;
+        height: 14px;
+    }
+}

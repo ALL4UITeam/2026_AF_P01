@@ -60,13 +60,27 @@
                                     <header class="card__head">
                                         <h3 class="card__title">분석할 데이터 목록</h3>
                                     </header>
-                                    <div class="card__body">
-                                        <div class="placeholder">
-                                            <div class="info">
-                                                <i class="icon no-data"></i>
-                                                <p>데이터가 없습니다</p>
-                                            </div>
-                                        </div>
+                                    <div class="card__body fixed-height">
+                                        <ul class="data-list">
+                                            <li class="data-list__item">
+                                                <div class="data-list__content">
+                                                    <i class="ico ico-file"></i>
+                                                    <span class="data-list__name">Sentinel2_백두산_20250125</span>
+                                                </div>
+                                                <button class="data-list__delete" type="button" aria-label="삭제">
+                                                    <i class="ico ico-trash"></i>
+                                                </button>
+                                            </li>
+                                            <li class="data-list__item">
+                                                <div class="data-list__content">
+                                                    <i class="ico ico-file"></i>
+                                                    <span class="data-list__name">Sentinel2_백두산_20250125</span>
+                                                </div>
+                                                <button class="data-list__delete" type="button" aria-label="삭제">
+                                                    <i class="ico ico-trash"></i>
+                                                </button>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </section>
                                 <section class="card card--lg col01">
@@ -84,21 +98,270 @@
                                 </section>
                             </div>
                             <div class="map">
-                                <div>
+                                <div class="map-instruction">
                                     <p>지도를 더블클릭하여 마커 추가</p>
                                 </div>
                                 <div class="map-tool">
                                     <ul>
-                                        <li></li>
+                                        <li>
+                                            <i class="ico ico-distance"></i>
+                                            <span>거리</span>
+                                        </li>
+                                        <li>
+                                            <i class="ico ico-elevation"></i>
+                                            <span>표고</span>
+                                        </li>
+                                        <li>
+                                            <i class="ico ico-area"></i>
+                                            <span>면적</span>
+                                        </li>
+                                        <li>
+                                            <i class="ico ico-save"></i>
+                                            <span>저장</span>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="compass"></div>
                                 <div class="modla-pop">
-
+                                    <div class="modla-pop__header">
+                                        <h4>기본정보</h4>
+                                        <button class="modla-pop__close" type="button">×</button>
+                                    </div>
+                                    <div class="modla-pop__body">
+                                        <div class="modla-pop__item">
+                                            <span class="modla-pop__label">위치</span>
+                                            <span class="modla-pop__value">백두산 천지</span>
+                                        </div>
+                                        <div class="modla-pop__item">
+                                            <span class="modla-pop__label">좌표</span>
+                                            <span class="modla-pop__value">42.025, 128.045</span>
+                                        </div>
+                                        <div class="modla-pop__item">
+                                            <span class="modla-pop__label">고도</span>
+                                            <span class="modla-pop__value">2,600m</span>
+                                        </div>
+                                        <div class="modla-pop__item">
+                                            <span class="modla-pop__label">면적</span>
+                                            <span class="modla-pop__value">9.56km²</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <i class="ico map-marker"></i>
                                 <i class="ico map-marker"></i>
+                                <i class="ico map-marker"></i>
                             </div>
+                            <section class="card card--md col01">
+                                <header class="card__head">
+                                    <h3 class="card__title">1차 산출</h3>
+                                    <div class="card__actions">
+                                        <button class="btn btn--primary">
+                                            <i class="ico ico-play"></i>
+                                            <span>1차 분석 시작</span>
+                                        </button>
+                                        <button class="btn btn--secondary">
+                                            <i class="ico ico-download"></i>
+                                            <span>산출물 다운로드</span>
+                                        </button>
+                                    </div>
+                                </header>
+                                <div class="card__body">
+                                    <div class="output-summary">
+                                        <div class="summary-card">
+                                            <div class="summary-card__label">연간</div>
+                                            <div class="summary-card__value">2,195.9m</div>
+                                        </div>
+                                        <div class="summary-card">
+                                            <div class="summary-card__label">최대 수체 면적</div>
+                                            <div class="summary-card__value">9.56km²</div>
+                                        </div>
+                                        <div class="summary-card">
+                                            <div class="summary-card__label">최대 수위 변화</div>
+                                            <div class="summary-card__value summary-card__value--positive">+1.2m</div>
+                                        </div>
+                                        <div class="summary-card">
+                                            <div class="summary-card__label">증감률</div>
+                                            <div class="summary-card__value summary-card__value--negative">-9.2%</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="output-section output-detail">
+                                        <div class="output-section__header output-section__header--centered">
+                                            <h4 class="output-section__title">데이터 상세 내역</h4>
+                                        </div>
+                                        <div class="output-section__body">
+                                            <div class="table-scroll form-tbl">
+                                            <div class="table-header">
+                                                <div class="table-cell__row">
+                                                    <div class="table-cell">위성</div>
+                                                    <div class="table-cell">관측일</div>
+                                                    <div class="table-cell">수체 면적</div>
+                                                    <div class="table-cell">평균 수위</div>
+                                                    <div class="table-cell">수위 변화</div>
+                                                </div>
+                                            </div>
+                                            <div class="table-body line5-body">
+                                                <div class="table-cell__row">
+                                                    <div class="table-cell">Sentinel-2</div>
+                                                    <div class="table-cell">2024-10-10</div>
+                                                    <div class="table-cell">9.56km²</div>
+                                                    <div class="table-cell">2,195.9m</div>
+                                                    <div class="table-cell change--positive">+1.2m</div>
+                                                </div>
+                                                <div class="table-cell__row">
+                                                    <div class="table-cell">Sentinel-2</div>
+                                                    <div class="table-cell">2024-09-15</div>
+                                                    <div class="table-cell">9.53km²</div>
+                                                    <div class="table-cell">2,194.7m</div>
+                                                    <div class="table-cell change--positive">+0.4m</div>
+                                                </div>
+                                                <div class="table-cell__row">
+                                                    <div class="table-cell">Landsat</div>
+                                                    <div class="table-cell">2024-08-20</div>
+                                                    <div class="table-cell">9.61km²</div>
+                                                    <div class="table-cell">2,196.1m</div>
+                                                    <div class="table-cell change--negative">-1.5m</div>
+                                                </div>
+                                                <div class="table-cell__row">
+                                                    <div class="table-cell">Sentinel-2</div>
+                                                    <div class="table-cell">2024-07-25</div>
+                                                    <div class="table-cell">9.65km²</div>
+                                                    <div class="table-cell">2,196.5m</div>
+                                                    <div class="table-cell change--negative">-0.8m</div>
+                                                </div>
+                                                <div class="table-cell__row">
+                                                    <div class="table-cell">ALOS-2</div>
+                                                    <div class="table-cell">2024-06-30</div>
+                                                    <div class="table-cell">9.56km²</div>
+                                                    <div class="table-cell">2,195.9m</div>
+                                                    <div class="table-cell change--positive">+0.3m</div>
+                                                </div>
+                                                <div class="table-cell__row">
+                                                    <div class="table-cell">ALOS-2</div>
+                                                    <div class="table-cell">2024-06-30</div>
+                                                    <div class="table-cell">9.56km²</div>
+                                                    <div class="table-cell">2,195.9m</div>
+                                                    <div class="table-cell change--positive">+0.3m</div>
+                                                </div>
+                                                <div class="table-cell__row">
+                                                    <div class="table-cell">ALOS-2</div>
+                                                    <div class="table-cell">2024-06-30</div>
+                                                    <div class="table-cell">9.56km²</div>
+                                                    <div class="table-cell">2,195.9m</div>
+                                                    <div class="table-cell change--positive">+0.3m</div>
+                                                </div>
+                                                <div class="table-cell__row">
+                                                    <div class="table-cell">ALOS-2</div>
+                                                    <div class="table-cell">2024-06-30</div>
+                                                    <div class="table-cell">9.56km²</div>
+                                                    <div class="table-cell">2,195.9m</div>
+                                                    <div class="table-cell change--positive">+0.3m</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="card card--md col01">
+                                <header class="card__head">
+                                    <h3 class="card__title">2차 산출</h3>
+                                    <div class="card__actions">
+                                        <button class="btn btn--primary">
+                                            <i class="ico ico-play"></i>
+                                            <span>2차 분석 시작</span>
+                                        </button>
+                                        <button class="btn btn--secondary">
+                                            <i class="ico ico-download"></i>
+                                            <span>산출물 다운로드</span>
+                                        </button>
+                                    </div>
+                                </header>
+                                <div class="card__body">
+                                    <div class="output-chart-grid">
+                                        <div class="output-section">
+                                            <div class="output-section__header">
+                                                <h4 class="output-section__title">수위 변화 시계열</h4>
+                                                <button class="btn btn--tertiary btn--small">
+                                                    <i class="ico ico-image"></i>
+                                                    <span>이미지 다운로드</span>
+                                                </button>
+                                            </div>
+                                            <div class="output-section__body">
+                                                <div class="placeholder">
+                                                    <div class="info">
+                                                        <i class="icon no-data"></i>
+                                                        <p>선택된 분석 데이터가 없습니다</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="output-section">
+                                            <div class="output-section__header">
+                                                <h4 class="output-section__title">수체 면적 변화 시계열</h4>
+                                                <button class="btn btn--tertiary btn--small">
+                                                    <i class="ico ico-image"></i>
+                                                    <span>이미지 다운로드</span>
+                                                </button>
+                                            </div>
+                                            <div class="output-section__body">
+                                                <div class="placeholder">
+                                                    <div class="info">
+                                                        <i class="icon no-data"></i>
+                                                        <p>선택된 분석 데이터가 없습니다</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="card card--md col01">
+                                <header class="card__head">
+                                    <h3 class="card__title">3차 산출</h3>
+                                    <div class="card__actions">
+                                        <button class="btn btn--primary">
+                                            <i class="ico ico-play"></i>
+                                            <span>3차 분석 시작</span>
+                                        </button>
+                                        <button class="btn btn--secondary">
+                                            <i class="ico ico-download"></i>
+                                            <span>산출물 다운로드</span>
+                                        </button>
+                                    </div>
+                                </header>
+                                <div class="card__body">
+                                    <div class="output-section chart-card">
+                                        <div class="output-section__header output-section__header--spaced">
+                                            <h4 class="output-section__title">분기별 변화 시계열</h4>
+                                            <button class="btn btn--tertiary btn--small">
+                                                <i class="ico ico-image"></i>
+                                                <span>이미지 다운로드</span>
+                                            </button>
+                                        </div>
+                                        <div class="output-section__body">
+                                            <div class="analysis-summary">
+                                                <div class="analysis-summary__header">
+                                                    <i class="ico ico-file"></i>
+                                                    <span>분석 요약</span>
+                                                </div>
+                                                <ul class="analysis-summary__list">
+                                                    <li>정규화 값은 0.00 ± 1.58 (Z-score) 입니다.</li>
+                                                    <li>정규화 값은 0.59 (Z-score)로 나타났습니다.</li>
+                                                    <li>정규화 값은 0.59 (Z-score)로 나타났습니다.</li>
+                                                    <li>이번 분기 동안 변화율은 전체 변화율 대비 37.18%입니다.</li>
+                                                    <li>천지 이상 지역의 평균 온도는 정상 범위를 벗어났습니다.</li>
+                                                </ul>
+                                            </div>
+                                            <div class="placeholder">
+                                                <div class="info">
+                                                    <i class="icon no-data"></i>
+                                                    <p>선택된 분석 데이터가 없습니다</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>    
                     </div>
                 </div>
@@ -108,140 +371,78 @@
     
     <script>
         $(document).ready(function () {
-            // jsTree 데이터 구조
-            var treeData = [
-                {
-                    "text": "OUTPUT",
-                    "state": { "opened": true },
-                    "children": [
-                        {
-                            "text": "ALOS-2",
-                            "state": { "opened": false }
-                        },
-                        {
-                            "text": "Landsat-series",
-                            "state": { "opened": false }
-                        },
-                        {
-                            "text": "Sentinel-1",
-                            "state": { "opened": false }
-                        },
-                        {
-                            "text": "Sentinel-2",
-                            "state": { "opened": true },
-                            "children": [
-                                {
-                                    "text": "백두산",
-                                    "state": { "opened": true },
-                                    "children": [
-                                        {
-                                            "text": "20250125",
-                                            "state": { "opened": true, "selected": true },
-                                            "children": [
-                                                {
-                                                    "text": "Sentinel2_백두산_20250125.tif",
-                                                    "icon": "file-icon tif-icon",
-                                                    "type": "file",
-                                                    "state": { "selected": true }
-                                                },
-                                                {
-                                                    "text": "Sentinel2_백두산_20250125.xml",
-                                                    "icon": "file-icon xml-icon",
-                                                    "type": "file",
-                                                    "state": { "selected": true }
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "text": "20250719",
-                                            "state": { "opened": false }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "text": "울릉도",
-                                    "state": { "opened": false }
-                                },
-                                {
-                                    "text": "제주도",
-                                    "state": { "opened": false }
-                                }
-                            ]
-                        },
-                        {
-                            "text": "TerraSAR-X",
-                            "state": { "opened": false }
-                        }
-                    ]
-                }
-            ];
-
-            // jsTree 초기화
-            $('#file-tree').jstree({
-                'core': {
-                    'data': treeData,
-                    'themes': {
-                        'name': 'default',
-                        'dots': true,
-                        'icons': true
-                    },
-                    'multiple': true,
-                    'check_callback': true
-                },
-                'types': {
-                    'default': {
-                        'icon': false
-                    },
-                    'file': {
-                        'icon': false
-                    }
-                },
-                'plugins': ['types', 'wholerow']
-            });
-
-            // 트리 로드 완료 후 배지 추가
-            $('#file-tree').on('ready.jstree', function () {
-                var tree = $('#file-tree').jstree(true);
-                
-                // 약간의 지연을 두고 배지 추가 (DOM이 완전히 렌더링된 후)
-                setTimeout(function() {
-                    // 모든 노드를 순회하며 배지 추가
-                    var allNodes = tree.get_json('#', { flat: true });
-                    allNodes.forEach(function(node) {
-                        var nodeElement = tree.get_node(node.id, true);
-                        if (nodeElement && nodeElement.length) {
-                            var $anchor = $(nodeElement).find('.jstree-anchor');
-                            var text = node.text;
-                            
-                            // 이미 처리된 노드는 건너뛰기
-                            if ($anchor.find('.jstree-text').length > 0) {
-                                return;
-                            }
-                            
-                            // 20250125 폴더에 "분석 완료" 배지 추가
-                            if (text === '20250125') {
-                                $anchor.html('<span class="jstree-text">20250125</span><span class="complete-badge">분석 완료</span>');
-                            }
-                            // 파일에 타입 및 크기 배지 추가
-                            else if (text.indexOf('Sentinel2_백두산_20250125.tif') !== -1) {
-                                $anchor.html('<span class="jstree-text">Sentinel2_백두산_20250125.tif</span><span class="file-type-badge">TIF</span><span class="file-size-badge">85.3MB</span>');
-                            } else if (text.indexOf('Sentinel2_백두산_20250125.xml') !== -1) {
-                                $anchor.html('<span class="jstree-text">Sentinel2_백두산_20250125.xml</span><span class="file-type-badge">XML</span><span class="file-size-badge">13.4MB</span>');
-                            } else {
-                                // 배지가 없는 노드는 텍스트만 span으로 감싸기
-                                var currentText = $anchor.text().trim();
-                                if (currentText) {
-                                    $anchor.html('<span class="jstree-text">' + currentText + '</span>');
-                                }
+            // table-scroll의 헤더와 본문 셀 너비 동기화 (컬럼 수 동적 처리)
+            // table-scroll 클래스가 있어야만 기능이 작동함
+            function syncTableColumnWidths() {
+                $('.table-scroll').each(function() {
+                    var $table = $(this);
+                    // 기능 클래스 기준으로 찾기
+                    var $headerRow = $table.find('.table-header .table-cell__row');
+                    var $bodyRows = $table.find('.table-body .table-cell__row');
+                    
+                    if ($headerRow.length === 0 || $bodyRows.length === 0) return;
+                    
+                    // 헤더의 셀 개수를 동적으로 감지
+                    var $headerCells = $headerRow.find('.table-cell');
+                    var columnCount = $headerCells.length;
+                    
+                    if (columnCount === 0) return;
+                    
+                    // 1단계: 먼저 CSS 변수로 컬럼 수 설정 (초기 렌더링을 위해)
+                    $table.css('--column-count', columnCount);
+                    
+                    // 2단계: 잠시 대기 후 실제 너비 측정 (렌더링 완료 후)
+                    setTimeout(function() {
+                        // 부모 컨테이너의 실제 너비 확인
+                        var tableWidth = $table.width();
+                        if (tableWidth === 0) return; // 아직 렌더링되지 않음
+                        
+                        // 각 셀의 실제 너비 측정 (getBoundingClientRect 사용)
+                        var columnWidths = [];
+                        $headerCells.each(function() {
+                            var cellWidth = this.getBoundingClientRect().width;
+                            columnWidths.push(cellWidth);
+                        });
+                        
+                        // 전체 너비가 합리적인 범위인지 확인 (부모 너비의 0.5~2배)
+                        var totalWidth = columnWidths.reduce(function(sum, width) {
+                            return sum + width;
+                        }, 0);
+                        
+                        // 너비가 비정상적으로 크면 부모 너비를 기준으로 재계산
+                        if (totalWidth > tableWidth * 2 || totalWidth < tableWidth * 0.5) {
+                            // 부모 너비를 컬럼 수로 나눠서 균등 분배
+                            var avgWidth = tableWidth / columnCount;
+                            columnWidths = [];
+                            for (var i = 0; i < columnCount; i++) {
+                                columnWidths.push(avgWidth);
                             }
                         }
-                    });
-                }, 100);
-            });
-
-            // 노드 클릭 이벤트
-            $('#file-tree').on('select_node.jstree', function (e, data) {
-                console.log('선택된 노드:', data.node.text);
+                        
+                        // 측정한 너비를 grid-template-columns로 변환
+                        var gridTemplateColumns = columnWidths.map(function(width) {
+                            return width + 'px';
+                        }).join(' ');
+                        
+                        // 헤더와 본문의 모든 행에 동일한 grid-template-columns 적용
+                        $headerRow.css('grid-template-columns', gridTemplateColumns);
+                        $bodyRows.css('grid-template-columns', gridTemplateColumns);
+                    }, 50);
+                });
+            }
+            
+            // 페이지 로드 시 실행 (약간의 지연을 두어 DOM이 완전히 렌더링된 후)
+            setTimeout(function() {
+                syncTableColumnWidths();
+            }, 200);
+            
+            // 윈도우 리사이즈 시에도 동기화
+            var resizeTimer;
+            $(window).on('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    syncTableColumnWidths();
+                }, 150);
             });
         });
     </script>

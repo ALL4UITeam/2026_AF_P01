@@ -46,6 +46,35 @@ button,a{
     border-style: none;
     background-color: transparent;
 }
+
+// ====== 공통 스크롤바 스타일 (전체 페이지 공통) ======
+* {
+    // Webkit 브라우저 (Chrome, Safari, Edge)
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 3px;
+        
+        &:hover {
+            background: #999;
+        }
+    }
+}
+
+// Firefox용
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
 /* 7) 애니메이션/스무스 스크롤 접근성 */
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {

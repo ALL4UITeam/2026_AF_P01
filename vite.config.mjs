@@ -31,70 +31,72 @@ export default defineConfig(() => {
   })
 
   return {
-    root: 'src',
-    base: '/2026_AF_P01/',
-    publicDir: '../public',
+    root: "src",
+    base: "/2026_AF_P01/",
+    publicDir: "../public",
 
     build: {
-      outDir: '../dist',
+      outDir: "../dist",
       emptyOutDir: true,
       cssCodeSplit: false,
       minify: false,
 
       rollupOptions: {
         input: Object.fromEntries(
-          glob.sync('*.html', { cwd: 'src' }).map(file => {
-            return [file, path.resolve(__dirname, 'src', file)]
-          })
+          glob.sync("*.html", { cwd: "src" }).map((file) => {
+            return [file, path.resolve(__dirname, "src", file)];
+          }),
         ),
 
         output: {
-          entryFileNames: 'assets/[name].js',
-          chunkFileNames: 'assets/[name].js',
+          entryFileNames: "assets/[name].js",
+          chunkFileNames: "assets/[name].js",
           assetFileNames: (assetInfo) => {
-            const ext = assetInfo.name.split('.').pop()
+            const ext = assetInfo.name.split(".").pop();
 
-            if (ext === 'css') {
-              return 'assets/[name].css'
+            if (ext === "css") {
+              return "assets/[name].css";
             }
 
             if (/(png|jpe?g|gif|svg|webp)/.test(ext)) {
-              return 'assets/images/[name][extname]'
+              return "assets/images/[name][extname]";
             }
 
-            return 'assets/[name][extname]'
-          }
-        }
-      }
+            return "assets/[name][extname]";
+          },
+        },
+      },
     },
 
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src')
-      }
+        "@": path.resolve(__dirname, "src"),
+      },
     },
 
     plugins: [
       handlebars({
-        partialDirectory: path.resolve(__dirname, 'src/components'),
-        context: { pages: pageMetaList }
+        partialDirectory: path.resolve(__dirname, "src/components"),
+        context: { pages: pageMetaList },
       }),
 
       {
-        name: 'cleanup-html',
+        name: "cleanup-html",
         closeBundle() {
-          const distPath = path.resolve(__dirname, 'dist')
-          const htmlFiles = fs.readdirSync(distPath).filter(f => f.endsWith('.html'))
+          const distPath = path.resolve(__dirname, "dist");
+          const htmlFiles = fs
+            .readdirSync(distPath)
+            .filter((f) => f.endsWith(".html"));
 
-          htmlFiles.forEach(file => {
-            const filePath = path.join(distPath, file)
-            let content = fs.readFileSync(filePath, 'utf-8')
-            content = content.replace(/ crossorigin/g, '')
-            content = content.replace(/<link rel="modulepreload" [^>]+?>/g, '')
-            fs.writeFileSync(filePath, content)
-          })
-        }
-      }
-    ]
-  }
+          htmlFiles.forEach((file) => {
+            const filePath = path.join(distPath, file);
+            let content = fs.readFileSync(filePath, "utf-8");
+            content = content.replace(/ crossorigin/g, "");
+            content = content.replace(/<link rel="modulepreload" [^>]+?>/g, "");
+            fs.writeFileSync(filePath, content);
+          });
+        },
+      },
+    ],
+  };
 })

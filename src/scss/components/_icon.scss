@@ -14,3 +14,28 @@
     @include icon(20px);
     background-image: url('@/assets/images/icon/calrendar-ico.png');
 }
+.ico-file{
+    @include icon(16px);
+    background-image: url('@/assets/images/icon/ico-file.png');
+}
+.ico-trash{
+    @include icon(16px);
+    background-image: url("@/assets/images/icon/ico-red-del.png");
+}
+// 재생 아이콘
+.ico-play {
+    @include icon(16px);
+    background-image: url("@/assets/images/icon/play-ico.png");
+}
+
+// 다운로드 아이콘
+.ico-download {
+    @include icon(16px);
+    background-image: url("@/assets/images/icon/white-down-ico.png");
+}
+
+// 이미지 아이콘
+.ico-image {
+    @include icon(16px);
+    background-image: url("@/assets/images/icon/blue-img-ico.png");
+}

@@ -61,6 +61,12 @@
             font-weight: 700;
             letter-spacing: -0.2px;
         }
+        
+        &__actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
         &__more {
             width: 28px;
@@ -103,6 +109,10 @@
     .card--lg{ 
         .card__body {
             min-height: 500px;
+            &.fixed-height{
+                max-height: 500px;
+                overflow-y: auto;
+            }
         }
     }
     // chart는 무조건 .card--md를 사용
@@ -169,11 +179,226 @@
     }
 }
 
+// ====== output summary cards ======
+.output-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background: #e8eef7;
+    border-radius: 10px;
+    padding: 40px 20px;
+    border: 1px solid #cfd8e5;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+        align-items: flex-end;
+    &__label {
+        font-size: 17px;
+        color: #6a6e79;
+        font-weight: 400;
+    }
+    
+    &__value {
+        font-size: 20px;
+        color: #333;
+        font-weight: 600;
+        
+        &--positive {
+            color: #0561af;
+        }
+        
+        &--negative {
+            color: #e54e57;
+        }
+    }
+}
+
+// ====== 공통 output section (output-detail, chart-card 공통 구조) ======
+.output-section {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #dadee5;
+    display: flex;
+    flex-direction: column;    
+    &__header {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #e5e8ee;
+        justify-content: space-between;
+        background: #f6f6f6;
+        font-size: 19px;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    &__title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+        
+        // 중앙 정렬 (output-detail용)
+        .output-section__header--centered & {
+            text-align: center;
+        }
+    }
+    
+    &__body {
+        flex: 1;
+        padding: 20px;
+    }
+}
+
+// ====== output chart grid ======
+.output-chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+// ====== chart-card (output-section 사용) ======
+.chart-card {
+    overflow: hidden;
+    padding: 0;
+    .output-section__header {
+        justify-content: space-between;
+        padding: 16px;
+        margin: 0;
+        gap: 0;
+    }
+    
+    .output-section__body {
+        min-height: 300px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+// ====== analysis summary ======
+.analysis-summary {
+    background: #ebf5fd;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #c6d9ec;
+    max-height: 200px;
+    overflow-Y: auto;
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        
+        .ico {
+            width: 16px;
+            height: 16px;
+        }
+    }
+    
+    &__list {
+        margin: 0;
+        padding-left: 24px;
+        list-style: disc;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        
+        li {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+    }
+}
+
 // ====== responsive ======
 @media (max-width: 1200px) {
     .main__card {
         .column-line{
             flex-direction: column;
+        }
+    }
+    
+    .output-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .output-chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+// ====== data list ======
+.data-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 10px;
+        background: white;
+        border-bottom: 1px solid #e5e8ee;
+        transition: all 0.2s ease;
+        
+        &:hover {
+            background: #f8f9fa;
+            border-color: #d0d7de;
+        }
+    }
+    
+    &__content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+        min-width: 0;
+        
+        .ico {
+            flex-shrink: 0;
+        }
+    }
+    
+    &__name {
+        font-size: 14px;
+        color: #074d88;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    &__delete {
+        background: none;
+        border: none;
+        padding: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+        flex-shrink: 0;
+        
+        &:hover {
+            background: #fee;
+        }
+        
+        .ico {
+            width: 16px;
+            height: 16px;
         }
     }
 }

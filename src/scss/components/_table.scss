@@ -1,12 +1,14 @@
-.tbl{
+.tbl {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 12px;
-    table{
+
+    table {
         width: 100%;
         border-collapse: collapse;
         border: 1px solid #c6c6c6;
     }
+
     th,
     td {
         border: 1px solid #c6c6c6;
@@ -22,16 +24,120 @@
 }
 
 
-.form-tbl{
+// ====== 기능 클래스: 스크롤 테이블 (기능만) ======
+.table-scroll {
     width: 100%;
-    border-radius: 12px;
-    border: 1px solid #c6c6c6;
-    table{
-        width: 100%;
-        border-collapse: collapse;
-        
-        overflow: hidden;  // 테이블 모서리 둥글게 유지
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    // 헤더 고정 (기능)
+    .table-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+
+        .table-scroll__row {
+            border-bottom: none;
+        }
     }
+
+    // 본문 스크롤 가능 (기능)
+    .table-body {
+        overflow-y: auto;
+        overflow-x: hidden;
+        &.line5-body{
+            max-height: calc(5 * 39px); // 5개 행 높이 (대략 60px per row)
+        }
+        // 스크롤바는 전역 스타일 사용
+    }
+
+    // 행 구조 (기능)
+    .table-cell__row {
+        display: grid;
+        // JavaScript에서 동적으로 설정됨 (초기값은 컬럼 수에 맞춰 1fr로 설정)
+        grid-template-columns: repeat(var(--column-count, 5), 1fr);
+    }
+
+    // 셀 구조 (기능)
+    .table-cell {
+        // 기능만, 디자인은 modifier에서
+    }
+}
+
+// ====== 디자인 클래스: form-tbl 스타일 ======
+// 사용법: <div class="table-scroll form-tbl">
+// table-scroll이 없으면 기능이 작동하지 않음
+.form-tbl {
+    // 디자인 스타일만 (기능은 table-scroll에서)
+    background: white;
+
+    // 헤더 디자인
+    .table-header {
+        background: #ebf5fd;
+        border-radius: 10px;
+        .table-cell {
+            font-weight: 500;
+            font-size: 17px;
+            border-bottom: none;
+        }
+    }
+
+
+    // 행 디자인
+    .table-cell__row {
+        border-bottom: 1px solid #c6c6c6;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    // 셀 디자인
+    .table-cell {
+        padding: 10px 10px;
+        text-align: center;
+        font-size: 15px;
+        &:last-child {
+            border-right: none;
+        }
+    }
+}
+
+// ====== 다른 디자인 예시: minimal 스타일 ======
+// 사용법: <div class="table-scroll table-minimal">
+.table-minimal {
+    border: 1px solid #ddd;
+    background: #fafafa;
+
+    .table-header {
+        background: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+
+        .table-cell {
+            background: #f5f5f5;
+            font-weight: 600;
+            font-size: 14px;
+        }
+    }
+
+    .table-cell__row {
+        border-bottom: 1px solid #eee;
+    }
+
+    .table-cell {
+        padding: 12px 8px;
+        font-size: 14px;
+        border-right: 1px solid #eee;
+    }
+}
+
+// 기존 table 스타일도 유지 (다른 곳에서 사용할 수 있으므로)
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+
     th,
     td {
         border-bottom: 1px solid #c6c6c6;
@@ -39,34 +145,41 @@
         text-align: center;
         font-size: 14px;
     }
+
     th {
         background: #ebf5fd;
         font-weight: 500;
         font-size: 17px;
     }
-    td{
+
+    td {
         font-size: 15px;
     }
-    thead{
-        tr{
-            th{
-                &:first-child{
+
+    thead {
+        tr {
+            th {
+                &:first-child {
                     border-top-left-radius: 12px;
                 }
+
                 &:last-child {
                     border-top-right-radius: 12px;
                 }
             }
         }
     }
-    tbody{
-        tr{
-            &:last-child{
-                td{
+
+    tbody {
+        tr {
+            &:last-child {
+                td {
                     border-bottom: none;
+
                     &:first-child {
                         border-bottom-left-radius: 12px;
                     }
+
                     &:last-child {
                         border-bottom-right-radius: 12px;
                     }
@@ -74,15 +187,28 @@
             }
         }
     }
-    .checkbox{
-        margin: 0;
-        justify-content: center;
-    }
 }
 
-.tbl-th{
+.checkbox {
+    margin: 0;
+    justify-content: center;
+}
+
+
+.tbl-th {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:7px;
+    gap: 7px;
+}
+
+// 수위 변화 색상
+.change--positive {
+    color: #2196F3;
+    font-weight: 500;
+}
+
+.change--negative {
+    color: #f44336;
+    font-weight: 500;
 }

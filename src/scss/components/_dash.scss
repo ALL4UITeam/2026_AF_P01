@@ -213,6 +213,7 @@
 .activity-list {
     display: grid;
     gap: 12px;
+    overflow-y: auto;
 }
 
 .activity-item {
