@@ -1,305 +1,236 @@
-/* jsTree 커스터마이징 - 이미지와 완벽하게 일치 */
-#file-tree {
-    font-size: 14px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Pretendard', sans-serif;
-    overflow: visible !important;
-    max-width: 100%;
+.tree-container {
+    /* 트리 컨테이너 스타일 */
 }
 
-/* 기본 스타일 리셋 */
-.jstree-default {
-    background: transparent;
-    overflow: visible !important;
-}
-
-/* jstree 컨테이너 스크롤 제거 */
-.jstree-container-ul {
-    overflow: visible !important;
-}
-
-/* jstree 기본 아이콘 스프라이트 완전히 숨기기 */
-.jstree-default .jstree-icon {
-    background-image: none !important;
-}
-
-.jstree-default .jstree-icon.jstree-themeicon {
-    background-image: none !important;
-    background-position: 0 0 !important;
-}
-
-/* 트리 라인 - 점선 스타일 */
-.jstree-default .jstree-container-ul .jstree-children {
+.tree-item {
     position: relative;
-    padding-left: 0;
+    user-select: none;
 }
 
-/* jstree dots 스타일 커스터마이징 - 점선을 더 명확하게 */
-.jstree-default .jstree-wholerow {
-    border-top: none;
-    border-bottom: none;
-}
-
-/* 점선 라인 - 각 레벨마다 표시 */
-.jstree-default li[aria-level] {
-    position: relative;
-}
-
-.jstree-default li[aria-level] > .jstree-ocl {
-    position: relative;
-    z-index: 1;
-}
-
-/* 점선 라인을 더 명확하게 표시 */
-.jstree-default .jstree-container-ul > .jstree-children > li::before {
-    content: '';
-    position: absolute;
-    left: 9px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    border-left: 1px dotted #d0d0d0;
-    z-index: 0;
-}
-
-/* 기본 아이콘 완전히 비활성화 */
-.jstree-default .jstree-icon.jstree-themeicon {
-    background-image: none !important;
-    background: none !important;
-    width: 18px !important;
-    height: 18px !important;
-    position: relative !important;
-    margin-right: 4px;
-}
-
-/* jstree 기본 아이콘 스프라이트 숨기기 */
-.jstree-default .jstree-icon.jstree-themeicon:not(.jstree-themeicon-custom) {
-    background-image: none !important;
-    background: none !important;
-}
-
-/* 폴더 아이콘 - 기본 (닫힌/열린 모두 회색 #78909c) */
-.jstree-default .jstree-icon.jstree-themeicon::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 18px;
-    height: 18px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%2378909c'%3E%3Cpath d='M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: block;
-}
-
-/* 열린 폴더도 회색 유지 (선택되지 않은 경우) */
-.jstree-default .jstree-open > .jstree-ocl + .jstree-icon.jstree-themeicon::before,
-.jstree-default li.jstree-open > .jstree-ocl + .jstree-icon.jstree-themeicon::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%2378909c'%3E%3Cpath d='M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z'/%3E%3C/svg%3E");
-}
-
-/* 선택된 폴더 아이콘만 파란색 (#2196F3) */
-.jstree-default .jstree-clicked > .jstree-icon.jstree-themeicon::before,
-.jstree-default li.jstree-clicked > .jstree-ocl + .jstree-icon.jstree-themeicon::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%232196F3'%3E%3Cpath d='M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z'/%3E%3C/svg%3E");
-}
-
-/* 파일 아이콘 - 연한 파란색 아웃라인 문서 (#5b9bd5) */
-.jstree-default .file-icon {
-    background-image: none !important;
-    background: none !important;
-    width: 18px !important;
-    height: 18px !important;
-    position: relative !important;
-}
-
-.jstree-default .file-icon::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 16px;
-    height: 18px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='18' viewBox='0 0 16 18'%3E%3Cpath d='M14 0H2C.9 0 0 .9 0 2v14c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4l-4-4zm2 16H2V2h9v4h5v10z' fill='none' stroke='%235b9bd5' stroke-width='1.2'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: block;
-}
-
-/* TIF, XML 파일 아이콘 */
-.jstree-default .tif-icon,
-.jstree-default .xml-icon {
-    background-image: none !important;
-    background: none !important;
-}
-
-.jstree-default .tif-icon::before,
-.jstree-default .xml-icon::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 16px;
-    height: 18px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='18' viewBox='0 0 16 18'%3E%3Cpath d='M14 0H2C.9 0 0 .9 0 2v14c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4l-4-4zm2 16H2V2h9v4h5v10z' fill='none' stroke='%235b9bd5' stroke-width='1.2'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: block;
-}
-
-/* 선택된 항목 스타일링 - 연한 파란색 배경 */
-.jstree-default .jstree-clicked,
-.jstree-default li.jstree-clicked > .jstree-anchor {
-    background: #e3f2fd !important;
-    border-radius: 3px;
-}
-
-/* 선택된 항목의 텍스트 색상 - 파란색 */
-.jstree-default .jstree-clicked > .jstree-anchor,
-.jstree-default li.jstree-clicked > .jstree-anchor {
-    color: #2196F3 !important;
-}
-
-/* 선택된 항목의 wholerow 배경 */
-.jstree-default .jstree-clicked .jstree-wholerow {
-    background: #e3f2fd !important;
-}
-
-/* 호버 상태 */
-.jstree-default .jstree-hovered {
-    background: #f5f5f5 !important;
-    border-radius: 3px;
-}
-
-/* 폴더/파일 텍스트 - 기본 어두운 회색, 말줄임표 적용 */
-.jstree-default .jstree-anchor {
-    height: auto;
-    line-height: 28px;
-    padding: 2px 4px;
-    color: #333;
+.tree-item-content {
     display: flex;
     align-items: center;
-    gap: 4px;
+    padding: 0 10px;
+    height: 40px;
+    cursor: pointer;
     position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    white-space: nowrap;
-}
-
-/* 노드 텍스트 영역 - 말줄임표 적용 */
-.jstree-default .jstree-node {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-}
-
-.jstree-default li {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-}
-
-/* 텍스트 부분만 말줄임표 적용 */
-.jstree-default .jstree-anchor .jstree-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    flex: 1;
-    min-width: 0;
-    display: inline-block;
-    max-width: 100%;
-}
-
-/* anchor 자체도 말줄임표 적용 (배지가 없는 경우를 위해) */
-.jstree-default .jstree-anchor {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* 배지는 항상 표시되도록 */
-.jstree-default .jstree-anchor .complete-badge,
-.jstree-default .jstree-anchor .file-type-badge,
-.jstree-default .jstree-anchor .file-size-badge {
-    flex-shrink: 0;
-    display: inline-block;
-    white-space: nowrap;
-}
-
-/* 배지가 제대로 표시되도록 */
-.jstree-default .jstree-anchor .complete-badge,
-.jstree-default .jstree-anchor .file-type-badge,
-.jstree-default .jstree-anchor .file-size-badge {
-    position: relative;
-    z-index: 1;
-}
-
-/* 파일 크기 - 배지 없이 텍스트만 */
-.file-size-badge {
-    display: inline-block;
-    margin-left: 8px;
-    color: #666;
-    font-size: 12px;
-    font-weight: 400;
-    background: none;
-    padding: 0;
-    border: none;
-}
-
-/* 분석 완료 뱃지 - 파란색 배경, 둥근 모서리 */
-.complete-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    margin-left: 8px;
-    background-color: #2196F3;
-    color: white;
     border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
-    white-space: nowrap;
 }
 
-/* 파일 타입 뱃지 - 회색 배경, 흰색 텍스트 */
-.file-type-badge {
-    display: inline-block;
-    padding: 2px 8px;
+.tree-item-content:hover {
+    background: #f8f9fa;
+}
+
+.tree-item-content.selected {
+    background: #e6eff9;
+}
+
+.tree-item-content.selected > .tree-item-label {
+    color: #074d88;
+}
+
+.tree-item-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tree-item-icon.folder-icon::before {
+    content: '';
+    width: 16px;
+    height: 12px;
+    background-image: url('@/assets/images/icon/ico-folder.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.tree-item-icon.file-icon::before {
+    content: '';
+    width: 10px;
+    height: 12px;
+    background: url('@/assets/images/icon/ico-file.png') no-repeat center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+}
+
+.selected .tree-item-icon.file-icon::before {
+    background-image: url('@/assets/images/icon/ico-file-selected.png');
+}
+
+.tree-item-icon.folder-open-icon::before {
+    z-index: 1;
+    content: '';
+    width: 16px;
+    height: 12px;
+    background-image: url('@/assets/images/icon/ico-folder-open.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.selected .tree-item-icon.folder-open-icon::before {
+    background-image: url('@/assets/images/icon/ico-folder-open-selected.png');
+}
+
+.tree-item-label {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 400;
+    color: #1d1d1d;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tree-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     margin-left: 8px;
-    background-color: #9e9e9e;
-    color: white;
-    border-radius: 3px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
 }
 
-/* 트리 라인 간격 */
-.jstree-default .jstree-container-ul .jstree-children {
-    margin-left: 20px;
-    padding-left: 0;
+.file-tag {
+    width: 36px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d8dde3;
+    border-radius: 4px;
+    color: #1d1d1d;
+    font-size: 12px;
 }
 
-/* 노드 간격 */
-.jstree-default .jstree-node {
-    margin-bottom: 2px;
-    min-height: 28px;
+.file-size {
+    font-size: 13px;
+    color: #6a767c;
 }
 
-/* 앵커 전체 높이 */
-.jstree-default li > .jstree-ocl {
+.status-tag {
+    padding: 0 12px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    font-size: 12px;
+    border: 0;
+    color: #fff;
+}
+
+.status-tag.complete {
+    background: #2b7fff;
+}
+
+.status-tag.processing {
+    background: #00c950;
+}
+
+.status-tag.error {
+    background: #888888;
+}
+
+/* 삭제 버튼 스타일 */
+.delete-button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: #fbe1de;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    border-radius: 5px;
+}
+
+.delete-button::before {
+    content: '';
+    width: 12px;
+    height: 14px;
+    background-image: url('@/assets/images/icon/ico-delete.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.tree-children {
+    margin-left: 25px;
+    position: relative;
+}
+
+.tree-children::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: -14px;
+    bottom: 21px;
+    width: 1px;
+    background: url('@/assets/images/icon/h-line.png') repeat-y 0 0;
+}
+
+.tree-item > .tree-children > .tree-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 20px;
     width: 18px;
+    height: 1px;
+    z-index: 1;
+    background: url('@/assets/images/icon/v-line.png') repeat-x 0 0;
 }
 
-.jstree-default li > .jstree-anchor {
-    min-height: 28px;
-    line-height: 28px;
+.tree-children.collapsed {
+    display: none;
 }
 
-/* 루트 노드 스타일 */
-.jstree-default > .jstree-container-ul > .jstree-node {
-    margin-left: 0;
+/* 단계별 스타일 */
+.depth-0 > .tree-item-content .tree-item-label {
+    font-weight: 500;
+    font-size: 17px;
+    color: #1d1d1d;
 }
+.tree-children > .tree-item:last-child::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 21px;      /* 항목의 중간 위치 */
+    bottom: 0;       /* 아래까지 */
+    width: 1px;
+    background: white;  /* 흰색으로 덮기 */
+    z-index: 2;
+}
+
+.download-button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: #a0c0f0;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    border-radius: 5px;
+}
+.download-button::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background-image: url('@/assets/images/icon/ico-download.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
