@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>화산 모니터링 시스템</title>
+    
+    <link rel="stylesheet" href="/2026_AF_P01/assets/fonts/pretendard.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/simplebar/simplebar.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/dragula/dragula.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.css">
+    
+    
+    <script src="/2026_AF_P01/lib/jQuery/jquery-3.7.1.js"></script>
+    <script src="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.js"></script>
+    <script src="/2026_AF_P01/lib/simplebar/simplebar.min.js"></script>
+    <script src="/2026_AF_P01/lib/dragula/dragula.min.js"></script>
+  <script type="module" src="/2026_AF_P01/assets/index.js"></script>
+  <link rel="stylesheet" href="/2026_AF_P01/assets/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+        <header class="app-header">
+        	<div class="app-header__inner">
+        		<div class="brand">
+        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo.png" alt=""></a>
+        		</div>
+        
+        		<div class="app-header__actions">
+        			<button class="user-chip" type="button">
+        				<span class="user-chip__icon" aria-hidden="true"></span>
+        				admin
+        			</button>
+        			<button class="icon-btn" type="button" aria-label="로그아웃"></button>
+        		</div>
+        	</div>
+        </header>        <div class="app-body">
+            <div class="side-nav_wrap">
+                <nav class="side-nav" data-simplebar>
+                    <ul class="side-nav__list">
+            
+                        <!-- 1 depth -->
+                        <li class="side-nav__item is-active">
+                            <a href="#" class="side-nav__link"><i class="icon sni01"></i>대시보드</a>
+                        </li>
+            
+                        <!-- 1 depth + children -->
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni02"></i>탐색 및 전처리
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#" class="is-active">위성영상 탐색</a>
+                                </li>
+                                <li class="side-nav__subitem">
+                                    <a href="#">데이터 전처리</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni03"></i>데이터 분석
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">수위 및 수체면적</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 지역</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">상대지표 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">마그마 볼륨</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산활동 종합지수</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni04"></i>현장 DB 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">EDM 지표 변형 계측 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산 가스 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">온천수 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">지진 발생 관리</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item">
+                            <a href="#" class="side-nav__link"><i class="icon sni05"></i>통합보고서 분석</a>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni06"></i>데이터 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">원본 위성영상</a></li>
+                                <li class="side-nav__subitem"><a href="#">전처리 데이터</a></li>
+                                <li class="side-nav__subitem"><a href="#">분석 산출물</a></li>
+                                <li class="side-nav__subitem"><a href="#">통합 보고서</a></li>
+                                <li class="side-nav__subitem"><a href="#">내부 입력 데이터</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni07"></i>시스템 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">사용자 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">접속 통계</a></li>
+                                <li class="side-nav__subitem"><a href="#">이용 통계</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>            <main class="app-main" >
+                <div class="page">
+                    <header class="page__head">
+                        <h2 class="page__title">대시보드</h2>
+                    </header>
+
+                    <div class="dashboard">
+                        <button class="btn btn--primary">파일 업로드</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>

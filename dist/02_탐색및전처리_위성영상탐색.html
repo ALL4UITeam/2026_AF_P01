@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>화산 모니터링 시스템</title>
+    
+    <link rel="stylesheet" href="/2026_AF_P01/assets/fonts/pretendard.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/simplebar/simplebar.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/dragula/dragula.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.css">
+    
+    
+    <script src="/2026_AF_P01/lib/jQuery/jquery-3.7.1.js"></script>
+    <script src="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.js"></script>
+    <script src="/2026_AF_P01/lib/simplebar/simplebar.min.js"></script>
+    <script src="/2026_AF_P01/lib/dragula/dragula.min.js"></script>
+  <script type="module" src="/2026_AF_P01/assets/index.js"></script>
+  <script type="module" src="/2026_AF_P01/assets/TreeView.js"></script>
+  <script type="module" src="/2026_AF_P01/assets/tree-item.js"></script>
+  <link rel="stylesheet" href="/2026_AF_P01/assets/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+        <header class="app-header">
+        	<div class="app-header__inner">
+        		<div class="brand">
+        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo.png" alt=""></a>
+        		</div>
+        
+        		<div class="app-header__actions">
+        			<button class="user-chip" type="button">
+        				<span class="user-chip__icon" aria-hidden="true"></span>
+        				admin
+        			</button>
+        			<button class="icon-btn" type="button" aria-label="로그아웃"></button>
+        		</div>
+        	</div>
+        </header>        <div class="app-body">
+            <div class="side-nav_wrap">
+                <nav class="side-nav" data-simplebar>
+                    <ul class="side-nav__list">
+            
+                        <!-- 1 depth -->
+                        <li class="side-nav__item is-active">
+                            <a href="#" class="side-nav__link"><i class="icon sni01"></i>대시보드</a>
+                        </li>
+            
+                        <!-- 1 depth + children -->
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni02"></i>탐색 및 전처리
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#" class="is-active">위성영상 탐색</a>
+                                </li>
+                                <li class="side-nav__subitem">
+                                    <a href="#">데이터 전처리</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni03"></i>데이터 분석
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">수위 및 수체면적</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 지역</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">상대지표 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">마그마 볼륨</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산활동 종합지수</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni04"></i>현장 DB 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">EDM 지표 변형 계측 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산 가스 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">온천수 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">지진 발생 관리</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item">
+                            <a href="#" class="side-nav__link"><i class="icon sni05"></i>통합보고서 분석</a>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni06"></i>데이터 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">원본 위성영상</a></li>
+                                <li class="side-nav__subitem"><a href="#">전처리 데이터</a></li>
+                                <li class="side-nav__subitem"><a href="#">분석 산출물</a></li>
+                                <li class="side-nav__subitem"><a href="#">통합 보고서</a></li>
+                                <li class="side-nav__subitem"><a href="#">내부 입력 데이터</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni07"></i>시스템 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">사용자 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">접속 통계</a></li>
+                                <li class="side-nav__subitem"><a href="#">이용 통계</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>            <main class="app-main" >
+                <div class="page">
+                    <header class="page__head">
+                        <h2 class="page__title">위성영상 데이터 탐색</h2>
+                        <p class="page__txt">위성영상을 검색 및 다운로드하거나 수동 업로드 합니다.</p>
+                    </header>
+
+                    <!-- 탭 네비게이션 -->
+                    <div class="tab--btn__nav">
+                        <button class="tab--item active" data-tab="auto">자동 다운로드</button>
+                        <button class="tab--item" data-tab="manual">수동 업로드</button>
+                    </div>
+
+                    <!-- 자동 다운로드 탭 콘텐츠 -->
+                    <div class="tab-panel active" id="tab-auto">
+                        <div class="filter-bar">
+                        <div class="filter-bar__group">
+                    
+                            <div class="filter-bar__field">
+                                <select>
+                                    <option>백두산</option>
+                                </select>
+                            </div>
+                    
+                            <div class="filter-bar__field">
+                                <i class="ico ico-calendar"></i>
+                                <input type="text" class="date-picker" placeholder="시작일">
+                            </div>
+                    
+                            <div class="filter-bar__field">
+                                <i class="ico ico-calendar"></i>
+                                <input type="text" class="date-picker"  placeholder="종료일">
+                            </div>
+                    
+                        </div>
+                    
+                        <button class="filter-bar__search"><i class="ico"></i>검색</button>
+                    </div>
+
+                    <div class="dashboard">
+                        <div class="main__card">
+                            <div class="column-line">
+                                <section class="card card--md col01">
+                                    <header class="card__head">
+                                        <h3 class="card__title">위성영상 검색 및 다운로드</h3>
+                                        <button class="btn btn--file-select btn--small">
+                                            <i class="ico ico-sel-file"></i>
+                                            <span>파일선택</span>
+                                        </button>
+                                    </header>
+                                    <div class="card__body card__body--scrollable">
+                                        <form id="satellite-search-form" class="form form--two-column">
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    인공위성 <span class="required">*</span>
+                                                </label>
+                                                <div class="form-field">
+                                                    <select required>
+                                                        <option value="">선택하세요</option>
+                                                        <option value="sentinel-2" selected>Sentinel-2</option>
+                                                        <option value="sentinel-1">Sentinel-1</option>
+                                                        <option value="landsat">Landsat</option>
+                                                        <option value="alos-2">ALOS-2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    구름 허용률 (%) <span class="required">*</span>
+                                                </label>
+                                                <div class="form-field">
+                                                    <input type="number" value="25" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    위도 (Latitude) <span class="required">*</span>
+                                                </label>
+                                                <div class="form-field">
+                                                    <input type="number" step="0.01" value="42" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    경도 (Longitude) <span class="required">*</span>
+                                                </label>
+                                                <div class="form-field">
+                                                    <input type="number" step="0.01" value="128.05" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    너비 (Width, m) <span class="required">*</span>
+                                                </label>
+                                                <div class="form-field">
+                                                    <input type="number" value="5000" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    높이 (Height, m) <span class="required">*</span>
+                                                </label>
+                                                <div class="form-field">
+                                                    <input type="number" value="5000" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    촬영 시작일 <span class="required">*</span>
+                                                </label>
+                                                <div class="form-field">
+                                                    <i class="ico ico-calendar"></i>
+                                                    <input type="text" class="date-picker" value="2022-01-01" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    촬영 종료일 <span class="required">*</span>
+                                                </label>
+                                                <div class="form-field">
+                                                    <i class="ico ico-calendar"></i>
+                                                    <input type="text" class="date-picker" value="2025-06-30" required>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="card__footer">
+                                        <button type="submit" form="satellite-search-form" class="btn btn--primary">
+                                            <i class="ico ico-search"></i>
+                                            <span>API 검색</span>
+                                        </button>
+                                    </div>
+                                </section>
+                                <section class="card card--md col01">
+                                    <header class="card__head">
+                                        <h3 class="card__title">검색된 위성영상 목록</h3>
+                                    </header>
+                                    <div class="card__body card__body--scrollable">
+                                        <div class="tree-container">
+                                            <div id="tree-1"></div>
+                                        </div>
+                                
+                                        <!-- 트리 컴포넌트 예시 2 -->
+                                        <div class="tree-container" style="margin-top: 20px;">
+                                            <div id="tree-2"></div>
+                                        </div>
+                                
+                                        <!-- 트리 컴포넌트 예시 3 -->
+                                        <div class="tree-container" style="margin-top: 20px;">
+                                            <div id="tree-3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card__footer">
+                                        <button type="button" class="btn btn--primary">
+                                            <i class="ico ico-whitedownload"></i>
+                                            <span>다운로드 시작</span>
+                                        </button>
+                                    </div>
+                                </section>
+                                <section class="card card--md col01">
+                                    <header class="card__head">
+                                        <h3 class="card__title">위성영상 미리보기</h3>
+                                    </header>
+                                    <div class="card__body">
+                                        <div class="placeholder">
+                                            <div class="info">
+                                                <i class="icon no-data"></i>
+                                                <p>데이터가 없습니다</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <section class="card card--md col01">
+                                <header class="card__head">
+                                    <h3 class="card__title">
+                                        자동 연계된 위성영상 목록
+                                        <span class="badge badge--new">NEW</span>
+                                    </h3>
+                                </header>
+                                <div class="card__body">
+                                    <div class="tree-container">
+                                        <div id="tree-1"></div>
+                                    </div>
+                            
+                                    <!-- 트리 컴포넌트 예시 2 -->
+                                    <div class="tree-container" style="margin-top: 20px;">
+                                        <div id="tree-2"></div>
+                                    </div>
+                            
+                                    <!-- 트리 컴포넌트 예시 3 -->
+                                    <div class="tree-container" style="margin-top: 20px;">
+                                        <div id="tree-3"></div>
+                                    </div>
+                                </div>
+                            </section>
+                            
+                        </div>    
+                    </div>
+                    </div>
+
+                    <!-- 수동 업로드 탭 콘텐츠 -->
+                    <div class="tab-panel" id="tab-manual">
+                        <div class="dashboard">
+                            <div class="main__card">
+                                <div class="column-line">
+                                    <section class="card card--lg col01">
+                                        <header class="card__head">
+                                            <h3 class="card__title">위성영상 목록</h3>
+                                        </header>
+                                        <div class="card__body fixed-height">
+                                        </div>
+                                    </section>
+
+                                    <section class="card card--lg col01">
+                                        <header class="card__head">
+                                            <h3 class="card__title">위성영상 미리보기</h3>
+                                        </header>
+                                        <div class="card__body fixed-height">
+                                            <div class="placeholder">
+                                                <div class="info">
+                                                    <i class="icon no-data"></i>
+                                                    <p>업로드된 파일이 없습니다</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+</body>

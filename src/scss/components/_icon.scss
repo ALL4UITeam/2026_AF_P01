@@ -62,3 +62,15 @@
     background-image: url('@/assets/images/icon/search-ico.png');
     filter: brightness(200%);
 }
+
+// 클라우드 아이콘 (파일 업로드)
+.ico-cloud {
+    @include icon(48px);
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTM4IDM0SDIyQzE3LjU4IDM0IDE0IDMwLjQyIDE0IDI2QzE0IDIxLjU4IDE3LjU4IDE4IDIyIDE4QzIyLjY2IDEyLjY2IDI3LjI2IDggMzMgOEMzOC43NCA4IDQzIDExLjI2IDQzIDE3QzQ3LjQyIDE3IDUwIDIwLjU4IDUwIDI1QzUwIDI5LjQyIDQ2LjQyIDMzIDQyIDMzSDM4VjM0WiIgZmlsbD0iI0QwRDdERSIvPgo8L3N2Zz4K');
+}
+
+// 체크 아이콘
+.ico-check {
+    @include icon(16px);
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjMzIDMuMzNDMTMuNzI0IDMuNzI0IDEzLjcyNCA0LjI3NiAxMy4zMyA0LjY2N0w2LjMzIDExLjY2N0M1LjkzOSAxMi4wNTcgNS4zOTQgMTIuMDU3IDUuMDAzIDExLjY2N0wyLjY3IDkuMzMzQzIuMjc2IDguOTM5IDIuMjc2IDguMzg3IDIuNjcgOC4wQzMuMDYxIDcuNjEgMy42MTMgNy42MSA0LjAwMyA4TDUuNjY3IDkuNjY3TDEyIDMuMzNDMTIuMzkxIDIuOTM5IDEyLjk0MyAyLjkzOSAxMy4zMyAzLjMzWiIgZmlsbD0iI0ZGRiIvPgo8L3N2Zz4K');
+}

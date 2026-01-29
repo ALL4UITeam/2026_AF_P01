@@ -1,3 +1,4 @@
+@use '../abstracts' as *;
 
 // Modal 공통
 .modal {
@@ -11,17 +12,23 @@
     z-index: 1000;
     justify-content: center;
     align-items: center;
+    
     &.active {
         display: flex;
     }
+    
     .modal-dialog {
         background: #ecf0f2; // gray-100
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         min-width: 300px;
-        max-width: 90%;
+        max-width: 600px;
+        width: 90%;
         max-height: 90%;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        
         .modal-header {
             background: #047bb6; // 파란 헤더
             color: #fff;
@@ -31,10 +38,13 @@
             align-items: center;
             font-size: 19px;
             font-weight: 300;
-            span{
+            flex-shrink: 0;
+            
+            span {
                 color: #fff;
             }
-            button {
+            
+            .modal-close {
                 background-color: transparent;
                 border: none;
                 cursor: pointer;
@@ -44,9 +54,117 @@
                 background-image: url("@/assets/images/modal/modal-close.png");
             }
         }
+        
         .modal-content {
             padding: 20px;
             min-height: 150px;
+            overflow-y: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
+    }
+}
+
+// ====== 모달 필터 (카테고리) ======
+.modal-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    &__row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    &__btn {
+        padding: 8px 16px;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:hover {
+            border-color: #2196F3;
+            color: #2196F3;
+        }
+        
+        &.active {
+            background: #1F4E79;
+            color: #fff;
+            border-color: #1F4E79;
+        }
+    }
+}
+
+// ====== 파일 업로드 영역 ======
+.file-upload-zone {
+    border: 2px dashed #d0d7de;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    background: #fff;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        border-color: #2196F3;
+        background: #f8f9fa;
+    }
+    
+    &__icon {
+        margin-bottom: 16px;
+        
+        .ico-cloud {
+            width: 48px;
+            height: 48px;
+            background-size: contain;
+        }
+    }
+    
+    &__text {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+    
+    &__info {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    &__input {
+        display: none;
+    }
+}
+
+// ====== 업로드된 파일 리스트 ======
+.file-upload-list {
+    max-height: 300px;
+    overflow-y: auto;
+    
+    .data-list {
+        background: #fff;
+        border-radius: 8px;
+        padding: 8px;
+    }
+}
+
+// ====== 모달 액션 버튼 ======
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    flex-shrink: 0;
+    
+    .btn--large {
+        padding: 12px 32px;
+        font-size: 16px;
     }
 }

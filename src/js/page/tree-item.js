@@ -1,4 +1,4 @@
-import TreeView from '../common/TreeView.js';
+import TreeView from '/js/common/TreeView.js';
 
 /**
    * ==============================================
