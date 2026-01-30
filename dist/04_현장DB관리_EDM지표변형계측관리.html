@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>화산 모니터링 시스템</title>
+    
+    <link rel="stylesheet" href="/2026_AF_P01/assets/fonts/pretendard.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/simplebar/simplebar.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/dragula/dragula.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.css">
+    
+    
+    <script src="/2026_AF_P01/lib/jQuery/jquery-3.7.1.js"></script>
+    <script src="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.js"></script>
+    <script src="/2026_AF_P01/lib/simplebar/simplebar.min.js"></script>
+    <script src="/2026_AF_P01/lib/dragula/dragula.min.js"></script>
+    <!-- 파일 업로드 모달 -->
+    <div class="modal" id="fileUploadModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span>파일 업로드</span>
+                <button type="button" class="modal-close" aria-label="닫기"></button>
+            </div>
+            <div class="modal-content">
+                <!-- 카테고리 필터 -->
+                <div class="modal-filter">
+                    <div class="modal-filter__row">
+                        <button type="button" class="modal-filter__btn active" data-category="satellite" data-value="ALOS-2">ALOS-2</button>
+                        <button type="button" class="modal-filter__btn" data-category="satellite" data-value="Landsat">Landsat</button>
+                        <button type="button" class="modal-filter__btn" data-category="satellite" data-value="Sentinel-1">Sentinel-1</button>
+                        <button type="button" class="modal-filter__btn" data-category="satellite" data-value="Sentinel-2">Sentinel-2</button>
+                        <button type="button" class="modal-filter__btn" data-category="satellite" data-value="TerraSAR-X">TerraSAR-X</button>
+                    </div>
+                    <div class="modal-filter__row">
+                        <button type="button" class="modal-filter__btn active" data-category="location" data-value="백두산">백두산</button>
+                        <button type="button" class="modal-filter__btn" data-category="location" data-value="한라산">한라산</button>
+                        <button type="button" class="modal-filter__btn" data-category="location" data-value="울릉도">울릉도</button>
+                    </div>
+                </div>
+    
+                <!-- 파일 업로드 영역 -->
+                <div class="file-upload-zone">
+                    <div class="file-upload-zone__icon">
+                        <i class="ico ico-cloud"></i>
+                    </div>
+                    <p class="file-upload-zone__text">파일을 이곳에 드래그하거나 클릭하여 업로드</p>
+                    <p class="file-upload-zone__info">지원 형식 : ZIP (최대 100MB)</p>
+                    <input type="file" id="fileUploadInput" class="file-upload-zone__input" accept=".zip" multiple>
+                    <label for="fileUploadInput" class="btn btn--file-select">
+                        <i class="ico ico-sel-file"></i>
+                        <span>파일선택</span>
+                    </label>
+                </div>
+    
+                <!-- 업로드된 파일 리스트 -->
+                <div class="file-upload-list">
+                    <ul class="data-list" id="uploadedFileList">
+                        <li class="data-list__item">
+                            <div class="data-list__content">
+                                <i class="ico ico-file"></i>
+                                <span class="data-list__name">Processed_20251010_S2_Baekdu_20230325_02_.TIF</span>
+                                <div class="data-list__meta">
+                                    <span class="file-tag">TIF</span>
+                                    <span class="file-size">85.3MB</span>
+                                </div>
+                            </div>
+                            <button class="data-list__delete" type="button">
+                                <i class="ico ico-trash"></i>
+                            </button>
+                        </li>
+                        <li class="data-list__item">
+                            <div class="data-list__content">
+                                <i class="ico ico-file"></i>
+                                <span class="data-list__name">Processed_20251010_S2_Baekdu_20230325_02_.TIF</span>
+                                <div class="data-list__meta">
+                                    <span class="file-tag">TIF</span>
+                                    <span class="file-size">85.3MB</span>
+                                </div>
+                            </div>
+                            <button class="data-list__delete" type="button">
+                                <i class="ico ico-trash"></i>
+                            </button>
+                        </li>
+                        <li class="data-list__item">
+                            <div class="data-list__content">
+                                <i class="ico ico-file"></i>
+                                <span class="data-list__name">Processed_20251010_S2_Baekdu_20230325_02_.TIF</span>
+                                <div class="data-list__meta">
+                                    <span class="file-tag">TIF</span>
+                                    <span class="file-size">85.3MB</span>
+                                </div>
+                            </div>
+                            <button class="data-list__delete" type="button">
+                                <i class="ico ico-trash"></i>
+                            </button>
+                        </li>
+                        <li class="data-list__item">
+                            <div class="data-list__content">
+                                <i class="ico ico-file"></i>
+                                <span class="data-list__name">Processed_20251010_S2_Baekdu_20230325_02_.TIF</span>
+                                <div class="data-list__meta">
+                                    <span class="file-tag">TIF</span>
+                                    <span class="file-size">85.3MB</span>
+                                </div>
+                            </div>
+                            <button class="data-list__delete" type="button">
+                                <i class="ico ico-trash"></i>
+                            </button>
+                        </li>
+                        <li class="data-list__item">
+                            <div class="data-list__content">
+                                <i class="ico ico-file"></i>
+                                <span class="data-list__name">Processed_20251010_S2_Baekdu_20230325_02_.TIF</span>
+                                <div class="data-list__meta">
+                                    <span class="file-tag">TIF</span>
+                                    <span class="file-size">85.3MB</span>
+                                </div>
+                            </div>
+                            <button class="data-list__delete" type="button">
+                                <i class="ico ico-trash"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+    
+                <!-- 등록 버튼 -->
+                <div class="modal-actions">
+                    <button type="button" class="btn btn--primary btn--large btn--block btn--center">
+                        <i class="ico ico-create"></i>
+                        <span>등록</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 업로드 이력 모달 -->
+    <div class="modal" id="uploadHistoryModal">
+        <div class="modal-dialog modal-dialog--upload-history">
+            <div class="modal-header">
+                <span>업로드 이력</span>
+                <button type="button" class="modal-close" aria-label="닫기"></button>
+            </div>
+            <div class="modal-content">
+                <div class="modal-body-inner">
+                    <div class="form-tbl" style="--column-count: 4;">
+                        <div class="table-header">
+                            <div class="table-cell__row">
+                                <div class="table-cell">파일명</div>
+                                <div class="table-cell">업로드 일시</div>
+                                <div class="table-cell">파일크기</div>
+                                <div class="table-cell">다운로드</div>
+                            </div>
+                        </div>
+                        <div class="table-body">
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2021_01.CSV</span></div>
+                                <div class="table-cell">2024-01-15 10:30</div>
+                                <div class="table-cell">2.3MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2021_02.CSV</span></div>
+                                <div class="table-cell">2024-01-14 09:22</div>
+                                <div class="table-cell">1.8MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2021_03.CSV</span></div>
+                                <div class="table-cell">2024-01-13 14:15</div>
+                                <div class="table-cell">2.1MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2021_04.CSV</span></div>
+                                <div class="table-cell">2024-01-12 11:08</div>
+                                <div class="table-cell">2.0MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2022_01.CSV</span></div>
+                                <div class="table-cell">2024-01-11 16:42</div>
+                                <div class="table-cell">2.4MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2022_02.CSV</span></div>
+                                <div class="table-cell">2024-01-10 08:55</div>
+                                <div class="table-cell">1.9MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2022_03.CSV</span></div>
+                                <div class="table-cell">2024-01-09 13:20</div>
+                                <div class="table-cell">2.2MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2022_04.CSV</span></div>
+                                <div class="table-cell">2024-01-08 10:33</div>
+                                <div class="table-cell">2.1MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2023_01.CSV</span></div>
+                                <div class="table-cell">2024-01-07 15:18</div>
+                                <div class="table-cell">2.5MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                            <div class="table-cell__row">
+                                <div class="table-cell"><span class="form-tbl__link">EDM_백두산_2023_02.CSV</span></div>
+                                <div class="table-cell">2024-01-06 09:41</div>
+                                <div class="table-cell">1.7MB</div>
+                                <div class="table-cell"><button type="button" class="btn btn--excel-download btn--small"><i class="ico ico-greendownload"></i><span>엑셀 다운로드</span></button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="board--paging pagination">
+                        <a href="#" class="prev" title="이전"><i class="paging-arrow-prev"></i></a>
+                        <span class="paging">
+                            <a href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <strong title="현재 페이지">4</strong>
+                            <a href="#">5</a>
+                        </span>
+                        <a href="#" class="next" title="다음"><i class="paging-arrow-next"></i></a>
+                    </nav>            </div>
+            </div>
+        </div>
+    </div>
+  <script type="module" src="/2026_AF_P01/assets/index.js"></script>
+  <link rel="stylesheet" href="/2026_AF_P01/assets/style.css">
+</head>
+
+<body>
+    <div class="app">
+        <header class="app-header">
+        	<div class="app-header__inner">
+        		<div class="brand">
+        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo.png" alt=""></a>
+        		</div>
+        
+        		<div class="app-header__actions">
+        			<button class="user-chip" type="button">
+        				<span class="user-chip__icon" aria-hidden="true"></span>
+        				admin
+        			</button>
+        			<button class="icon-btn" type="button" aria-label="로그아웃"></button>
+        		</div>
+        	</div>
+        </header>        <div class="app-body">
+            <div class="side-nav_wrap">
+                <nav class="side-nav" data-simplebar>
+                    <ul class="side-nav__list">
+            
+                        <!-- 1 depth -->
+                        <li class="side-nav__item is-active">
+                            <a href="#" class="side-nav__link"><i class="icon sni01"></i>대시보드</a>
+                        </li>
+            
+                        <!-- 1 depth + children -->
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni02"></i>탐색 및 전처리
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#" class="is-active">위성영상 탐색</a>
+                                </li>
+                                <li class="side-nav__subitem">
+                                    <a href="#">데이터 전처리</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni03"></i>데이터 분석
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">수위 및 수체면적</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 지역</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">상대지표 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">마그마 볼륨</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산활동 종합지수</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni04"></i>현장 DB 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">EDM 지표 변형 계측 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산 가스 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">온천수 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">지진 발생 관리</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item">
+                            <a href="#" class="side-nav__link"><i class="icon sni05"></i>통합보고서 분석</a>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni06"></i>데이터 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">원본 위성영상</a></li>
+                                <li class="side-nav__subitem"><a href="#">전처리 데이터</a></li>
+                                <li class="side-nav__subitem"><a href="#">분석 산출물</a></li>
+                                <li class="side-nav__subitem"><a href="#">통합 보고서</a></li>
+                                <li class="side-nav__subitem"><a href="#">내부 입력 데이터</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni07"></i>시스템 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">사용자 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">접속 통계</a></li>
+                                <li class="side-nav__subitem"><a href="#">이용 통계</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>            <main class="app-main">
+                <div class="page">
+                    <header class="page__head">
+                        <h2 class="page__title">EDM 지표 변형 계측 관리</h2>
+                        <p class="page__txt">연도별 백두산의 지표 변형 계측 데이터를 관리합니다.</p>
+                    </header>
+
+                    <div class="filter-bar">
+                        <div class="filter-bar__group">
+                            <div class="filter-bar__field">
+                                <i class="ico ico-calendar"></i>
+                                <input type="text" class="date-picker" placeholder="시작일">
+                            </div>
+                            <div class="filter-bar__field">
+                                <i class="ico ico-calendar"></i>
+                                <input type="text" class="date-picker" placeholder="종료일">
+                            </div>
+                        </div>
+                        <button class="filter-bar__search"><i class="ico ico-search"></i>검색</button>
+                    </div>
+
+                    <div class="dashboard">
+                        <div class="main__card">
+                            <div class="map">
+                                <div class="map-instruction">
+                                    <p>지도에 등록되어있는 데이터 추가</p>
+                                </div>
+                                <div class="map-tool">
+                                    <ul>
+                                        <li><i class="ico ico-distance"></i><span>거리</span></li>
+                                        <li><i class="ico ico-elevation"></i><span>표고</span></li>
+                                        <li><i class="ico ico-area"></i><span>면적</span></li>
+                                        <li><i class="ico ico-save"></i><span>저장</span></li>
+                                    </ul>
+                                </div>
+                                <div class="compass"></div>
+                                <div class="modla-pop">
+                                    <div class="modla-pop__header">
+                                        <h4>기본정보</h4>
+                                        <button class="modla-pop__close" type="button">×</button>
+                                    </div>
+                                    <div class="modla-pop__body">
+                                        <div class="modla-pop__item">
+                                            <span class="modla-pop__label">위치</span>
+                                            <span class="modla-pop__value">백두산 천지</span>
+                                        </div>
+                                        <div class="modla-pop__item">
+                                            <span class="modla-pop__label">좌표</span>
+                                            <span class="modla-pop__value">42.025, 126.045</span>
+                                        </div>
+                                        <div class="modla-pop__item">
+                                            <span class="modla-pop__label">고도</span>
+                                            <span class="modla-pop__value">2,600m</span>
+                                        </div>
+                                        <div class="modla-pop__item">
+                                            <span class="modla-pop__label">면적</span>
+                                            <span class="modla-pop__value">9.50km²</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <i class="ico map-marker"></i>
+                                <i class="ico map-marker"></i>
+                                <i class="ico map-marker"></i>
+                            </div>
+
+                        
+                        
+                            <section class="card">
+                                <header class="card__head">
+                                    <h3 class="card__title">EDM 지표 변형 계측 데이터</h3>
+                                    <div class="card__actions">
+                                        <button type="button" class="btn btn--file-select btn--small" data-modal-open="fileUploadModal">
+                                            <i class="ico ico-sel-file"></i>
+                                            <span>파일선택</span>
+                                        </button>
+                                        <button type="button" class="btn btn--file-select btn--small" data-modal-open="uploadHistoryModal">
+                                            <i class="ico ico-download"></i>
+                                            <span>업로드 이력</span>
+                                        </button>
+                                    </div>
+                                </header>
+
+                                <div class="card__body card__body--stacked">
+                                    <div class="card__point-row">
+                                        <div class="form-field form-field--inline form-field--point-select">
+                                            <select>
+                                                <option>P1</option>
+                                                <option>P2</option>
+                                                <option>P3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="edm-summary">
+                                        <div class="edm-summary__card">
+                                            <div class="edm-summary__label">사거리 평균</div>
+                                            <div class="edm-summary__value">155.42<span>m</span></div>
+                                        </div>
+                                        <div class="edm-summary__card">
+                                            <div class="edm-summary__label">사거리 분산</div>
+                                            <div class="edm-summary__value">14.09<span>m</span></div>
+                                        </div>
+                                        <div class="edm-summary__card">
+                                            <div class="edm-summary__label">사거리 표준편차</div>
+                                            <div class="edm-summary__value">4.19<span>m</span></div>
+                                        </div>
+                                        <div class="edm-summary__card">
+                                            <div class="edm-summary__label">절대 변화 최소</div>
+                                            <div class="edm-summary__value">2.95<span>m</span></div>
+                                        </div>
+                                        <div class="edm-summary__card">
+                                            <div class="edm-summary__label">절대 변화 최대</div>
+                                            <div class="edm-summary__value">26.44<span>m</span></div>
+                                        </div>
+                                        <div class="edm-summary__card">
+                                            <div class="edm-summary__label">절대 변화 평균</div>
+                                            <div class="edm-summary__value">20.45<span>m</span></div>
+                                        </div>
+                                        <div class="edm-summary__card">
+                                            <div class="edm-summary__label">상대 변화 최소</div>
+                                            <div class="edm-summary__value">1.44<span>m</span></div>
+                                        </div>
+                                        <div class="edm-summary__card">
+                                            <div class="edm-summary__label">상대 변화 최대</div>
+                                            <div class="edm-summary__value">20.95<span>m</span></div>
+                                        </div>
+                                        <div class="edm-summary__card">
+                                            <div class="edm-summary__label">상대 변화 평균</div>
+                                            <div class="edm-summary__value">12.82<span>m</span></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 데이터 상세 내역 -->
+                                    <div class="output-section output-detail">
+                                        <div class="output-section__header">
+                                            <h4 class="output-section__title">데이터 상세 내역</h4>
+                                            <div class="output-section__actions">
+                                                <button type="button" class="btn btn--excel-download btn--small">
+                                                    <i class="ico ico-greendownload"></i>
+                                                    <span>엑셀 다운로드</span>
+                                                </button>
+                                                <button type="button" class="btn btn--outline-primary btn--small">
+                                                    <i class="ico ico-blueadd"></i>
+                                                    <span>행 추가</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="output-section__body">
+                                            <div class="table-scroll form-tbl form-tbl--edm-detail" style="--column-count: 16;">
+                                                <div class="table-header">
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell">연도</div>
+                                                        <div class="table-cell">월</div>
+                                                        <div class="table-cell">일</div>
+                                                        <div class="table-cell">시간</div>
+                                                        <div class="table-cell">계측N</div>
+                                                        <div class="table-cell">계측E</div>
+                                                        <div class="table-cell">계측Z</div>
+                                                        <div class="table-cell">변위N</div>
+                                                        <div class="table-cell">변위E</div>
+                                                        <div class="table-cell">변위Z</div>
+                                                        <div class="table-cell">변위3D</div>
+                                                        <div class="table-cell">사거리</div>
+                                                        <div class="table-cell">절대변화</div>
+                                                        <div class="table-cell">상대변화</div>
+                                                        <div class="table-cell">수평거리</div>
+                                                        <div class="table-cell" style="min-width: 44px;">삭제</div>
+                                                    </div>
+                                                </div>
+                                                <div class="table-body line10-body">
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                        <div class="table-cell"><select><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="09:00" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.42" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.12" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.12" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.1" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.8" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.5" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.95" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.42" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.95" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.89" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2017</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2016</option><option>2015</option></select></div>
+                                                        <div class="table-cell"><select><option>08</option><option>10</option><option>09</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>22</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="14:30" /></div>
+                                                        <div class="table-cell"><input type="text" value="154.88" /></div>
+                                                        <div class="table-cell"><input type="text" value="-0.31" /></div>
+                                                        <div class="table-cell"><input type="text" value="-0.31" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.5" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.2" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.8" /></div>
+                                                        <div class="table-cell"><input type="text" value="3.12" /></div>
+                                                        <div class="table-cell"><input type="text" value="154.88" /></div>
+                                                        <div class="table-cell"><input type="text" value="3.12" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.01" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.03" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2019</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                        <div class="table-cell"><select><option>05</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>10</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="11:00" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.10" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.05" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.05" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.9" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.6" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.6" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.78" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.10" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.78" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.79" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2015</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option></select></div>
+                                                        <div class="table-cell"><select><option>03</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>18</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="10:15" /></div>
+                                                        <div class="table-cell"><input type="text" value="153.20" /></div>
+                                                        <div class="table-cell"><input type="text" value="-0.89" /></div>
+                                                        <div class="table-cell"><input type="text" value="-0.89" /></div>
+                                                        <div class="table-cell"><input type="text" value="3.2" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.5" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.1" /></div>
+                                                        <div class="table-cell"><input type="text" value="4.21" /></div>
+                                                        <div class="table-cell"><input type="text" value="153.20" /></div>
+                                                        <div class="table-cell"><input type="text" value="4.21" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.75" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.04" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2016</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2015</option></select></div>
+                                                        <div class="table-cell"><select><option>07</option><option>10</option><option>09</option><option>08</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>05</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="08:45" /></div>
+                                                        <div class="table-cell"><input type="text" value="154.55" /></div>
+                                                        <div class="table-cell"><input type="text" value="-0.18" /></div>
+                                                        <div class="table-cell"><input type="text" value="-0.18" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.0" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.9" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.7" /></div>
+                                                        <div class="table-cell"><input type="text" value="3.05" /></div>
+                                                        <div class="table-cell"><input type="text" value="154.55" /></div>
+                                                        <div class="table-cell"><input type="text" value="3.05" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.97" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.03" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2018</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                        <div class="table-cell"><select><option>09</option><option>10</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>12</option><option>15</option><option>14</option><option>13</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="13:20" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.88" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.42" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.42" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.2" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.7" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.5" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.68" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.88" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.68" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.72" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2020</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                        <div class="table-cell"><select><option>02</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>08</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="09:30" /></div>
+                                                        <div class="table-cell"><input type="text" value="154.12" /></div>
+                                                        <div class="table-cell"><input type="text" value="-0.22" /></div>
+                                                        <div class="table-cell"><input type="text" value="-0.22" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.8" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.0" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.6" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.82" /></div>
+                                                        <div class="table-cell"><input type="text" value="154.12" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.82" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.83" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2021</option><option>2024</option><option>2023</option><option>2022</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                        <div class="table-cell"><select><option>06</option><option>10</option><option>09</option><option>08</option><option>07</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>20</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="15:00" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.65" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.35" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.35" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.1" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.5" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.4" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.58" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.65" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.58" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.66" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2022</option><option>2024</option><option>2023</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                        <div class="table-cell"><select><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>03</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="10:45" /></div>
+                                                        <div class="table-cell"><input type="text" value="156.02" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.58" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.58" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.4" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.9" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.7" /></div>
+                                                        <div class="table-cell"><input type="text" value="3.12" /></div>
+                                                        <div class="table-cell"><input type="text" value="156.02" /></div>
+                                                        <div class="table-cell"><input type="text" value="3.12" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.00" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.03" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell"><select><option>2023</option><option>2024</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                        <div class="table-cell"><select><option>04</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><select><option>25</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                        <div class="table-cell"><input type="text" value="14:15" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.20" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.08" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.08" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.7" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.4" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.5" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.25" /></div>
+                                                        <div class="table-cell"><input type="text" value="155.20" /></div>
+                                                        <div class="table-cell"><input type="text" value="2.25" /></div>
+                                                        <div class="table-cell"><input type="text" value="1.45" /></div>
+                                                        <div class="table-cell"><input type="text" value="0.01" /></div>
+                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="output-section__footer">
+                                            <button type="button" class="btn btn--primary btn--lg">
+                                                <i class="ico ico-data-save"></i>
+                                                <span>저장</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- 시계열 추이 차트 -->
+                                    <div class="output-section">
+                                        <div class="output-section__header">
+                                            <h4 class="output-section__title">시계열 추이 차트</h4>
+                                            <button type="button" class="btn btn--tertiary btn--small">
+                                                <i class="ico ico-image"></i>
+                                                <span>이미지 다운로드</span>
+                                            </button>
+                                        </div>
+                                        <div class="output-section__body">
+                                            <div class="placeholder" style="min-height: 280px;">
+                                                <div class="info">
+                                                    <i class="icon no-data"></i>
+                                                    <p>선택된 분석 데이터가 없습니다</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

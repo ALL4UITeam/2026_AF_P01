@@ -67,6 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+  
+  // 모달 필터 버튼 (라디오 버튼처럼 동작)
+  document.querySelectorAll('.modal-filter__btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+      const row = btn.closest('.modal-filter__row');
+      
+      // 같은 행의 다른 버튼 비활성화
+      row.querySelectorAll('.modal-filter__btn').forEach(b => {
+        b.classList.remove('active');
+      });
+      
+      // 클릭한 버튼 활성화
+      btn.classList.add('active');
+    });
+  });
 });
 
 export default Modal;

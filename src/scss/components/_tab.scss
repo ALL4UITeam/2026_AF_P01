@@ -19,8 +19,7 @@
         position: relative;
         margin-bottom: -1px; // 구분선 위로 올리기
         border-radius: 8px 8px 0 0;
-
-        
+        min-width: 150px;
         &:hover:not(.active) {
             background: #e8e8e8;
             color: #666;

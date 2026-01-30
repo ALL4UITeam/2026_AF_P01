@@ -1,7 +1,6 @@
 import "/scss/main.scss";
 import "../common/CustomSelect.js";
 import "../common/Modal.js";
-import "../common/FileUploadModal.js";
 
 // sideNav
 document.querySelectorAll(".side-nav__toggle").forEach((toggle) => {

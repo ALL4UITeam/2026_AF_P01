@@ -219,6 +219,11 @@
     background: #fff;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     
+    &--inline {
+        flex: 0 0 auto;
+        width: auto;
+    }
+    
     &:focus-within {
         border-color: #2196F3;
         box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);

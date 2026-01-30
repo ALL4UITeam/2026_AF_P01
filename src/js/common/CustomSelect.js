@@ -133,13 +133,13 @@ class CustomSelect {
   }
 }
 
-// 자동 초기화 - 모든 select에 적용 (제외하려면 data-no-custom-select 속성 추가)
+// 자동 초기화 - 모든 select에 적용 (제외: data-no-custom-select, .form-tbl--edm-detail 내부)
+// .form-tbl--edm-detail 내부 select = 테이블용 네이티브 select (일반 폼 custom-select와 별도)
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('select:not([data-no-custom-select])').forEach(select => {
-    // 이미 커스텀 select로 변환된 것은 제외
-    if (!select.closest('.custom-select')) {
-      new CustomSelect(select);
-    }
+    if (select.closest('.custom-select')) return;
+    if (select.closest('.form-tbl--edm-detail')) return;
+    new CustomSelect(select);
   });
 });
 

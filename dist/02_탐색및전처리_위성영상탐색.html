@@ -148,135 +148,178 @@
                     <!-- 자동 다운로드 탭 콘텐츠 -->
                     <div class="tab-panel active" id="tab-auto">
                         <div class="filter-bar">
-                        <div class="filter-bar__group">
-                    
-                            <div class="filter-bar__field">
-                                <select>
-                                    <option>백두산</option>
-                                </select>
+                            <div class="filter-bar__group">
+                        
+                                <div class="filter-bar__field">
+                                    <select>
+                                        <option>백두산</option>
+                                    </select>
+                                </div>
+                        
+                                <div class="filter-bar__field">
+                                    <i class="ico ico-calendar"></i>
+                                    <input type="text" class="date-picker" placeholder="시작일">
+                                </div>
+                        
+                                <div class="filter-bar__field">
+                                    <i class="ico ico-calendar"></i>
+                                    <input type="text" class="date-picker"  placeholder="종료일">
+                                </div>
+                        
                             </div>
-                    
-                            <div class="filter-bar__field">
-                                <i class="ico ico-calendar"></i>
-                                <input type="text" class="date-picker" placeholder="시작일">
-                            </div>
-                    
-                            <div class="filter-bar__field">
-                                <i class="ico ico-calendar"></i>
-                                <input type="text" class="date-picker"  placeholder="종료일">
-                            </div>
-                    
+                        
+                            <button class="filter-bar__search"><i class="ico"></i>검색</button>
                         </div>
-                    
-                        <button class="filter-bar__search"><i class="ico"></i>검색</button>
-                    </div>
 
-                    <div class="dashboard">
-                        <div class="main__card">
-                            <div class="column-line">
+                        <div class="dashboard">
+                            <div class="main__card">
+                                <div class="column-line">
+                                    <section class="card card--md col01">
+                                        <header class="card__head">
+                                            <h3 class="card__title">위성영상 검색 및 다운로드</h3>
+                                            <button class="btn btn--file-select btn--small">
+                                                <i class="ico ico-sel-file"></i>
+                                                <span>파일선택</span>
+                                            </button>
+                                        </header>
+                                        <div class="card__body card__body--scrollable">
+                                            <form id="satellite-search-form" class="form form--two-column">
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                        인공위성 <span class="required">*</span>
+                                                    </label>
+                                                    <div class="form-field">
+                                                        <select required>
+                                                            <option value="">선택하세요</option>
+                                                            <option value="sentinel-2" selected>Sentinel-2</option>
+                                                            <option value="sentinel-1">Sentinel-1</option>
+                                                            <option value="landsat">Landsat</option>
+                                                            <option value="alos-2">ALOS-2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                        구름 허용률 (%) <span class="required">*</span>
+                                                    </label>
+                                                    <div class="form-field">
+                                                        <input type="number" value="25" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                        위도 (Latitude) <span class="required">*</span>
+                                                    </label>
+                                                    <div class="form-field">
+                                                        <input type="number" step="0.01" value="42" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                        경도 (Longitude) <span class="required">*</span>
+                                                    </label>
+                                                    <div class="form-field">
+                                                        <input type="number" step="0.01" value="128.05" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                        너비 (Width, m) <span class="required">*</span>
+                                                    </label>
+                                                    <div class="form-field">
+                                                        <input type="number" value="5000" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                        높이 (Height, m) <span class="required">*</span>
+                                                    </label>
+                                                    <div class="form-field">
+                                                        <input type="number" value="5000" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                        촬영 시작일 <span class="required">*</span>
+                                                    </label>
+                                                    <div class="form-field">
+                                                        <i class="ico ico-calendar"></i>
+                                                        <input type="text" class="date-picker" value="2022-01-01" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                        촬영 종료일 <span class="required">*</span>
+                                                    </label>
+                                                    <div class="form-field">
+                                                        <i class="ico ico-calendar"></i>
+                                                        <input type="text" class="date-picker" value="2025-06-30" required>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="card__footer">
+                                            <button type="submit" form="satellite-search-form" class="btn btn--primary">
+                                                <i class="ico ico-search"></i>
+                                                <span>API 검색</span>
+                                            </button>
+                                        </div>
+                                    </section>
+                                    <section class="card card--md col01">
+                                        <header class="card__head">
+                                            <h3 class="card__title">검색된 위성영상 목록</h3>
+                                        </header>
+                                        <div class="card__body card__body--scrollable">
+                                            <div class="tree-container">
+                                                <div id="tree-1"></div>
+                                            </div>
+                                    
+                                            <!-- 트리 컴포넌트 예시 2 -->
+                                            <div class="tree-container" style="margin-top: 20px;">
+                                                <div id="tree-2"></div>
+                                            </div>
+                                    
+                                            <!-- 트리 컴포넌트 예시 3 -->
+                                            <div class="tree-container" style="margin-top: 20px;">
+                                                <div id="tree-3"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card__footer">
+                                            <button type="button" class="btn btn--primary">
+                                                <i class="ico ico-whitedownload"></i>
+                                                <span>다운로드 시작</span>
+                                            </button>
+                                        </div>
+                                    </section>
+                                    <section class="card card--md col01">
+                                        <header class="card__head">
+                                            <h3 class="card__title">위성영상 미리보기</h3>
+                                        </header>
+                                        <div class="card__body">
+                                            <div class="placeholder">
+                                                <div class="info">
+                                                    <i class="icon no-data"></i>
+                                                    <p>데이터가 없습니다</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
                                 <section class="card card--md col01">
                                     <header class="card__head">
-                                        <h3 class="card__title">위성영상 검색 및 다운로드</h3>
-                                        <button class="btn btn--file-select btn--small">
-                                            <i class="ico ico-sel-file"></i>
-                                            <span>파일선택</span>
-                                        </button>
+                                        <h3 class="card__title">
+                                            자동 연계된 위성영상 목록
+                                            <span class="badge badge--new">NEW</span>
+                                        </h3>
                                     </header>
-                                    <div class="card__body card__body--scrollable">
-                                        <form id="satellite-search-form" class="form form--two-column">
-                                            <div class="form-group">
-                                                <label class="form-label">
-                                                    인공위성 <span class="required">*</span>
-                                                </label>
-                                                <div class="form-field">
-                                                    <select required>
-                                                        <option value="">선택하세요</option>
-                                                        <option value="sentinel-2" selected>Sentinel-2</option>
-                                                        <option value="sentinel-1">Sentinel-1</option>
-                                                        <option value="landsat">Landsat</option>
-                                                        <option value="alos-2">ALOS-2</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">
-                                                    구름 허용률 (%) <span class="required">*</span>
-                                                </label>
-                                                <div class="form-field">
-                                                    <input type="number" value="25" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">
-                                                    위도 (Latitude) <span class="required">*</span>
-                                                </label>
-                                                <div class="form-field">
-                                                    <input type="number" step="0.01" value="42" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">
-                                                    경도 (Longitude) <span class="required">*</span>
-                                                </label>
-                                                <div class="form-field">
-                                                    <input type="number" step="0.01" value="128.05" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">
-                                                    너비 (Width, m) <span class="required">*</span>
-                                                </label>
-                                                <div class="form-field">
-                                                    <input type="number" value="5000" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">
-                                                    높이 (Height, m) <span class="required">*</span>
-                                                </label>
-                                                <div class="form-field">
-                                                    <input type="number" value="5000" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">
-                                                    촬영 시작일 <span class="required">*</span>
-                                                </label>
-                                                <div class="form-field">
-                                                    <i class="ico ico-calendar"></i>
-                                                    <input type="text" class="date-picker" value="2022-01-01" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">
-                                                    촬영 종료일 <span class="required">*</span>
-                                                </label>
-                                                <div class="form-field">
-                                                    <i class="ico ico-calendar"></i>
-                                                    <input type="text" class="date-picker" value="2025-06-30" required>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="card__footer">
-                                        <button type="submit" form="satellite-search-form" class="btn btn--primary">
-                                            <i class="ico ico-search"></i>
-                                            <span>API 검색</span>
-                                        </button>
-                                    </div>
-                                </section>
-                                <section class="card card--md col01">
-                                    <header class="card__head">
-                                        <h3 class="card__title">검색된 위성영상 목록</h3>
-                                    </header>
-                                    <div class="card__body card__body--scrollable">
+                                    <div class="card__body">
                                         <div class="tree-container">
                                             <div id="tree-1"></div>
                                         </div>
@@ -291,53 +334,10 @@
                                             <div id="tree-3"></div>
                                         </div>
                                     </div>
-                                    <div class="card__footer">
-                                        <button type="button" class="btn btn--primary">
-                                            <i class="ico ico-whitedownload"></i>
-                                            <span>다운로드 시작</span>
-                                        </button>
-                                    </div>
                                 </section>
-                                <section class="card card--md col01">
-                                    <header class="card__head">
-                                        <h3 class="card__title">위성영상 미리보기</h3>
-                                    </header>
-                                    <div class="card__body">
-                                        <div class="placeholder">
-                                            <div class="info">
-                                                <i class="icon no-data"></i>
-                                                <p>데이터가 없습니다</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                            <section class="card card--md col01">
-                                <header class="card__head">
-                                    <h3 class="card__title">
-                                        자동 연계된 위성영상 목록
-                                        <span class="badge badge--new">NEW</span>
-                                    </h3>
-                                </header>
-                                <div class="card__body">
-                                    <div class="tree-container">
-                                        <div id="tree-1"></div>
-                                    </div>
-                            
-                                    <!-- 트리 컴포넌트 예시 2 -->
-                                    <div class="tree-container" style="margin-top: 20px;">
-                                        <div id="tree-2"></div>
-                                    </div>
-                            
-                                    <!-- 트리 컴포넌트 예시 3 -->
-                                    <div class="tree-container" style="margin-top: 20px;">
-                                        <div id="tree-3"></div>
-                                    </div>
-                                </div>
-                            </section>
-                            
-                        </div>    
-                    </div>
+                                
+                            </div>    
+                        </div>
                     </div>
 
                     <!-- 수동 업로드 탭 콘텐츠 -->

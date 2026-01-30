@@ -46,23 +46,18 @@
     .table-body {
         overflow-y: auto;
         overflow-x: hidden;
+        min-height: 0;
         &.line5-body{
-            max-height: calc(5 * 39px); // 5개 행 높이 (대략 60px per row)
+            max-height: 195px; // 5개 행
+        }
+        &.line10-body {
+            max-height: 440px; // 10행(셀 패딩+input/select 높이) 기준, 그 이상 스크롤
         }
         // 스크롤바는 전역 스타일 사용
     }
 
-    // 행 구조 (기능)
-    .table-cell__row {
-        display: grid;
-        // JavaScript에서 동적으로 설정됨 (초기값은 컬럼 수에 맞춰 1fr로 설정)
-        grid-template-columns: repeat(var(--column-count, 5), 1fr);
-    }
 
-    // 셀 구조 (기능)
-    .table-cell {
-        // 기능만, 디자인은 modifier에서
-    }
+    // 셀 구조 (기능) - 디자인은 form-tbl 등 modifier에서
 }
 
 // ====== 디자인 클래스: form-tbl 스타일 ======
@@ -83,11 +78,12 @@
         }
     }
 
-
     // 행 디자인
     .table-cell__row {
+        display: grid;
+        grid-template-columns: repeat(var(--column-count, 5), 1fr);
         border-bottom: 1px solid #c6c6c6;
-
+        align-items: center;
         &:last-child {
             border-bottom: none;
         }
@@ -100,6 +96,131 @@
         font-size: 15px;
         &:last-child {
             border-right: none;
+        }
+        // 테이블 셀 내 input/select
+        input,
+        select {
+            width: 100%;
+            min-width: 0;
+            height: 32px;
+            padding: 0 8px;
+            border: 1px solid #d0d7de;
+            border-radius: 4px;
+            font-size: 13px;
+            text-align: center;
+            background: #fff;
+            box-sizing: border-box;
+            &:focus {
+                outline: none;
+                border-color: #2196F3;
+                box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.15);
+            }
+        }
+        select {
+            cursor: pointer;
+            appearance: none;
+            padding-right: 24px;
+        }
+    }
+}
+
+// ====== EDM 데이터 상세 내역 전용 테이블 (form-tbl과 별도) ======
+// 사용법: <div class="table-scroll form-tbl form-tbl--edm-detail">
+.form-tbl--edm-detail {
+    .table-header {
+        background: #eef2f7;
+        .table-cell {
+            font-size: 14px;
+            color: #1976d2;
+            &.table-cell--muted {
+                color: #5a5a5a;
+            }
+        }
+    }
+
+    .table-cell__row {
+        border-bottom: 1px solid #e5e8ee;
+    }
+
+    .table-cell {
+        input,
+        select {
+            height: 34px;
+            padding: 0 10px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            color: #4a4a4a;
+            font-size: 13px;
+            text-align: center;
+        }
+        select {
+            background-color: #fff;
+            padding-right: 10px;
+            appearance: auto; /* 그냥 select - 네이티브 드롭다운 */
+            background-image: none;
+        }
+        input {
+            background-color: #f5f5f5;
+        }
+        .data-list__delete {
+            width: 100%;
+            min-height: 34px;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            background: #fff;
+            padding: 6px;
+            .ico { filter: none; }
+            &:hover {
+                background: #fff5f5;
+                border-color: #e0a0a0;
+            }
+        }
+        .table-cell:has(.delete-button) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .delete-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+    }
+}
+
+// ====== 업로드 이력 모달 전용 (form-tbl 기반) ======
+// 사용법: <div class="table-scroll form-tbl form-tbl--upload-history">
+.form-tbl--upload-history {
+    .table-header {
+        background: #eef2f7;
+        .table-cell {
+            font-size: 14px;
+            color: #1976d2;
+            font-weight: 600;
+        }
+    }
+
+    .table-cell__row {
+        border-bottom: 1px solid #e5e8ee;
+    }
+
+    .table-cell {
+        font-size: 13px;
+        color: #4a4a4a;
+
+        &:first-child {
+            text-align: left;
+        }
+    }
+
+    .form-tbl__link {
+        color: #1976d2;
+        text-decoration: underline;
+        font-size: 13px;
+
+        &:hover {
+            color: #1565c0;
         }
     }
 }
@@ -147,7 +268,7 @@ table {
     }
 
     th {
-        background: #ebf5fd;
+        background: #edf4fe;
         font-weight: 500;
         font-size: 17px;
     }
@@ -155,38 +276,15 @@ table {
     td {
         font-size: 15px;
     }
+}
 
-    thead {
-        tr {
-            th {
-                &:first-child {
-                    border-top-left-radius: 12px;
-                }
-
-                &:last-child {
-                    border-top-right-radius: 12px;
-                }
-            }
-        }
-    }
-
-    tbody {
-        tr {
-            &:last-child {
-                td {
-                    border-bottom: none;
-
-                    &:first-child {
-                        border-bottom-left-radius: 12px;
-                    }
-
-                    &:last-child {
-                        border-bottom-right-radius: 12px;
-                    }
-                }
-            }
-        }
-    }
+// 읽기 전용 테이블 스크롤 래퍼 (수위·수체 데이터 상세 등)
+.table-wrap--scroll {
+    max-height: 280px;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid #dadee5;
+    background: #fff;
 }
 
 .checkbox {

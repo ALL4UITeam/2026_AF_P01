@@ -37,6 +37,7 @@
 .main__card {
     display: grid;
     gap: 30px;
+    
     // ====== cards ======
     .card {
         @include glass(0.92);
@@ -53,6 +54,18 @@
             justify-content: space-between;
             border-bottom: 1px solid rgba(225, 229, 236, 1);
             line-height: 1;
+            .card__title-help{
+                margin-top: 10px;
+                font-size: 15px;
+                color:#555555;
+            }
+        }
+
+        &__head-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: flex-start;
         }
 
         &__title {
@@ -265,7 +278,55 @@
     }
 }
 
-// ====== output summary cards ======
+// ====== 카드 내 P1 등 포인트 선택 행 (EDM) ======
+.card__point-row {
+    .form-field--point-select {
+        min-width: 100px;
+        max-width: 300px;
+        width: auto;
+        border: 1px solid #e0e0e0;
+        background: #fff;
+        border-radius: 8px;
+    }
+}
+
+// ====== EDM 전용 요약 카드 (summary-card와 별도) ======
+.edm-summary {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.edm-summary__card {
+    background: #e8eef7;
+    border-radius: 10px;
+    padding: 40px 20px;
+    border: 1px solid #cfd8e5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+}
+
+.edm-summary__label {
+    font-size: 17px;
+    color: #6a6e79;
+    font-weight: 400;
+}
+
+.edm-summary__value {
+    font-size: 24px;
+    color: #294461;
+    font-weight: 600;
+    span{
+        font-size: 15px;
+        color:#000;
+    }
+}
+
+// ====== output summary cards (공통) ======
 .output-summary {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -281,7 +342,7 @@
     display: flex;
     justify-content: space-between;
     gap: 8px;
-        align-items: flex-end;
+    align-items: flex-end;
     &__label {
         font-size: 17px;
         color: #6a6e79;
@@ -322,7 +383,7 @@
     }
     
     &__title {
-        font-size: 15px;
+        font-size: 19px;
         font-weight: 600;
         color: #333;
         margin: 0;
@@ -337,6 +398,26 @@
         flex: 1;
         padding: 20px;
     }
+    
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    &__footer {
+        padding: 16px 20px;
+        border-top: 1px solid #e5e8ee;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+// 카드 본문 여러 섹션 세로 배치 시 간격
+.card__body--stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 // ====== output chart grid ======
@@ -416,6 +497,10 @@
     .output-summary {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .edm-summary {
+        grid-template-columns: repeat(3, 1fr);
+    }
     
     .output-chart-grid {
         grid-template-columns: 1fr;
@@ -440,8 +525,11 @@
         transition: all 0.2s ease;
         
         &:hover {
-            background: #f8f9fa;
             border-color: #d0d7de;
+            background: #e6eff9;
+            .data-list__name{
+                color:#074d88;
+            }
         }
     }
     
@@ -481,7 +569,7 @@
     
     &__name {
         font-size: 14px;
-        color: #074d88;
+        color: #000;
         font-weight: 500;
         overflow: hidden;
         text-overflow: ellipsis;

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>화산 모니터링 시스템</title>
+    
+    <link rel="stylesheet" href="/2026_AF_P01/assets/fonts/pretendard.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/simplebar/simplebar.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/dragula/dragula.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.css">
+    
+    
+    <script src="/2026_AF_P01/lib/jQuery/jquery-3.7.1.js"></script>
+    <script src="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.js"></script>
+    <script src="/2026_AF_P01/lib/simplebar/simplebar.min.js"></script>
+    <script src="/2026_AF_P01/lib/dragula/dragula.min.js"></script>
+  <script type="module" src="/2026_AF_P01/assets/index.js"></script>
+  <link rel="stylesheet" href="/2026_AF_P01/assets/style.css">
+</head>
+
+<body>
+    <div class="app">
+        <header class="app-header">
+        	<div class="app-header__inner">
+        		<div class="brand">
+        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo.png" alt=""></a>
+        		</div>
+        
+        		<div class="app-header__actions">
+        			<button class="user-chip" type="button">
+        				<span class="user-chip__icon" aria-hidden="true"></span>
+        				admin
+        			</button>
+        			<button class="icon-btn" type="button" aria-label="로그아웃"></button>
+        		</div>
+        	</div>
+        </header>        <div class="app-body">
+            <div class="side-nav_wrap">
+                <nav class="side-nav" data-simplebar>
+                    <ul class="side-nav__list">
+            
+                        <!-- 1 depth -->
+                        <li class="side-nav__item is-active">
+                            <a href="#" class="side-nav__link"><i class="icon sni01"></i>대시보드</a>
+                        </li>
+            
+                        <!-- 1 depth + children -->
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni02"></i>탐색 및 전처리
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#" class="is-active">위성영상 탐색</a>
+                                </li>
+                                <li class="side-nav__subitem">
+                                    <a href="#">데이터 전처리</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni03"></i>데이터 분석
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">수위 및 수체면적</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 지역</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">상대지표 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">마그마 볼륨</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산활동 종합지수</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni04"></i>현장 DB 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">EDM 지표 변형 계측 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산 가스 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">온천수 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">지진 발생 관리</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item">
+                            <a href="#" class="side-nav__link"><i class="icon sni05"></i>통합보고서 분석</a>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni06"></i>데이터 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">원본 위성영상</a></li>
+                                <li class="side-nav__subitem"><a href="#">전처리 데이터</a></li>
+                                <li class="side-nav__subitem"><a href="#">분석 산출물</a></li>
+                                <li class="side-nav__subitem"><a href="#">통합 보고서</a></li>
+                                <li class="side-nav__subitem"><a href="#">내부 입력 데이터</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni07"></i>시스템 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">사용자 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">접속 통계</a></li>
+                                <li class="side-nav__subitem"><a href="#">이용 통계</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>            <main class="app-main">
+                <div class="page">
+                    <header class="page__head">
+                        <h2 class="page__title">통합 보고서 분석</h2>
+                        <p class="page__txt">분기/반기/연간별 보고서를 분석하고 생성합니다.</p>
+                    </header>
+                    <div class="tab--btn__nav">
+                        <button class="tab--item active" data-tab="quarterly">분기</button>
+                        <button class="tab--item" data-tab="half">반기</button>
+                        <button class="tab--item" data-tab="annual">연간</button>
+                    </div>
+
+                    <div class="tab-panel active" id="tab-quarterly">
+                        <div class="dashboard">
+                            <div class="main__card">
+                                <section class="card">
+                                    <header class="card__head">
+                                        <div class="card__head-inner">
+                                            <h3 class="card__title">분석 설정</h3>
+                                            <p class="card__title-help">분석 기간과 데이터 소스를 확인하고 통합 보고서를 생성하세요</p>
+                                        </div>
+                                    </header>
+                                    <div class="card__body">
+                                        <div class="report-form__group">
+                                            <div class="report-form__fields">
+                                                <div class="form-field" style="min-width: 120px; width: 140px;">
+                                                    <select>
+                                                        <option>2025년</option>
+                                                        <option>2024년</option>
+                                                        <option>2023년</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-field" style="min-width: 120px; width: 140px;">
+                                                    <select>
+                                                        <option>1분기</option>
+                                                        <option>2분기</option>
+                                                        <option>3분기</option>
+                                                        <option>4분기</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="report-form__group">
+                                            <span class="form-ti">분석 데이터 소스</span>
+                                            <div class="source-tag-list">
+                                                <span class="source-tag">SAR기반 지표변위</span>
+                                                <span class="source-tag">수위 및 수체면적</span>
+                                                <span class="source-tag">이상 지역</span>
+                                                <span class="source-tag">이상 온도</span>
+                                                <span class="source-tag">상대지표 온도</span>
+                                                <span class="source-tag">마그마 볼륨</span>
+                                                <span class="source-tag">화산활동 종합지수</span>
+                                                <span class="source-tag">EDM 지표변형</span>
+                                                <span class="source-tag">화산 가스</span>
+                                                <span class="source-tag">온천수</span>
+                                                <span class="source-tag">지진 발생</span>
+                                            </div>
+                                            <div class="form-actions">
+                                                <button type="button" class="btn btn--primary btn--block btn--center">
+                                                    <i class="ico ico-report"></i>
+                                                    <span>통합 보고서 생성</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="card">
+                                    <header class="card__head">
+                                        <div class="card__head-inner">
+                                            <h3 class="card__title">분석 결과 보고서</h3>
+                                            <p class="card__title-help">2025년 상반기 7개 데이터 소스</p>
+                                        </div>
+                                    </header>
+                                    <div class="card__body">
+                                        <div class="output-section">
+                                            <div class="output-section__header">
+                                                <h4 class="output-section__title">화산 활동 안정성 분석표</h4>
+                                                <div class="stability-legend">
+                                                    <span class="stability-legend__item"><i class="stability-legend__swatch stability-legend__swatch--stable"></i>안정</span>
+                                                    <span class="stability-legend__item"><i class="stability-legend__swatch stability-legend__swatch--normal"></i>보통</span>
+                                                    <span class="stability-legend__item"><i class="stability-legend__swatch stability-legend__swatch--unstable"></i>불안정</span>
+                                                    <span class="stability-legend__item"><i class="stability-legend__swatch stability-legend__swatch--no-data"></i>데이터 없음</span>
+                                                </div>
+                                            </div>
+                                            <div class="output-section__body">
+                                                <div class="stability-table-wrap">
+                                                    <table class="stability-tbl">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>분석지표</th>
+                                                                <th>연도</th>
+                                                                <th>분기</th>
+                                                                <th>상대지표 온도</th>
+                                                                <th>천지이상 지역온도</th>
+                                                                <th>천지이상 지역면적</th>
+                                                                <th>천지면적</th>
+                                                                <th>천지수위</th>
+                                                                <th>지표변위</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td rowspan="16">백두산 지역</td>
+                                                                <td rowspan="4">2017</td>
+                                                                <td>1</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--unstable">불안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--unstable">불안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="4">2018</td>
+                                                                <td>1</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--unstable">불안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="4">2019</td>
+                                                                <td>1</td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--unstable">불안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="4">2020</td>
+                                                                <td>1</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-panel" id="tab-half">
+                        <div class="dashboard">
+                            <div class="main__card">
+                                <section class="card">
+                                    <header class="card__head">
+                                        <div class="card__head-inner">
+                                            <h3 class="card__title">분석 설정</h3>
+                                            <p class="card__title-help">분석 기간과 데이터 소스를 확인하고 통합 보고서를 생성하세요</p>
+                                        </div>
+                                    </header>
+                                    <div class="card__body">
+                                        <div class="report-form__group">
+                                            <div class="report-form__fields">
+                                                <div class="form-field" style="min-width: 120px; width: 140px;">
+                                                    <select>
+                                                        <option>2025년</option>
+                                                        <option>2024년</option>
+                                                        <option>2023년</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-field" style="min-width: 120px; width: 140px;">
+                                                    <select>
+                                                        <option>상반기</option>
+                                                        <option>하반기</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="report-form__group">
+                                            <span class="form-ti">분석 데이터 소스</span>
+                                            <div class="source-tag-list">
+                                                <span class="source-tag">SAR기반 지표변위</span>
+                                                <span class="source-tag">수위 및 수체면적</span>
+                                                <span class="source-tag">이상 지역</span>
+                                                <span class="source-tag">이상 온도</span>
+                                                <span class="source-tag">상대지표 온도</span>
+                                                <span class="source-tag">마그마 볼륨</span>
+                                                <span class="source-tag">화산활동 종합지수</span>
+                                                <span class="source-tag">EDM 지표변형</span>
+                                                <span class="source-tag">화산 가스</span>
+                                                <span class="source-tag">온천수</span>
+                                                <span class="source-tag">지진 발생</span>
+                                            </div>
+                                            <div class="form-actions">
+                                                <button type="button" class="btn btn--primary btn--block btn--center">
+                                                    <i class="ico ico-report"></i>
+                                                    <span>통합 보고서 생성</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-panel" id="tab-annual">
+                        <div class="dashboard">
+                            <div class="main__card">
+                                <section class="card">
+                                    <header class="card__head">
+                                        <div class="card__head-inner">
+                                            <h3 class="card__title">분석 설정</h3>
+                                            <p class="card__title-help">분석 기간과 데이터 소스를 확인하고 통합 보고서를 생성하세요</p>
+                                        </div>
+                                    </header>
+                                    <div class="card__body">
+                                        <div class="report-form__group">
+                                            <div class="report-form__fields">
+                                                <div class="form-field" style="min-width: 120px; width: 140px;">
+                                                    <select>
+                                                        <option>2025년</option>
+                                                        <option>2024년</option>
+                                                        <option>2023년</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="report-form__group">
+                                            <span class="form-ti">분석 데이터 소스</span>
+                                            <div class="source-tag-list">
+                                                <span class="source-tag">SAR기반 지표변위</span>
+                                                <span class="source-tag">수위 및 수체면적</span>
+                                                <span class="source-tag">이상 지역</span>
+                                                <span class="source-tag">이상 온도</span>
+                                                <span class="source-tag">상대지표 온도</span>
+                                                <span class="source-tag">마그마 볼륨</span>
+                                                <span class="source-tag">화산활동 종합지수</span>
+                                                <span class="source-tag">EDM 지표변형</span>
+                                                <span class="source-tag">화산 가스</span>
+                                                <span class="source-tag">온천수</span>
+                                                <span class="source-tag">지진 발생</span>
+                                            </div>
+                                                <div class="form-actions">
+                                                <button type="button" class="btn btn--primary btn--block btn--center">
+                                                    <i class="ico ico-report"></i>
+                                                    <span>통합 보고서 생성</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
