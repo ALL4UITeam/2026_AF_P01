@@ -185,16 +185,23 @@ function initCustomSelects() {
 
 function startCustomSelectObserver() {
   initCustomSelects();
-  const observer = new MutationObserver(() => {
-    initCustomSelects();
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((m) => {
+      m.addedNodes.forEach((node) => {
+        if (node.nodeType !== 1) return;
+
+        // 새로 추가된 노드가 select거나,
+        if (node.matches?.('select[data-custom-select], select.js-custom-select')) {
+          new CustomSelect(node);
+        }
+
+        // 그 안에 select가 있으면
+        node.querySelectorAll?.('select[data-custom-select], select.js-custom-select')
+          .forEach((sel) => new CustomSelect(sel));
+      });
+    });
   });
+
   observer.observe(document.body, { childList: true, subtree: true });
 }
-
-if (document.body) {
-  startCustomSelectObserver();
-} else {
-  document.addEventListener("DOMContentLoaded", startCustomSelectObserver);
-}
-
-export default CustomSelect;
