@@ -137,6 +137,7 @@
         justify-content: space-between;
         padding: 10px;
         background: #f1f2f5;
+        border-radius: 8px 8px 0 0;
         h4 {
             margin: 0;
             font-size: 13px;
@@ -190,31 +191,38 @@
     }
 }
 
-// 지도 마커
+// 지도 마커 (공통)
 .ico.map-marker {
     position: absolute;
     width: 32px;
     height: 40px;
-    background-image: url("@/assets/images/icon/maker-ico.png");
+    background-image: url("@/assets/images/map/maker-ico.png");
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center bottom;
     z-index: 5;
     pointer-events: none;
-    
-    // 마커 위치 (임시 - 실제로는 JavaScript로 동적 배치)
-    &:nth-child(5) {
-        top: 30%;
-        left: 40%;
+
+    // 마커 타입별 이미지 (영어 파일명)
+    &--EDM {
+        background-image: url("@/assets/images/map/edm.png");
     }
-    
-    &:nth-child(6) {
-        top: 50%;
-        left: 60%;
+    &--GAS {
+        background-image: url("@/assets/images/map/GAS.png");
     }
-    
-    &:nth-child(7) {
-        top: 35%;
-        left: 55%;
+    &--LEK {
+        background-image: url("@/assets/images/map/LEK.png");
+    }
+    &--OBS {
+        background-image: url("@/assets/images/map/OBS.png");
+    }
+    &--RAW {
+        background-image: url("@/assets/images/map/RAW.png");
+    }
+    &--SEI {
+        background-image: url("@/assets/images/map/SEI.png");
+    }
+    &--UNK {
+        background-image: url("@/assets/images/map/UNK.png");
     }
 }

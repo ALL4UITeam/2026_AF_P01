@@ -54,6 +54,7 @@
             justify-content: space-between;
             border-bottom: 1px solid rgba(225, 229, 236, 1);
             line-height: 1;
+            min-height: 53px;
             .card__title-help{
                 margin-top: 10px;
                 font-size: 15px;
@@ -397,6 +398,12 @@
     &__body {
         flex: 1;
         padding: 20px;
+        container-type: inline-size; /* 테이블: 이 영역 너비 < 1280px일 때 가로 스크롤 */
+        /* 가로 컬럼 많은 테이블 포함 시 가로 스크롤은 .table-scroll만 → 이중 스크롤 방지 */
+        &:has(.form-tbl--edm-detail),
+        &:has(.form-tbl--wide) {
+            overflow-x: hidden;
+        }
     }
     
     &__actions {
@@ -563,6 +570,7 @@
         }
         
         .file-size {
+            flex:60px;
             flex-shrink: 0;
         }
     }
@@ -577,7 +585,7 @@
     }
     
     &__delete {
-        background: none;
+        background: #fbe1de;
         border: none;
         padding: 4px;
         cursor: pointer;
@@ -587,11 +595,11 @@
         border-radius: 4px;
         transition: background-color 0.2s ease;
         flex-shrink: 0;
-        
+
         &:hover {
-            background: #fee;
+            background: #f5d0cc;
         }
-        
+
         .ico {
             width: 16px;
             height: 16px;

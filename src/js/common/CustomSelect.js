@@ -13,6 +13,7 @@ class CustomSelect {
   }
   
   init() {
+    this.boundPositionDropdown = this.positionDropdown.bind(this);
     // 원본 select 숨기기
     this.select.style.display = 'none';
     
@@ -98,11 +99,49 @@ class CustomSelect {
   toggle() {
     this.isOpen = !this.isOpen;
     this.wrapper.classList.toggle('is-open', this.isOpen);
+    if (this.isOpen) {
+      document.body.appendChild(this.dropdown);
+      this.positionDropdown();
+      window.addEventListener('scroll', this.boundPositionDropdown, true);
+      window.addEventListener('resize', this.boundPositionDropdown);
+    } else {
+      this.wrapper.appendChild(this.dropdown);
+      this.clearDropdownPosition();
+      window.removeEventListener('scroll', this.boundPositionDropdown, true);
+      window.removeEventListener('resize', this.boundPositionDropdown);
+    }
   }
-  
+
+  positionDropdown() {
+    const rect = this.button.getBoundingClientRect();
+    const d = this.dropdown;
+    d.style.position = 'fixed';
+    d.style.top = `${rect.bottom + 4}px`;
+    d.style.left = `${rect.left}px`;
+    d.style.width = `${rect.width}px`;
+    d.style.minWidth = `${rect.width}px`;
+    d.style.zIndex = '9999';
+  }
+
+  clearDropdownPosition() {
+    const d = this.dropdown;
+    d.style.position = '';
+    d.style.top = '';
+    d.style.left = '';
+    d.style.width = '';
+    d.style.minWidth = '';
+    d.style.zIndex = '';
+  }
+
   close() {
     this.isOpen = false;
     this.wrapper.classList.remove('is-open');
+    if (this.dropdown.parentNode === document.body) {
+      this.wrapper.appendChild(this.dropdown);
+    }
+    this.clearDropdownPosition();
+    window.removeEventListener('scroll', this.boundPositionDropdown, true);
+    window.removeEventListener('resize', this.boundPositionDropdown);
   }
   
   selectOption(index) {
@@ -133,12 +172,12 @@ class CustomSelect {
   }
 }
 
-// 자동 초기화 - 모든 select에 적용 (제외: data-no-custom-select, .form-tbl--edm-detail 내부)
-// .form-tbl--edm-detail 내부 select = 테이블용 네이티브 select (일반 폼 custom-select와 별도)
+// 자동 초기화 (옵트인)
+// 커스텀으로 바꾸고 싶은 select만 지정해서 변환합니다.
+// 사용법: <select data-custom-select> 또는 <select class="js-custom-select">
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('select:not([data-no-custom-select])').forEach(select => {
+  document.querySelectorAll('select[data-custom-select], select.js-custom-select').forEach(select => {
     if (select.closest('.custom-select')) return;
-    if (select.closest('.form-tbl--edm-detail')) return;
     new CustomSelect(select);
   });
 });

@@ -30,22 +30,29 @@
     &--secondary {
         background: #5496c8;
         color: #fff;
-        span{
+        span {
             color: #fff;
         }
         &:hover {
-            background: #757575;
+            background: #4580b0;
         }
-        
         &:active {
-            background: #616161;
+            background: #3a6f9a;
         }
     }
-    &--tertiary{
+    &--tertiary {
         background: #e3edfa;
         color: #315a9a;
-        span{
+        span {
             color: #315a9a;
+        }
+        &:hover {
+            background: #c9ddf5;
+            color: #264a7a;
+            span { color: #264a7a; }
+        }
+        &:active {
+            background: #b0ccef;
         }
     }
 
@@ -55,14 +62,16 @@
         color: #fff;
         border-radius: 8px;
         span { color: #2d855d; }
-        
-        &:hover { background: #2d855d; 
-            .ico { filter: brightness(0) invert(1); }
-            span{
-                color:#fff;
-            }
+
+        &:hover {
+            background: #9de4ab;
+            span { color: #24804d; }
         }
-        &:active { background: #2d855d; }
+        &:active {
+            background: #2d855d;
+            .ico { filter: brightness(0) invert(1); }
+            span { color: #fff; }
+        }
     }
 
     // 흰 배경 + 파란 테두리/글씨 (행 추가 등)

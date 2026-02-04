@@ -1,4 +1,3 @@
-import "./index.js";
 import { T as TreeView } from "./TreeView.js";
 document.addEventListener("DOMContentLoaded", () => {
   const treeData = {

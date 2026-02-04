@@ -140,6 +140,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// EDM 등 form-tbl: table-header / table-body 열 너비 동기화
+document.addEventListener("DOMContentLoaded", () => {
+  const TABLE_SELECTOR = ".form-tbl--edm-detail";
+
+  function syncFormTableColumnWidths() {
+    document.querySelectorAll(TABLE_SELECTOR).forEach((tbl) => {
+      const headerRow = tbl.querySelector(".table-header .table-cell__row");
+      const bodyFirstRow = tbl.querySelector(".table-body .table-cell__row");
+      if (!headerRow || !bodyFirstRow) return;
+
+      const bodyCells = bodyFirstRow.querySelectorAll(".table-cell");
+      const headerCells = headerRow.querySelectorAll(".table-cell");
+      if (bodyCells.length === 0 || bodyCells.length !== headerCells.length) return;
+
+      const widths = Array.from(bodyCells).map((cell) => cell.getBoundingClientRect().width);
+      headerRow.style.gridTemplateColumns = widths.map((w) => `${w}px`).join(" ");
+    });
+  }
+
+  syncFormTableColumnWidths();
+
+  let resizeTick = false;
+  window.addEventListener("resize", () => {
+    if (resizeTick) return;
+    requestAnimationFrame(() => {
+      syncFormTableColumnWidths();
+      resizeTick = false;
+    });
+    resizeTick = true;
+  });
+});
+
 //Modal
 document.addEventListener("DOMContentLoaded", () => {
   function openModal(id) {
@@ -373,66 +405,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-$(document).ready(function () {
-  // table-scroll의 헤더와 본문 셀 너비 동기화
-  function syncTableColumnWidths() {
-    $(".table-scroll").each(function () {
-      var $table = $(this);
-      var $headerRow = $table.find(".table-header .table-cell__row");
-      var $bodyRows = $table.find(".table-body .table-cell__row");
-
-      if ($headerRow.length === 0 || $bodyRows.length === 0) return;
-
-      var $headerCells = $headerRow.find(".table-cell");
-      var columnCount = $headerCells.length;
-
-      if (columnCount === 0) return;
-
-      $table.css("--column-count", columnCount);
-
-      setTimeout(function () {
-        var tableWidth = $table.width();
-        if (tableWidth === 0) return;
-
-        var columnWidths = [];
-        $headerCells.each(function () {
-          var cellWidth = this.getBoundingClientRect().width;
-          columnWidths.push(cellWidth);
-        });
-
-        var totalWidth = columnWidths.reduce(function (sum, width) {
-          return sum + width;
-        }, 0);
-
-        if (totalWidth > tableWidth * 2 || totalWidth < tableWidth * 0.5) {
-          var avgWidth = tableWidth / columnCount;
-          columnWidths = [];
-          for (var i = 0; i < columnCount; i++) {
-            columnWidths.push(avgWidth);
-          }
-        }
-
-        var gridTemplateColumns = columnWidths
-          .map(function (width) {
-            return width + "px";
-          })
-          .join(" ");
-
-        $headerRow.css("grid-template-columns", gridTemplateColumns);
-        $bodyRows.css("grid-template-columns", gridTemplateColumns);
-      }, 50);
-    });
-  }
-
-  setTimeout(function () {
-    syncTableColumnWidths();
-  }, 200);
-
-  var resizeTimer;
-  $(window).on("resize", function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      syncTableColumnWidths();
-    }, 150);
-  });
-});

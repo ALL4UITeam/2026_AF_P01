@@ -270,8 +270,8 @@
             </div>            <main class="app-main" >
                 <div class="page">
                     <header class="page__head">
-                        <h2 class="page__title">데이터 전처리</h2>
-                        <p class="page__txt">원본 위성영상에서 신뢰도가 낮은 영역을 제거하여 전처리를 진행합니다.</p>
+                        <h2 class="page__title">원본 위성영상 관리</h2>
+                        <p class="page__txt">다운로드 및 업로드 된 원본 위성영상 데이터를 관리합니다.</p>
                     </header>
 
                     <div class="filter-bar">
@@ -283,16 +283,14 @@
                                     <option>ALOS-2</option>
                                     <option>Landsat</option>
                                 </select>
-                            </div>
-                    
+                            </div>                    
                             <div class="filter-bar__field">
-                                <i class="ico ico-calendar"></i>
-                                <input type="text" class="date-picker" placeholder="시작일">
-                            </div>
-                    
-                            <div class="filter-bar__field">
-                                <i class="ico ico-calendar"></i>
-                                <input type="text" class="date-picker" placeholder="종료일">
+                                <select class="js-custom-select">
+                                    <option>API 검색</option>
+                                    <option>Sentinel-1</option>
+                                    <option>ALOS-2</option>
+                                    <option>Landsat</option>
+                                </select>
                             </div>
                         </div>
                     
@@ -302,114 +300,28 @@
                     <div class="dashboard">
                         <div class="main__card">
                             <div class="column-line">
-                                <!-- 왼쪽: 위성영상 목록 -->
+                                <!-- 왼쪽: 원본 위성영상 -->
                                 <section class="card card--lg">
                                     <header class="card__head">
-                                        <h3 class="card__title">위성영상 목록</h3>
+                                        <h3 class="card__title">원본 위성영상</h3>
                                     </header>
-                                    <div class="card__body card__body--scrollable has-max-height">
+                                    <div class="card__body fixed-height">
                                         <div class="tree-container">
                                             <div id="preprocessing-tree"></div>
                                         </div>
                                     </div>
-                                    <div class="card__footer">
-                                        <button type="button" class="btn btn--primary">
-                                            <i class="ico ico-processing"></i>
-                                            <span>전처리 시작</span>
-                                        </button>
-                                    </div>
                                 </section>
 
-                                <!-- 중간: 전처리 완료 산출물 -->
-                                <section class="card card--lg">
+                                <!-- 오른쪽: 위성영상 미리보기 -->
+                                <section class="card card--lg" style="flex: 0 0 600px;">
                                     <header class="card__head">
-                                        <h3 class="card__title">전처리 완료 산출물</h3>
-                                        <button class="btn btn--file-select btn--small" data-modal-open="fileUploadModal">
-                                            <i class="ico ico-sel-file"></i>
-                                            <span>파일선택</span>
-                                        </button>
-                                    </header>
-                                    <div class="card__body card__body--scrollable has-max-height">
-                                        <ul class="data-list">
-                                            <li class="data-list__item">
-                                                <div class="data-list__content">
-                                                    <i class="ico ico-file"></i>
-                                                    <span class="data-list__name">Processed_20251010_S2_Baekd..</span>
-                                                    <div class="data-list__meta">
-                                                        <span class="file-tag">TIF</span>
-                                                        <span class="file-size">85.3MB</span>
-                                                    </div>
-                                                </div>
-                                                <button class="data-list__delete" type="button">
-                                                    <i class="ico ico-trash"></i>
-                                                </button>
-                                            </li>
-                                            <li class="data-list__item">
-                                                <div class="data-list__content">
-                                                    <i class="ico ico-file"></i>
-                                                    <span class="data-list__name">Processed_20251010_S2_Baekd..</span>
-                                                    <div class="data-list__meta">
-                                                        <span class="file-tag">TIF</span>
-                                                        <span class="file-size">87.1MB</span>
-                                                    </div>
-                                                </div>
-                                                <button class="data-list__delete" type="button">
-                                                    <i class="ico ico-trash"></i>
-                                                </button>
-                                            </li>
-                                            <li class="data-list__item">
-                                                <div class="data-list__content">
-                                                    <i class="ico ico-file"></i>
-                                                    <span class="data-list__name">Processed_20251011_ALOS_Baekd..</span>
-                                                    <div class="data-list__meta">
-                                                        <span class="file-tag">TIF</span>
-                                                        <span class="file-size">92.5MB</span>
-                                                    </div>
-                                                </div>
-                                                <button class="data-list__delete" type="button">
-                                                    <i class="ico ico-trash"></i>
-                                                </button>
-                                            </li>
-                                            <li class="data-list__item">
-                                                <div class="data-list__content">
-                                                    <i class="ico ico-file"></i>
-                                                    <span class="data-list__name">Processed_20251011_S2_Ulleung..</span>
-                                                    <div class="data-list__meta">
-                                                        <span class="file-tag">TIF</span>
-                                                        <span class="file-size">78.9MB</span>
-                                                    </div>
-                                                </div>
-                                                <button class="data-list__delete" type="button">
-                                                    <i class="ico ico-trash"></i>
-                                                </button>
-                                            </li>
-                                            <li class="data-list__item">
-                                                <div class="data-list__content">
-                                                    <i class="ico ico-file"></i>
-                                                    <span class="data-list__name">Processed_20251012_S2_Baekd..</span>
-                                                    <div class="data-list__meta">
-                                                        <span class="file-tag">TIF</span>
-                                                        <span class="file-size">89.2MB</span>
-                                                    </div>
-                                                </div>
-                                                <button class="data-list__delete" type="button">
-                                                    <i class="ico ico-trash"></i>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </section>
-
-                                <!-- 오른쪽: 전처리 데이터 미리보기 -->
-                                <section class="card card--lg">
-                                    <header class="card__head">
-                                        <h3 class="card__title">전처리 데이터 미리보기</h3>
+                                        <h3 class="card__title">위성영상 미리보기</h3>
                                     </header>
                                     <div class="card__body">
                                         <div class="placeholder" style="min-height: 500px; display: flex; align-items: center; justify-content: center;">
                                             <div class="info">
                                                 <i class="icon no-data"></i>
-                                                <p>미리보기 이미지가 표시됩니다</p>
+                                                <p>미리보기 이미지가 표시됩니다</p> 
                                             </div>
                                         </div>
                                     </div>

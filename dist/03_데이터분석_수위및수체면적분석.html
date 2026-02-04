@@ -31,7 +31,7 @@
         <header class="app-header">
         	<div class="app-header__inner">
         		<div class="brand">
-        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo.png" alt=""></a>
+        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo2.png" alt=""></a>
         		</div>
         
         		<div class="app-header__actions">
@@ -48,8 +48,16 @@
                     <ul class="side-nav__list">
             
                         <!-- 1 depth -->
-                        <li class="side-nav__item is-active">
-                            <a href="#" class="side-nav__link"><i class="icon sni01"></i>대시보드</a>
+                        <li class="side-nav__item has-children is-active">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni01"></i>대시보드
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#" class="is-active">대시보드</a>
+                                </li>
+                            </ul>
                         </li>
             
                         <!-- 1 depth + children -->
@@ -61,7 +69,7 @@
             
                             <ul class="side-nav__sub">
                                 <li class="side-nav__subitem">
-                                    <a href="#" class="is-active">위성영상 탐색</a>
+                                    <a href="#">위성영상 탐색</a>
                                 </li>
                                 <li class="side-nav__subitem">
                                     <a href="#">데이터 전처리</a>
@@ -99,8 +107,16 @@
                             </ul>
                         </li>
             
-                        <li class="side-nav__item">
-                            <a href="#" class="side-nav__link"><i class="icon sni05"></i>통합보고서 분석</a>
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni05"></i>통합보고서 분석
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#">통합보고서 분석</a>
+                                </li>
+                            </ul>
                         </li>
             
                         <li class="side-nav__item has-children">
@@ -143,7 +159,7 @@
                         <div class="filter-bar__group">
 
                             <div class="filter-bar__field">
-                                <select>
+                                <select class="js-custom-select">
                                     <option>백두산</option>
                                 </select>
                             </div>
@@ -276,9 +292,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <i class="ico map-marker"></i>
-                                <i class="ico map-marker"></i>
-                                <i class="ico map-marker"></i>
+                                <i class="ico map-marker" style="left: 20%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--EDM" aria-hidden="true" style="left: 25%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--GAS" aria-hidden="true" style="left: 30%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--LEK" aria-hidden="true" style="left: 35%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--OBS" aria-hidden="true" style="left: 40%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--RAW" aria-hidden="true" style="left: 45%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--SEI" aria-hidden="true" style="left: 50%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--UNK" aria-hidden="true" style="left: 55%;top: 50%;"></i>
                             </div>
                             <section class="card card--md col01">
                                 <header class="card__head">

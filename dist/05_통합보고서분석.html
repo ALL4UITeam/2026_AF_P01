@@ -28,7 +28,7 @@
         <header class="app-header">
         	<div class="app-header__inner">
         		<div class="brand">
-        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo.png" alt=""></a>
+        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo2.png" alt=""></a>
         		</div>
         
         		<div class="app-header__actions">
@@ -45,8 +45,16 @@
                     <ul class="side-nav__list">
             
                         <!-- 1 depth -->
-                        <li class="side-nav__item is-active">
-                            <a href="#" class="side-nav__link"><i class="icon sni01"></i>대시보드</a>
+                        <li class="side-nav__item has-children is-active">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni01"></i>대시보드
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#" class="is-active">대시보드</a>
+                                </li>
+                            </ul>
                         </li>
             
                         <!-- 1 depth + children -->
@@ -58,7 +66,7 @@
             
                             <ul class="side-nav__sub">
                                 <li class="side-nav__subitem">
-                                    <a href="#" class="is-active">위성영상 탐색</a>
+                                    <a href="#">위성영상 탐색</a>
                                 </li>
                                 <li class="side-nav__subitem">
                                     <a href="#">데이터 전처리</a>
@@ -96,8 +104,16 @@
                             </ul>
                         </li>
             
-                        <li class="side-nav__item">
-                            <a href="#" class="side-nav__link"><i class="icon sni05"></i>통합보고서 분석</a>
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni05"></i>통합보고서 분석
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#">통합보고서 분석</a>
+                                </li>
+                            </ul>
                         </li>
             
                         <li class="side-nav__item has-children">
@@ -155,14 +171,14 @@
                                         <div class="report-form__group">
                                             <div class="report-form__fields">
                                                 <div class="form-field" style="min-width: 120px; width: 140px;">
-                                                    <select>
+                                                    <select class="js-custom-select">
                                                         <option>2025년</option>
                                                         <option>2024년</option>
                                                         <option>2023년</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-field" style="min-width: 120px; width: 140px;">
-                                                    <select>
+                                                    <select class="js-custom-select">
                                                         <option>1분기</option>
                                                         <option>2분기</option>
                                                         <option>3분기</option>
@@ -215,7 +231,7 @@
                                                 </div>
                                             </div>
                                             <div class="output-section__body">
-                                                <div class="stability-table-wrap">
+                                                <div class="table-scroll stability-table-wrap stability-table-wrap--line20">
                                                     <table class="stability-tbl">
                                                         <thead>
                                                             <tr>
@@ -232,7 +248,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td rowspan="16">백두산 지역</td>
+                                                                <td rowspan="24">백두산 지역</td>
                                                                 <td rowspan="4">2017</td>
                                                                 <td>1</td>
                                                                 <td><span class="stability-badge stability-badge--stable">안정</span></td>
@@ -380,6 +396,80 @@
                                                                 <td><span class="stability-badge stability-badge--stable">안정</span></td>
                                                                 <td><span class="stability-badge stability-badge--normal">보통</span></td>
                                                             </tr>
+                                                            <tr>
+                                                                <td rowspan="4">2021</td>
+                                                                <td>1</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td><span class="stability-badge stability-badge--unstable">불안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--unstable">불안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="4">2022</td>
+                                                                <td>1</td>
+                                                                <td><span class="stability-badge stability-badge--unstable">불안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--normal">보통</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                                <td><span class="stability-badge stability-badge--no-data">데이터 없음</span></td>
+                                                                <td><span class="stability-badge stability-badge--stable">안정</span></td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -405,14 +495,14 @@
                                         <div class="report-form__group">
                                             <div class="report-form__fields">
                                                 <div class="form-field" style="min-width: 120px; width: 140px;">
-                                                    <select>
+                                                    <select class="js-custom-select">
                                                         <option>2025년</option>
                                                         <option>2024년</option>
                                                         <option>2023년</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-field" style="min-width: 120px; width: 140px;">
-                                                    <select>
+                                                    <select class="js-custom-select">
                                                         <option>상반기</option>
                                                         <option>하반기</option>
                                                     </select>
@@ -461,7 +551,7 @@
                                         <div class="report-form__group">
                                             <div class="report-form__fields">
                                                 <div class="form-field" style="min-width: 120px; width: 140px;">
-                                                    <select>
+                                                    <select class="js-custom-select">
                                                         <option>2025년</option>
                                                         <option>2024년</option>
                                                         <option>2023년</option>

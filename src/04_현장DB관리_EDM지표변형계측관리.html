@@ -75,9 +75,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <i class="ico map-marker"></i>
-                                <i class="ico map-marker"></i>
-                                <i class="ico map-marker"></i>
+                                <i class="ico map-marker" style="left: 20%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--EDM" aria-hidden="true" style="left: 25%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--GAS" aria-hidden="true" style="left: 30%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--LEK" aria-hidden="true" style="left: 35%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--OBS" aria-hidden="true" style="left: 40%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--RAW" aria-hidden="true" style="left: 45%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--SEI" aria-hidden="true" style="left: 50%;top: 50%;"></i>
+                                <i class="ico map-marker map-marker--UNK" aria-hidden="true" style="left: 55%;top: 50%;"></i>
                             </div>
 
                         
@@ -99,8 +104,8 @@
 
                                 <div class="card__body card__body--stacked">
                                     <div class="card__point-row">
-                                        <div class="form-field form-field--inline form-field--point-select">
-                                            <select>
+                                        <div class="form-field form-field--inline form-field--point-select ">
+                                            <select class="js-custom-select">
                                                 <option>P1</option>
                                                 <option>P2</option>
                                                 <option>P3</option>
@@ -162,207 +167,210 @@
                                             </div>
                                         </div>
                                         <div class="output-section__body">
-                                            <div class="table-scroll form-tbl form-tbl--edm-detail" style="--column-count: 16;">
-                                                <div class="table-header">
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell">연도</div>
-                                                        <div class="table-cell">월</div>
-                                                        <div class="table-cell">일</div>
-                                                        <div class="table-cell">시간</div>
-                                                        <div class="table-cell">계측N</div>
-                                                        <div class="table-cell">계측E</div>
-                                                        <div class="table-cell">계측Z</div>
-                                                        <div class="table-cell">변위N</div>
-                                                        <div class="table-cell">변위E</div>
-                                                        <div class="table-cell">변위Z</div>
-                                                        <div class="table-cell">변위3D</div>
-                                                        <div class="table-cell">사거리</div>
-                                                        <div class="table-cell">절대변화</div>
-                                                        <div class="table-cell">상대변화</div>
-                                                        <div class="table-cell">수평거리</div>
-                                                        <div class="table-cell" style="min-width: 44px;">삭제</div>
+                                            <div class="table-scroll form-tbl form-tbl--wide" style="--column-count: 16;">
+                                                <div class="table-inner">
+                                                    <div class="table-header">
+                                                    
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell">연도</div>
+                                                            <div class="table-cell">월</div>
+                                                            <div class="table-cell">일</div>
+                                                            <div class="table-cell">시간</div>
+                                                            <div class="table-cell">계측N</div>
+                                                            <div class="table-cell">계측E</div>
+                                                            <div class="table-cell">계측Z</div>
+                                                            <div class="table-cell">변위N</div>
+                                                            <div class="table-cell">변위E</div>
+                                                            <div class="table-cell">변위Z</div>
+                                                            <div class="table-cell">변위3D</div>
+                                                            <div class="table-cell">사거리</div>
+                                                            <div class="table-cell">절대변화</div>
+                                                            <div class="table-cell">상대변화</div>
+                                                            <div class="table-cell">수평거리</div>
+                                                            <div class="table-cell" style="min-width: 44px;">삭제</div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="table-body line10-body">
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
-                                                        <div class="table-cell"><select><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="09:00" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.42" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.12" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.12" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.1" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.8" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.5" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.95" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.42" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.95" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.89" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
-                                                    </div>
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2017</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2016</option><option>2015</option></select></div>
-                                                        <div class="table-cell"><select><option>08</option><option>10</option><option>09</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>22</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="14:30" /></div>
-                                                        <div class="table-cell"><input type="text" value="154.88" /></div>
-                                                        <div class="table-cell"><input type="text" value="-0.31" /></div>
-                                                        <div class="table-cell"><input type="text" value="-0.31" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.5" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.2" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.8" /></div>
-                                                        <div class="table-cell"><input type="text" value="3.12" /></div>
-                                                        <div class="table-cell"><input type="text" value="154.88" /></div>
-                                                        <div class="table-cell"><input type="text" value="3.12" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.01" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.03" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
-                                                    </div>
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2019</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
-                                                        <div class="table-cell"><select><option>05</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>10</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="11:00" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.10" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.05" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.05" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.9" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.6" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.6" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.78" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.10" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.78" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.79" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
-                                                    </div>
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2015</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option></select></div>
-                                                        <div class="table-cell"><select><option>03</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>18</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="10:15" /></div>
-                                                        <div class="table-cell"><input type="text" value="153.20" /></div>
-                                                        <div class="table-cell"><input type="text" value="-0.89" /></div>
-                                                        <div class="table-cell"><input type="text" value="-0.89" /></div>
-                                                        <div class="table-cell"><input type="text" value="3.2" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.5" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.1" /></div>
-                                                        <div class="table-cell"><input type="text" value="4.21" /></div>
-                                                        <div class="table-cell"><input type="text" value="153.20" /></div>
-                                                        <div class="table-cell"><input type="text" value="4.21" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.75" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.04" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
-                                                    </div>
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2016</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2015</option></select></div>
-                                                        <div class="table-cell"><select><option>07</option><option>10</option><option>09</option><option>08</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>05</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="08:45" /></div>
-                                                        <div class="table-cell"><input type="text" value="154.55" /></div>
-                                                        <div class="table-cell"><input type="text" value="-0.18" /></div>
-                                                        <div class="table-cell"><input type="text" value="-0.18" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.0" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.9" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.7" /></div>
-                                                        <div class="table-cell"><input type="text" value="3.05" /></div>
-                                                        <div class="table-cell"><input type="text" value="154.55" /></div>
-                                                        <div class="table-cell"><input type="text" value="3.05" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.97" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.03" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
-                                                    </div>
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2018</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2017</option><option>2016</option><option>2015</option></select></div>
-                                                        <div class="table-cell"><select><option>09</option><option>10</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>12</option><option>15</option><option>14</option><option>13</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="13:20" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.88" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.42" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.42" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.2" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.7" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.5" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.68" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.88" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.68" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.72" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
-                                                    </div>
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2020</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
-                                                        <div class="table-cell"><select><option>02</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>08</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="09:30" /></div>
-                                                        <div class="table-cell"><input type="text" value="154.12" /></div>
-                                                        <div class="table-cell"><input type="text" value="-0.22" /></div>
-                                                        <div class="table-cell"><input type="text" value="-0.22" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.8" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.0" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.6" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.82" /></div>
-                                                        <div class="table-cell"><input type="text" value="154.12" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.82" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.83" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
-                                                    </div>
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2021</option><option>2024</option><option>2023</option><option>2022</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
-                                                        <div class="table-cell"><select><option>06</option><option>10</option><option>09</option><option>08</option><option>07</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>20</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="15:00" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.65" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.35" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.35" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.1" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.5" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.4" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.58" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.65" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.58" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.66" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.02" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
-                                                    </div>
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2022</option><option>2024</option><option>2023</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
-                                                        <div class="table-cell"><select><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>03</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="10:45" /></div>
-                                                        <div class="table-cell"><input type="text" value="156.02" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.58" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.58" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.4" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.9" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.7" /></div>
-                                                        <div class="table-cell"><input type="text" value="3.12" /></div>
-                                                        <div class="table-cell"><input type="text" value="156.02" /></div>
-                                                        <div class="table-cell"><input type="text" value="3.12" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.00" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.03" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
-                                                    </div>
-                                                    <div class="table-cell__row">
-                                                        <div class="table-cell"><select><option>2023</option><option>2024</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
-                                                        <div class="table-cell"><select><option>04</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><select><option>25</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
-                                                        <div class="table-cell"><input type="text" value="14:15" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.20" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.08" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.08" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.7" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.4" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.5" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.25" /></div>
-                                                        <div class="table-cell"><input type="text" value="155.20" /></div>
-                                                        <div class="table-cell"><input type="text" value="2.25" /></div>
-                                                        <div class="table-cell"><input type="text" value="1.45" /></div>
-                                                        <div class="table-cell"><input type="text" value="0.01" /></div>
-                                                        <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                    <div class="table-body line10-body">
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                            <div class="table-cell"><select><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="09:00" readonly /></div>
+                                                            <div class="table-cell"><input type="text" value="155.42" disabled /></div>
+                                                            <div class="table-cell"><input type="text" value="0.12" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.12" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.1" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.8" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.5" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.95" /></div>
+                                                            <div class="table-cell"><input type="text" value="155.42" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.95" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.89" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2017</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2016</option><option>2015</option></select></div>
+                                                            <div class="table-cell"><select><option>08</option><option>10</option><option>09</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>22</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="14:30" /></div>
+                                                            <div class="table-cell"><input type="text" value="154.88" /></div>
+                                                            <div class="table-cell"><input type="text" value="-0.31" /></div>
+                                                            <div class="table-cell"><input type="text" value="-0.31" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.5" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.2" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.8" /></div>
+                                                            <div class="table-cell"><input type="text" value="3.12" /></div>
+                                                            <div class="table-cell"><input type="text" value="154.88" /></div>
+                                                            <div class="table-cell"><input type="text" value="3.12" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.01" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.03" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2019</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                            <div class="table-cell"><select><option>05</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>10</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="11:00" /></div>
+                                                            <div class="table-cell"><input type="text" value="155.10" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.05" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.05" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.9" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.6" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.6" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.78" /></div>
+                                                            <div class="table-cell"><input type="text" value="155.10" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.78" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.79" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2015</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option></select></div>
+                                                            <div class="table-cell"><select><option>03</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>18</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="10:15" /></div>
+                                                            <div class="table-cell"><input type="text" value="153.20" /></div>
+                                                            <div class="table-cell"><input type="text" value="-0.89" /></div>
+                                                            <div class="table-cell"><input type="text" value="-0.89" /></div>
+                                                            <div class="table-cell"><input type="text" value="3.2" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.5" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.1" /></div>
+                                                            <div class="table-cell"><input type="text" value="4.21" /></div>
+                                                            <div class="table-cell"><input type="text" value="153.20" /></div>
+                                                            <div class="table-cell"><input type="text" value="4.21" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.75" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.04" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2016</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2015</option></select></div>
+                                                            <div class="table-cell"><select><option>07</option><option>10</option><option>09</option><option>08</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>05</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="08:45" /></div>
+                                                            <div class="table-cell"><input type="text" value="154.55" /></div>
+                                                            <div class="table-cell"><input type="text" value="-0.18" /></div>
+                                                            <div class="table-cell"><input type="text" value="-0.18" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.0" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.9" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.7" /></div>
+                                                            <div class="table-cell"><input type="text" value="3.05" /></div>
+                                                            <div class="table-cell"><input type="text" value="154.55" /></div>
+                                                            <div class="table-cell"><input type="text" value="3.05" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.97" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.03" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2018</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                            <div class="table-cell"><select><option>09</option><option>10</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>12</option><option>15</option><option>14</option><option>13</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="13:20" /></div>
+                                                            <div class="table-cell"><input type="text" value="155.88" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.42" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.42" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.2" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.7" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.5" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.68" /></div>
+                                                            <div class="table-cell"><input type="text" value="155.88" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.68" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.72" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2020</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                            <div class="table-cell"><select><option>02</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>08</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="09:30" /></div>
+                                                            <div class="table-cell"><input type="text" value="154.12" /></div>
+                                                            <div class="table-cell"><input type="text" value="-0.22" /></div>
+                                                            <div class="table-cell"><input type="text" value="-0.22" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.8" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.0" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.6" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.82" /></div>
+                                                            <div class="table-cell"><input type="text" value="154.12" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.82" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.83" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2021</option><option>2024</option><option>2023</option><option>2022</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                            <div class="table-cell"><select><option>06</option><option>10</option><option>09</option><option>08</option><option>07</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>20</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="15:00" /></div>
+                                                            <div class="table-cell"><input type="text" value="155.65" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.35" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.35" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.1" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.5" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.4" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.58" /></div>
+                                                            <div class="table-cell"><input type="text" value="155.65" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.58" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.66" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.02" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2022</option><option>2024</option><option>2023</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                            <div class="table-cell"><select><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>03</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="10:45" /></div>
+                                                            <div class="table-cell"><input type="text" value="156.02" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.58" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.58" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.4" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.9" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.7" /></div>
+                                                            <div class="table-cell"><input type="text" value="3.12" /></div>
+                                                            <div class="table-cell"><input type="text" value="156.02" /></div>
+                                                            <div class="table-cell"><input type="text" value="3.12" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.00" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.03" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell"><select><option>2023</option><option>2024</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option></select></div>
+                                                            <div class="table-cell"><select><option>04</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><select><option>25</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11</option><option>10</option><option>09</option><option>08</option><option>07</option><option>06</option><option>05</option><option>04</option><option>03</option><option>02</option><option>01</option></select></div>
+                                                            <div class="table-cell"><input type="text" value="14:15" /></div>
+                                                            <div class="table-cell"><input type="text" value="155.20" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.08" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.08" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.7" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.4" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.5" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.25" /></div>
+                                                            <div class="table-cell"><input type="text" value="155.20" /></div>
+                                                            <div class="table-cell"><input type="text" value="2.25" /></div>
+                                                            <div class="table-cell"><input type="text" value="1.45" /></div>
+                                                            <div class="table-cell"><input type="text" value="0.01" /></div>
+                                                            <div class="table-cell"><button type="button" class="delete-button" aria-label="삭제"></button></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

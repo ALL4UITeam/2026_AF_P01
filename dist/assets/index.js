@@ -44,6 +44,7 @@ class CustomSelect {
     this.init();
   }
   init() {
+    this.boundPositionDropdown = this.positionDropdown.bind(this);
     this.select.style.display = "none";
     this.createCustomSelect();
     this.setupEvents();
@@ -108,10 +109,46 @@ class CustomSelect {
   toggle() {
     this.isOpen = !this.isOpen;
     this.wrapper.classList.toggle("is-open", this.isOpen);
+    if (this.isOpen) {
+      document.body.appendChild(this.dropdown);
+      this.positionDropdown();
+      window.addEventListener("scroll", this.boundPositionDropdown, true);
+      window.addEventListener("resize", this.boundPositionDropdown);
+    } else {
+      this.wrapper.appendChild(this.dropdown);
+      this.clearDropdownPosition();
+      window.removeEventListener("scroll", this.boundPositionDropdown, true);
+      window.removeEventListener("resize", this.boundPositionDropdown);
+    }
+  }
+  positionDropdown() {
+    const rect = this.button.getBoundingClientRect();
+    const d = this.dropdown;
+    d.style.position = "fixed";
+    d.style.top = `${rect.bottom + 4}px`;
+    d.style.left = `${rect.left}px`;
+    d.style.width = `${rect.width}px`;
+    d.style.minWidth = `${rect.width}px`;
+    d.style.zIndex = "9999";
+  }
+  clearDropdownPosition() {
+    const d = this.dropdown;
+    d.style.position = "";
+    d.style.top = "";
+    d.style.left = "";
+    d.style.width = "";
+    d.style.minWidth = "";
+    d.style.zIndex = "";
   }
   close() {
     this.isOpen = false;
     this.wrapper.classList.remove("is-open");
+    if (this.dropdown.parentNode === document.body) {
+      this.wrapper.appendChild(this.dropdown);
+    }
+    this.clearDropdownPosition();
+    window.removeEventListener("scroll", this.boundPositionDropdown, true);
+    window.removeEventListener("resize", this.boundPositionDropdown);
   }
   selectOption(index) {
     this.select.selectedIndex = index;
@@ -137,9 +174,8 @@ class CustomSelect {
   }
 }
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("select:not([data-no-custom-select])").forEach((select) => {
+  document.querySelectorAll("select[data-custom-select], select.js-custom-select").forEach((select) => {
     if (select.closest(".custom-select")) return;
-    if (select.closest(".form-tbl--edm-detail")) return;
     new CustomSelect(select);
   });
 });
@@ -305,6 +341,31 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(document.body, {
     childList: true,
     subtree: true
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const TABLE_SELECTOR = ".form-tbl--edm-detail";
+  function syncFormTableColumnWidths() {
+    document.querySelectorAll(TABLE_SELECTOR).forEach((tbl) => {
+      const headerRow = tbl.querySelector(".table-header .table-cell__row");
+      const bodyFirstRow = tbl.querySelector(".table-body .table-cell__row");
+      if (!headerRow || !bodyFirstRow) return;
+      const bodyCells = bodyFirstRow.querySelectorAll(".table-cell");
+      const headerCells = headerRow.querySelectorAll(".table-cell");
+      if (bodyCells.length === 0 || bodyCells.length !== headerCells.length) return;
+      const widths = Array.from(bodyCells).map((cell) => cell.getBoundingClientRect().width);
+      headerRow.style.gridTemplateColumns = widths.map((w) => `${w}px`).join(" ");
+    });
+  }
+  syncFormTableColumnWidths();
+  let resizeTick = false;
+  window.addEventListener("resize", () => {
+    if (resizeTick) return;
+    requestAnimationFrame(() => {
+      syncFormTableColumnWidths();
+      resizeTick = false;
+    });
+    resizeTick = true;
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
@@ -480,52 +541,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
-});
-$(document).ready(function() {
-  function syncTableColumnWidths() {
-    $(".table-scroll").each(function() {
-      var $table = $(this);
-      var $headerRow = $table.find(".table-header .table-cell__row");
-      var $bodyRows = $table.find(".table-body .table-cell__row");
-      if ($headerRow.length === 0 || $bodyRows.length === 0) return;
-      var $headerCells = $headerRow.find(".table-cell");
-      var columnCount = $headerCells.length;
-      if (columnCount === 0) return;
-      $table.css("--column-count", columnCount);
-      setTimeout(function() {
-        var tableWidth = $table.width();
-        if (tableWidth === 0) return;
-        var columnWidths = [];
-        $headerCells.each(function() {
-          var cellWidth = this.getBoundingClientRect().width;
-          columnWidths.push(cellWidth);
-        });
-        var totalWidth = columnWidths.reduce(function(sum, width) {
-          return sum + width;
-        }, 0);
-        if (totalWidth > tableWidth * 2 || totalWidth < tableWidth * 0.5) {
-          var avgWidth = tableWidth / columnCount;
-          columnWidths = [];
-          for (var i = 0; i < columnCount; i++) {
-            columnWidths.push(avgWidth);
-          }
-        }
-        var gridTemplateColumns = columnWidths.map(function(width) {
-          return width + "px";
-        }).join(" ");
-        $headerRow.css("grid-template-columns", gridTemplateColumns);
-        $bodyRows.css("grid-template-columns", gridTemplateColumns);
-      }, 50);
-    });
-  }
-  setTimeout(function() {
-    syncTableColumnWidths();
-  }, 200);
-  var resizeTimer;
-  $(window).on("resize", function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-      syncTableColumnWidths();
-    }, 150);
-  });
 });
