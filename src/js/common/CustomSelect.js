@@ -172,19 +172,29 @@ class CustomSelect {
   }
 }
 
-// 자동 초기화 (옵트인) — 모달과 동일하게 DOMContentLoaded 한 번만 사용
-// 사용법: <select data-custom-select> 또는 <select class="js-custom-select">
 function initCustomSelects() {
-  document.querySelectorAll('select[data-custom-select], select.js-custom-select').forEach(select => {
-    if (select.closest('.custom-select')) return;
+  document.querySelectorAll("select[data-custom-select], select.js-custom-select").forEach((select) => {
+    if (select.closest(".custom-select")) return;
     try {
       new CustomSelect(select);
     } catch (err) {
-      console.warn('[CustomSelect] 초기화 실패:', select, err);
+      console.warn("[CustomSelect] 초기화 실패:", select, err);
     }
   });
 }
 
-document.addEventListener('DOMContentLoaded', initCustomSelects);
+function startCustomSelectObserver() {
+  initCustomSelects();
+  const observer = new MutationObserver(() => {
+    initCustomSelects();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+if (document.body) {
+  startCustomSelectObserver();
+} else {
+  document.addEventListener("DOMContentLoaded", startCustomSelectObserver);
+}
 
 export default CustomSelect;

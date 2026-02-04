@@ -183,7 +183,18 @@ function initCustomSelects() {
     }
   });
 }
-document.addEventListener("DOMContentLoaded", initCustomSelects);
+function startCustomSelectObserver() {
+  initCustomSelects();
+  const observer = new MutationObserver(() => {
+    initCustomSelects();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+if (document.body) {
+  startCustomSelectObserver();
+} else {
+  document.addEventListener("DOMContentLoaded", startCustomSelectObserver);
+}
 class Modal {
   constructor(modalElement) {
     this.modal = modalElement;
