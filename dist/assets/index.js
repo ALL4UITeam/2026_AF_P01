@@ -35,6 +35,148 @@
     fetch(link.href, fetchOpts);
   }
 })();
+class CustomSelect {
+  constructor(selectElement) {
+    this.select = selectElement;
+    this.options = Array.from(this.select.options);
+    this.selectedIndex = this.select.selectedIndex;
+    this.isOpen = false;
+    this.init();
+  }
+  init() {
+    this.boundPositionDropdown = this.positionDropdown.bind(this);
+    this.select.style.display = "none";
+    this.createCustomSelect();
+    this.setupEvents();
+  }
+  createCustomSelect() {
+    var _a;
+    const wrapper = document.createElement("div");
+    wrapper.className = "custom-select";
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "custom-select__button";
+    button.textContent = ((_a = this.select.options[this.select.selectedIndex]) == null ? void 0 : _a.text) || "";
+    const dropdown = document.createElement("div");
+    dropdown.className = "custom-select__dropdown";
+    this.options.forEach((option, index) => {
+      const item = document.createElement("div");
+      item.className = "custom-select__option";
+      if (index === this.selectedIndex) {
+        item.classList.add("is-selected");
+      }
+      item.textContent = option.text;
+      item.dataset.value = option.value;
+      item.dataset.index = index;
+      item.addEventListener("mouseenter", () => {
+        this.dropdown.querySelectorAll(".custom-select__option").forEach((opt) => {
+          if (opt !== item && !opt.classList.contains("is-selected")) {
+            opt.style.background = "#fff";
+            opt.style.color = "#333";
+          }
+        });
+        if (!item.classList.contains("is-selected")) {
+          item.style.background = "#2196F3";
+          item.style.color = "#fff";
+        }
+      });
+      item.addEventListener("click", () => {
+        this.selectOption(index);
+      });
+      dropdown.appendChild(item);
+    });
+    wrapper.appendChild(button);
+    wrapper.appendChild(dropdown);
+    this.select.parentNode.insertBefore(wrapper, this.select);
+    this.wrapper = wrapper;
+    this.button = button;
+    this.dropdown = dropdown;
+  }
+  setupEvents() {
+    this.button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      this.toggle();
+    });
+    document.addEventListener("click", (e) => {
+      if (!this.wrapper.contains(e.target)) {
+        this.close();
+      }
+    });
+    this.select.addEventListener("change", () => {
+      this.updateButton();
+    });
+  }
+  toggle() {
+    this.isOpen = !this.isOpen;
+    this.wrapper.classList.toggle("is-open", this.isOpen);
+    if (this.isOpen) {
+      this.positionDropdown();
+      window.addEventListener("scroll", this.boundPositionDropdown, true);
+      window.addEventListener("resize", this.boundPositionDropdown);
+    } else {
+      this.clearDropdownPosition();
+      window.removeEventListener("scroll", this.boundPositionDropdown, true);
+      window.removeEventListener("resize", this.boundPositionDropdown);
+    }
+  }
+  positionDropdown() {
+    const rect = this.button.getBoundingClientRect();
+    const d = this.dropdown;
+    d.style.position = "fixed";
+    d.style.top = `${rect.bottom + 4}px`;
+    d.style.left = `${rect.left}px`;
+    d.style.width = `${rect.width}px`;
+    d.style.minWidth = `${rect.width}px`;
+    d.style.zIndex = "9999";
+  }
+  clearDropdownPosition() {
+    const d = this.dropdown;
+    d.style.position = "";
+    d.style.top = "";
+    d.style.left = "";
+    d.style.width = "";
+    d.style.minWidth = "";
+    d.style.zIndex = "";
+  }
+  close() {
+    this.isOpen = false;
+    this.wrapper.classList.remove("is-open");
+    if (this.dropdown.parentNode === document.body) {
+      this.wrapper.appendChild(this.dropdown);
+    }
+    this.clearDropdownPosition();
+    window.removeEventListener("scroll", this.boundPositionDropdown, true);
+    window.removeEventListener("resize", this.boundPositionDropdown);
+  }
+  selectOption(index) {
+    this.select.selectedIndex = index;
+    this.selectedIndex = index;
+    const event = new Event("change", { bubbles: true });
+    this.select.dispatchEvent(event);
+    this.updateButton();
+    this.updateOptions();
+    this.close();
+  }
+  updateButton() {
+    var _a;
+    this.button.textContent = ((_a = this.select.options[this.select.selectedIndex]) == null ? void 0 : _a.text) || "";
+  }
+  updateOptions() {
+    this.dropdown.querySelectorAll(".custom-select__option").forEach((item, index) => {
+      if (index === this.select.selectedIndex) {
+        item.classList.add("is-selected");
+      } else {
+        item.classList.remove("is-selected");
+      }
+    });
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("select[data-custom-select], select.js-custom-select").forEach((select) => {
+    if (select.closest(".custom-select")) return;
+    new CustomSelect(select);
+  });
+});
 class Modal {
   constructor(modalElement) {
     this.modal = modalElement;

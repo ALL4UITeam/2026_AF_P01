@@ -100,12 +100,10 @@ class CustomSelect {
     this.isOpen = !this.isOpen;
     this.wrapper.classList.toggle('is-open', this.isOpen);
     if (this.isOpen) {
-      document.body.appendChild(this.dropdown);
       this.positionDropdown();
       window.addEventListener('scroll', this.boundPositionDropdown, true);
       window.addEventListener('resize', this.boundPositionDropdown);
     } else {
-      this.wrapper.appendChild(this.dropdown);
       this.clearDropdownPosition();
       window.removeEventListener('scroll', this.boundPositionDropdown, true);
       window.removeEventListener('resize', this.boundPositionDropdown);
@@ -172,36 +170,13 @@ class CustomSelect {
   }
 }
 
-function initCustomSelects() {
-  document.querySelectorAll("select[data-custom-select], select.js-custom-select").forEach((select) => {
-    if (select.closest(".custom-select")) return;
-    try {
-      new CustomSelect(select);
-    } catch (err) {
-      console.warn("[CustomSelect] 초기화 실패:", select, err);
-    }
+// 자동 초기화 (옵트인)
+// 커스텀으로 바꾸고 싶은 select만 지정해서 변환합니다.
+// 사용법: <select data-custom-select> 또는 <select class="js-custom-select">
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('select[data-custom-select], select.js-custom-select').forEach(select => {
+    if (select.closest('.custom-select')) return;
+    new CustomSelect(select);
   });
-}
+});
 
-function startCustomSelectObserver() {
-  initCustomSelects();
-
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((m) => {
-      m.addedNodes.forEach((node) => {
-        if (node.nodeType !== 1) return;
-
-        // 새로 추가된 노드가 select거나,
-        if (node.matches?.('select[data-custom-select], select.js-custom-select')) {
-          new CustomSelect(node);
-        }
-
-        // 그 안에 select가 있으면
-        node.querySelectorAll?.('select[data-custom-select], select.js-custom-select')
-          .forEach((sel) => new CustomSelect(sel));
-      });
-    });
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
-}
