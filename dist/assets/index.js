@@ -176,14 +176,14 @@ class CustomSelect {
 function initCustomSelects() {
   document.querySelectorAll("select[data-custom-select], select.js-custom-select").forEach((select) => {
     if (select.closest(".custom-select")) return;
-    new CustomSelect(select);
+    try {
+      new CustomSelect(select);
+    } catch (err) {
+      console.warn("[CustomSelect] 초기화 실패:", select, err);
+    }
   });
 }
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initCustomSelects);
-} else {
-  initCustomSelects();
-}
+document.addEventListener("DOMContentLoaded", initCustomSelects);
 class Modal {
   constructor(modalElement) {
     this.modal = modalElement;

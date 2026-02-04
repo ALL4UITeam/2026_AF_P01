@@ -172,20 +172,19 @@ class CustomSelect {
   }
 }
 
-// 자동 초기화 (옵트인)
-// 커스텀으로 바꾸고 싶은 select만 지정해서 변환합니다.
+// 자동 초기화 (옵트인) — 모달과 동일하게 DOMContentLoaded 한 번만 사용
 // 사용법: <select data-custom-select> 또는 <select class="js-custom-select">
 function initCustomSelects() {
   document.querySelectorAll('select[data-custom-select], select.js-custom-select').forEach(select => {
     if (select.closest('.custom-select')) return;
-    new CustomSelect(select);
+    try {
+      new CustomSelect(select);
+    } catch (err) {
+      console.warn('[CustomSelect] 초기화 실패:', select, err);
+    }
   });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initCustomSelects);
-} else {
-  initCustomSelects();
-}
+document.addEventListener('DOMContentLoaded', initCustomSelects);
 
 export default CustomSelect;
