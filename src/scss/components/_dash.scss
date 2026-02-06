@@ -18,7 +18,18 @@
         .col05 { grid-area: col05; }
     }
 }
-
+#users{
+    .main__card{
+        grid-template-columns: 1f 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+        "col01 col02"
+        "col01 col03";
+        .col01 { grid-area: col01; }
+        .col02 { grid-area: col02; }
+        .col03 { grid-area: col03; }
+    }
+}
 
 // 대시보드
 .kpi {
@@ -214,6 +225,7 @@
     display: grid;
     gap: 12px;
     overflow-y: auto;
+    overscroll-behavior-y: contain;
 }
 
 .activity-item {

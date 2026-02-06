@@ -90,6 +90,7 @@
         max-height: 880px;
         overflow-y: auto;
         scrollbar-gutter: stable;
+        overscroll-behavior-y: contain;
     }
 }
 
@@ -115,7 +116,7 @@
             max-height: 400px; /* 필요 시 원하는 높이로 조정 */
             overflow-y: auto;
             scrollbar-gutter: stable;
-            
+            overscroll-behavior-y: contain;
         }
 
         tbody tr {

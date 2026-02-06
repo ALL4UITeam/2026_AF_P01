@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>화산 모니터링 시스템</title>
+    
+    <link rel="stylesheet" href="/2026_AF_P01/assets/fonts/pretendard.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/simplebar/simplebar.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/dragula/dragula.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.css">
+    
+    
+    <script src="/2026_AF_P01/lib/jQuery/jquery-3.7.1.js"></script>
+    <script src="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.js"></script>
+    <script src="/2026_AF_P01/lib/simplebar/simplebar.min.js"></script>
+    <script src="/2026_AF_P01/lib/dragula/dragula.min.js"></script>
+  <script type="module" src="/2026_AF_P01/assets/index.js"></script>
+  <link rel="stylesheet" href="/2026_AF_P01/assets/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+        <header class="app-header">
+        	<div class="app-header__inner">
+        		<div class="brand">
+        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo.png" alt=""></a>
+        		</div>
+        
+        		<div class="app-header__actions">
+        			<button class="user-chip" type="button">
+        				<span class="user-chip__icon" aria-hidden="true"></span>
+        				admin
+        			</button>
+        			<button class="icon-btn" type="button" aria-label="로그아웃"></button>
+        		</div>
+        	</div>
+        </header>        <div class="app-body">
+            <div class="side-nav_wrap">
+                <nav class="side-nav" data-simplebar>
+                    <ul class="side-nav__list">
+            
+                        <!-- 1 depth -->
+                        <li class="side-nav__item has-children is-active">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni01"></i>대시보드
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#" class="is-active">대시보드</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <!-- 1 depth + children -->
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni02"></i>탐색 및 전처리
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#">위성영상 탐색</a>
+                                </li>
+                                <li class="side-nav__subitem">
+                                    <a href="#">데이터 전처리</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni03"></i>데이터 분석
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">수위 및 수체면적</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 지역</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">상대지표 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">마그마 볼륨</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산활동 종합지수</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni04"></i>현장 DB 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">EDM 지표 변형 계측 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산 가스 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">온천수 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">지진 발생 관리</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni05"></i>통합보고서 분석
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#">통합보고서 분석</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni06"></i>데이터 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">원본 위성영상</a></li>
+                                <li class="side-nav__subitem"><a href="#">전처리 데이터</a></li>
+                                <li class="side-nav__subitem"><a href="#">분석 산출물</a></li>
+                                <li class="side-nav__subitem"><a href="#">통합 보고서</a></li>
+                                <li class="side-nav__subitem"><a href="#">내부 입력 데이터</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni07"></i>시스템 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">사용자 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">접속 통계</a></li>
+                                <li class="side-nav__subitem"><a href="#">이용 통계</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>            <main class="app-main">
+                <div class="page">
+                    <header class="page__head">
+                        <h2 class="page__title">사용자 관리</h2>
+                        <p class="page__txt">시스템을 사용할 사용자와 권한을 관리합니다.</p>
+                    </header>
+                    <div id="users" class="dashboard">
+                        <div class="main__card">
+                            <!-- 왼쪽: 사용자 목록 -->
+                            <section class="card card--md col01">
+                                <header class="card__head">
+                                    <h3 class="card__title">사용자 목록</h3>
+                                </header>
+                                <div class="card__body">
+                                    <div class="form-tbl form-tbl--selectable" style="--column-count: 2;">
+                                        <div class="table-header">
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">아이디</div>
+                                                <div class="table-cell">이름</div>
+                                            </div>
+                                        </div>
+                                        <div class="table-body">
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">admin</div>
+                                                <div class="table-cell">관리자</div>
+                                            </div>
+                                            <div class="table-cell__row is-selected">
+                                                <div class="table-cell">user1</div>
+                                                <div class="table-cell">사용자1</div>
+                                            </div>
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">user2</div>
+                                                <div class="table-cell">사용자2</div>
+                                            </div>
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">researcher</div>
+                                                <div class="table-cell">연구원</div>
+                                            </div>
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">user4</div>
+                                                <div class="table-cell">사용자4</div>
+                                            </div>
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">user5</div>
+                                                <div class="table-cell">사용자5</div>
+                                            </div>
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">user6</div>
+                                                <div class="table-cell">사용자6</div>
+                                            </div>
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">user7</div>
+                                                <div class="table-cell">사용자7</div>
+                                            </div>
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">user8</div>
+                                                <div class="table-cell">사용자8</div>
+                                            </div>
+                                            <div class="table-cell__row">
+                                                <div class="table-cell">user8</div>
+                                                <div class="table-cell">사용자8</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <nav class="board--paging pagination">
+                                        <a href="#" class="prev" title="이전"><i class="paging-arrow-prev"></i></a>
+                                        <span class="paging">
+                                            <a href="#">1</a>
+                                            <strong title="현재 페이지">2</strong>
+                                            <a href="#">3</a>
+                                            <a href="#">4</a>
+                                            <a href="#">5</a>
+                                        </span>
+                                        <a href="#" class="next" title="다음"><i class="paging-arrow-next"></i></a>
+                                    </nav>
+                                </div>
+                            </section>
+
+                            <!-- 오른쪽: 사용자 정보 + 메뉴권한 -->
+                            <section class="card card--sm col02" >
+                                <header class="card__head">
+                                    <h3 class="card__title">사용자 정보</h3>
+                                </header>
+                                <div class="card__body">
+                                    <form class="form">
+                                        <div class="form-group">
+                                            <label class="form-label">이름</label>
+                                            <div class="form-field">
+                                                <input type="text" value="관리자" placeholder="이름을 입력하세요">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">아이디</label>
+                                            <div class="form-field-row">
+                                                <div class="form-field">
+                                                    <input type="text" placeholder="아이디를 입력하세요">
+                                                </div>
+                                                <button type="button" class="btn btn--secondary">중복확인</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">비밀번호</label>
+                                            <div class="form-field form-field--with-icon">
+                                                <input type="password" class="form-field__password-input" placeholder="영문, 숫자, 특수문자 조합 9~20자리" autocomplete="off">
+                                                <button type="button" class="form-field__toggle-pw" aria-label="비밀번호 표시" aria-pressed="false" title="비밀번호 표시"><i class="ico ico-pw" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+                            <section class="card card--sm col03">
+                                <header class="card__head">
+                                    <h3 class="card__title">메뉴권한</h3>
+                                </header>
+                                <div class="card__body">
+                                    <div class="menu-permission-tree">
+                                        <div class="menu-permission-tree__item">
+                                            <div class="menu-permission-tree__row">
+                                                <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                <label class="menu-permission-tree__check">
+                                                    <input type="checkbox" checked>
+                                                    <span class="menu-permission-tree__label">대시보드</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="menu-permission-tree__item menu-permission-tree__item--open">
+                                            <div class="menu-permission-tree__row">
+                                                <button type="button" class="menu-permission-tree__chevron" aria-label="접기" aria-expanded="true"></button>
+                                                <label class="menu-permission-tree__check">
+                                                    <input type="checkbox">
+                                                    <span class="menu-permission-tree__label">탐색 및 전처리</span>
+                                                </label>
+                                            </div>
+                                            <div class="menu-permission-tree__children">
+                                                <div class="menu-permission-tree__item">
+                                                    <div class="menu-permission-tree__row">
+                                                        <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                        <label class="menu-permission-tree__check">
+                                                            <input type="checkbox">
+                                                            <span class="menu-permission-tree__label">위성영상 탐색</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="menu-permission-tree__item">
+                                                    <div class="menu-permission-tree__row">
+                                                        <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                        <label class="menu-permission-tree__check">
+                                                            <input type="checkbox">
+                                                            <span class="menu-permission-tree__label">데이터 전처리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="menu-permission-tree__item">
+                                            <div class="menu-permission-tree__row">
+                                                <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                <label class="menu-permission-tree__check">
+                                                    <input type="checkbox" checked>
+                                                    <span class="menu-permission-tree__label">대시보드</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="menu-permission-tree__item menu-permission-tree__item--open">
+                                            <div class="menu-permission-tree__row">
+                                                <button type="button" class="menu-permission-tree__chevron" aria-label="접기" aria-expanded="true"></button>
+                                                <label class="menu-permission-tree__check">
+                                                    <input type="checkbox">
+                                                    <span class="menu-permission-tree__label">탐색 및 전처리</span>
+                                                </label>
+                                            </div>
+                                            <div class="menu-permission-tree__children">
+                                                <div class="menu-permission-tree__item">
+                                                    <div class="menu-permission-tree__row">
+                                                        <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                        <label class="menu-permission-tree__check">
+                                                            <input type="checkbox">
+                                                            <span class="menu-permission-tree__label">위성영상 탐색</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="menu-permission-tree__item">
+                                                    <div class="menu-permission-tree__row">
+                                                        <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                        <label class="menu-permission-tree__check">
+                                                            <input type="checkbox">
+                                                            <span class="menu-permission-tree__label">데이터 전처리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="menu-permission-tree__item menu-permission-tree__item--open">
+                                            <div class="menu-permission-tree__row">
+                                                <button type="button" class="menu-permission-tree__chevron" aria-label="접기" aria-expanded="true"></button>
+                                                <label class="menu-permission-tree__check">
+                                                    <input type="checkbox">
+                                                    <span class="menu-permission-tree__label">데이터 분석</span>
+                                                </label>
+                                            </div>
+                                            <div class="menu-permission-tree__children">
+                                                <div class="menu-permission-tree__item">
+                                                    <div class="menu-permission-tree__row">
+                                                        <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                        <label class="menu-permission-tree__check">
+                                                            <input type="checkbox">
+                                                            <span class="menu-permission-tree__label">수위 및 수체면적</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="menu-permission-tree__item">
+                                                    <div class="menu-permission-tree__row">
+                                                        <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                        <label class="menu-permission-tree__check">
+                                                            <input type="checkbox">
+                                                            <span class="menu-permission-tree__label">이상 지역</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="menu-permission-tree__item">
+                                                    <div class="menu-permission-tree__row">
+                                                        <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                        <label class="menu-permission-tree__check">
+                                                            <input type="checkbox">
+                                                            <span class="menu-permission-tree__label">수위 및 수체면적</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="menu-permission-tree__item">
+                                                    <div class="menu-permission-tree__row">
+                                                        <span class="menu-permission-tree__chevron menu-permission-tree__chevron--placeholder" aria-hidden="true"></span>
+                                                        <label class="menu-permission-tree__check">
+                                                            <input type="checkbox">
+                                                            <span class="menu-permission-tree__label">이상 지역</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="card__actions card__actions--end">
+                            <button type="button" class="btn btn--grey btn--lg">
+                                <i class="ico ico-refresh" aria-hidden="true"></i>
+                                <span>초기화</span>
+                            </button>
+                            <button type="button" class="btn btn--primary btn--lg">
+                                <i class="ico ico-create" aria-hidden="true"></i>
+                                <span>등록</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            // 비밀번호 표시/숨김
+            document.querySelectorAll('.form-field__toggle-pw').forEach(function (btn) {
+                var field = btn.closest('.form-field');
+                var input = field ? field.querySelector('.form-field__password-input, input[type="password"]') : null;
+                if (!input) return;
+                btn.addEventListener('click', function () {
+                    var isOn = input.type === 'text';
+                    input.type = isOn ? 'password' : 'text';
+                    btn.setAttribute('aria-pressed', !isOn);
+                    btn.classList.toggle('is-on', !isOn);
+                    btn.setAttribute('aria-label', isOn ? '비밀번호 표시' : '비밀번호 숨기기');
+                    btn.setAttribute('title', isOn ? '비밀번호 표시' : '비밀번호 숨기기');
+                });
+            });
+
+            // 메뉴권한 트리 펼치기/접기
+            document.querySelectorAll('.menu-permission-tree__chevron[type="button"]').forEach(function (btn) {
+                var item = btn.closest('.menu-permission-tree__item');
+                if (!item) return;
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var isOpen = item.classList.toggle('menu-permission-tree__item--open');
+                    btn.setAttribute('aria-expanded', isOpen);
+                    btn.setAttribute('aria-label', isOpen ? '접기' : '펼치기');
+                });
+            });
+        })();
+    </script>
+</body>

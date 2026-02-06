@@ -118,6 +118,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    min-width: 0;
+    width: 100%;
     
     &--two-column {
         display: grid;
@@ -170,7 +172,8 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    
+    min-width: 0;
+
     &--inline {
         flex-direction: row;
         align-items: center;
@@ -206,24 +209,97 @@
     }
 }
 
+.form-hint {
+    font-size: 12px;
+    color: #888;
+    margin: 4px 0 0;
+    padding: 0;
+}
+
+/* 입력란 + 버튼 한 줄 (아이디 + 중복확인 등): 필드는 form-field, 버튼은 밖에 */
+.form-field-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+
+    .form-field {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .btn {
+        flex-shrink: 0;
+    }
+}
+
 // ====== 폼 필드 ======
 .form-field {
     position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
+    width: 100%;
     height: 40px;
     padding: 0 14px;
     border-radius: 6px;
     border: 1px solid #e0e0e0;
     background: #fff;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    
+    box-sizing: border-box;
+
     &--inline {
         flex: 0 0 auto;
         width: auto;
     }
-    
+
+    /* 입력 + 버튼 한 줄 (아이디 + 중복확인 등) */
+    &--has-btn {
+        input {
+            flex: 1;
+            min-width: 0;
+            width: auto;
+        }
+    }
+
+    &--with-icon {
+        padding-right: 44px;
+
+        .form-field__toggle-pw {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            padding: 0;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+
+            &:hover {
+                color: #333;
+            }
+
+            .ico-pw {
+                @include icon(20px);
+                background-image: url('@/assets/images/icon/pw-icon-off.png');
+                background-size: contain;
+            }
+
+            /* on: 비밀번호 표시 중일 때 */
+            &[aria-pressed="true"] .ico-pw,
+            &.is-on .ico-pw {
+                background-image: url('@/assets/images/icon/pw-icon-on.png');
+            }
+        }
+    }
+
     &:focus-within {
         border-color: #2196F3;
         box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);

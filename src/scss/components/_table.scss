@@ -3,36 +3,39 @@
 ========================= */
 .table-scroll {
 	width: 100%;
+	min-width: 0;
 	overflow-x: auto;
-}
-
-.table-inner {
-	width: max-content;
-	min-width: 100%;
-}
-
-.table-header {
-	position: sticky;
-	top: 0;
-	z-index: 10;
-}
-
-.table-body {
-	overflow-y: auto;
-	scrollbar-gutter: stable;
-
-	&.line5-body {
-		max-height: 195px;
+	.table-inner {
+		width: max-content;
+		min-width: 100%;
 	}
 
-	&.line10-body {
-		max-height: 440px;
+	.table-header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
 	}
 
-	&.line20-body {
-		max-height: 880px;
+	.table-body {
+		overflow-y: auto;
+		scrollbar-gutter: stable;
+		overscroll-behavior-y: contain;
+
+		&.line5-body {
+			max-height: 195px;
+		}
+
+		&.line10-body {
+			max-height: 440px;
+		}
+
+		&.line20-body {
+			max-height: 880px;
+		}
 	}
 }
+
+
 
 /* =========================
    2. 기본 테이블 스타일
@@ -54,8 +57,7 @@
 		border-radius: 10px;
 
 		.table-cell {
-			padding: 10px;
-			height: 36px;
+			padding: 15px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -72,7 +74,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 10px;
+		padding: 15px;
 		border: 1px solid transparent;
 		font-size: 15px;
 		input{
@@ -129,6 +131,27 @@
 	}
 }
 
+/* 행 선택 가능 테이블 (사용자 목록 등) */
+.form-tbl--selectable {
+	.table-body .table-cell__row {
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+
+		&:hover {
+			background: #f8f9fa;
+		}
+
+		&.is-selected {
+			background: #e6eff9;
+
+			.table-cell {
+				color: #074d88;
+				font-weight: 500;
+			}
+		}
+	}
+}
+
 .table-minimal {
 	border: 1px solid #ddd;
 	background: #fafafa;
@@ -143,7 +166,58 @@
 }
 
 /* =========================
-   5. 상태 색상
+   5. form-tbl 공통: thead(table-header) · tbody(table-body) 열 너비 일치 (subgrid)
+========================= */
+/* table-inner 있는 경우 (EDM, 일별 등): .table-inner 가 그리드 컨테이너 */
+.form-tbl .table-inner {
+	display: grid;
+	grid-template-columns: repeat(var(--column-count, 5), 1fr);
+	width: max-content;
+	min-width: 100%;
+}
+
+.form-tbl.form-tbl--wide .table-inner {
+	grid-template-columns: repeat(var(--column-count), minmax(80px, 1fr));
+}
+
+.form-tbl .table-inner > .table-header,
+.form-tbl .table-inner > .table-body {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: subgrid;
+}
+
+.form-tbl .table-inner .table-cell__row {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: subgrid;
+}
+
+/* table-inner 없는 경우: .form-tbl 이 그리드 컨테이너 */
+.form-tbl:not(:has(.table-inner)) {
+	display: grid;
+	grid-template-columns: repeat(var(--column-count, 5), 1fr);
+}
+
+.form-tbl.form-tbl--wide:not(:has(.table-inner)) {
+	grid-template-columns: repeat(var(--column-count), minmax(80px, 1fr));
+}
+
+.form-tbl:not(:has(.table-inner)) > .table-header,
+.form-tbl:not(:has(.table-inner)) > .table-body {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: subgrid;
+}
+
+.form-tbl:not(:has(.table-inner)) .table-cell__row {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: subgrid;
+}
+
+/* =========================
+   6. 상태 색상
 ========================= */
 .change--positive {
 	color: #2196F3;

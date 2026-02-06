@@ -34,6 +34,14 @@
     letter-spacing: -0.4px;
 }
 
+
+#users > .card__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
 .main__card {
     display: grid;
     gap: 30px;
@@ -87,6 +95,20 @@
             display: flex;
             align-items: center;
             gap: 12px;
+
+            &--end {
+                justify-content: flex-end;
+                margin-top: 24px;
+                gap: 16px;
+            }
+        }
+
+        &__subtitle {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin: 24px 0 12px;
+            padding: 0;
         }
 
         &__more {
@@ -125,9 +147,14 @@
                 overflow-x: hidden;
                 flex: 1;
                 min-height: 0;
+                overscroll-behavior-y: contain;
             }
             .form{
                 padding: 10px 0; 
+            }
+
+            > .pagination {
+                margin-top: 16px;
             }
         }
         
@@ -171,6 +198,7 @@
             &.fixed-height{
                 max-height: 500px;
                 overflow-y: auto;
+                overscroll-behavior-y: contain;
             }
             
             &--scrollable {
@@ -181,6 +209,7 @@
                 &.has-max-height {
                     max-height: 500px;
                     overflow-y: auto;
+                    overscroll-behavior-y: contain;
                 }
             }
         }
@@ -206,6 +235,7 @@
             &.fixed-height{
                 max-height: 300px;
                 overflow-y: auto;
+                overscroll-behavior-y: contain;
             }
             
             &--scrollable {
@@ -216,6 +246,7 @@
                 &.has-max-height {
                     max-height: 300px;
                     overflow-y: auto;
+                    overscroll-behavior-y: contain;
                 }
             }
         }
@@ -249,6 +280,7 @@
     font-weight: normal;
     font-size: 17px;
     gap: 5px;
+    flex:1;
     &--short {
         min-height: 110px;
     }
@@ -399,9 +431,9 @@
         flex: 1;
         padding: 20px;
         container-type: inline-size; /* 테이블: 이 영역 너비 < 1280px일 때 가로 스크롤 */
-        /* 가로 컬럼 많은 테이블 포함 시 가로 스크롤은 .table-scroll만 → 이중 스크롤 방지 */
+        /* 가로 컬럼 많은 테이블 포함 시 가로 스크롤은 .table-scroll만 → 이중 스크롤 방지 (.table-scroll 있으면 여기서 숨기지 않음) */
         &:has(.form-tbl--edm-detail),
-        &:has(.form-tbl--wide) {
+        &:has(.form-tbl--wide):not(:has(.table-scroll)) {
             overflow-x: hidden;
         }
     }
@@ -462,6 +494,7 @@
     border: 1px solid #c6d9ec;
     max-height: 200px;
     overflow-Y: auto;
+    overscroll-behavior-y: contain;
     &__header {
         display: flex;
         align-items: center;

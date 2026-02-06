@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>화산 모니터링 시스템</title>
+    
+    <link rel="stylesheet" href="/2026_AF_P01/assets/fonts/pretendard.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/simplebar/simplebar.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/dragula/dragula.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/jQuery-ui/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.css">
+    
+    
+    <script src="/2026_AF_P01/lib/jQuery/jquery-3.7.1.js"></script>
+    <script src="/2026_AF_P01/lib/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="/2026_AF_P01/lib/jQuery-ui/jquery-ui.min.js"></script>
+    <script src="/2026_AF_P01/lib/simplebar/simplebar.min.js"></script>
+    <script src="/2026_AF_P01/lib/dragula/dragula.min.js"></script>
+  <script type="module" src="/2026_AF_P01/assets/index.js"></script>
+  <link rel="stylesheet" href="/2026_AF_P01/assets/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+        <header class="app-header">
+        	<div class="app-header__inner">
+        		<div class="brand">
+        			<a href="#" class="brand-logo"><img src="/2026_AF_P01/assets/images/logo.png" alt=""></a>
+        		</div>
+        
+        		<div class="app-header__actions">
+        			<button class="user-chip" type="button">
+        				<span class="user-chip__icon" aria-hidden="true"></span>
+        				admin
+        			</button>
+        			<button class="icon-btn" type="button" aria-label="로그아웃"></button>
+        		</div>
+        	</div>
+        </header>        <div class="app-body">
+            <div class="side-nav_wrap">
+                <nav class="side-nav" data-simplebar>
+                    <ul class="side-nav__list">
+            
+                        <!-- 1 depth -->
+                        <li class="side-nav__item has-children is-active">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni01"></i>대시보드
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#" class="is-active">대시보드</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <!-- 1 depth + children -->
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni02"></i>탐색 및 전처리
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#">위성영상 탐색</a>
+                                </li>
+                                <li class="side-nav__subitem">
+                                    <a href="#">데이터 전처리</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni03"></i>데이터 분석
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">수위 및 수체면적</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 지역</a></li>
+                                <li class="side-nav__subitem"><a href="#">이상 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">상대지표 온도</a></li>
+                                <li class="side-nav__subitem"><a href="#">마그마 볼륨</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산활동 종합지수</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni04"></i>현장 DB 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">EDM 지표 변형 계측 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">화산 가스 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">온천수 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">지진 발생 관리</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni05"></i>통합보고서 분석
+                                <span class="side-nav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem">
+                                    <a href="#">통합보고서 분석</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni06"></i>데이터 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">원본 위성영상</a></li>
+                                <li class="side-nav__subitem"><a href="#">전처리 데이터</a></li>
+                                <li class="side-nav__subitem"><a href="#">분석 산출물</a></li>
+                                <li class="side-nav__subitem"><a href="#">통합 보고서</a></li>
+                                <li class="side-nav__subitem"><a href="#">내부 입력 데이터</a></li>
+                            </ul>
+                        </li>
+            
+                        <li class="side-nav__item has-children">
+                            <button class="side-nav__link side-nav__toggle" type="button" aria-expanded="false">
+                                <i class="icon sni07"></i>시스템 관리
+                                <span class="side-nav__arrow"></span>
+                            </button>
+            
+                            <ul class="side-nav__sub">
+                                <li class="side-nav__subitem"><a href="#">사용자 관리</a></li>
+                                <li class="side-nav__subitem"><a href="#">접속 통계</a></li>
+                                <li class="side-nav__subitem"><a href="#">이용 통계</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>            <main class="app-main">
+                <div class="page">
+                    <header class="page__head">
+                        <h2 class="page__title">접속 통계</h2>
+                        <p class="page__txt">사용자 별 접속 통계를 조회합니다.</p>
+                    </header>
+
+                    <div class="filter-bar">
+                        <div class="filter-bar__group">
+
+                            <div class="filter-bar__field">
+                                <select class="js-custom-select">
+                                    <option>2025년</option>
+                                </select>
+                            </div>
+                            <div class="filter-bar__field">
+                                <select class="js-custom-select">
+                                    <option>전체</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <button class="filter-bar__search"><i class="ico"></i>검색</button>
+                    </div>
+
+                    <div class="dashboard">
+                        <div class="main__card">
+                            <section class="card card--md">
+                                <header class="card__head">
+                                    <h3 class="card__title">월별 접속 통계</h3>
+                                </header>
+                                <div class="card__body card__body--stacked">
+                                    <div class="output-section chart-card">
+                                        
+                                        <div class="output-section__header output-section__header--spaced">
+                                            <h4 class="output-section__title">12월 일별 접속통계</h4>
+                                            <button class="btn btn--tertiary btn--small">
+                                                <i class="ico ico-image"></i>
+                                                <span>이미지 다운로드</span>
+                                            </button>
+                                        </div>
+                                        <div class="output-section__body">
+                                            
+                                            <div class="placeholder">
+                                                <div class="info">
+                                                    <i class="icon no-data"></i>
+                                                    <p>선택된 분석 데이터가 없습니다</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="output-section chart-card">
+                                        
+                                        <div class="output-section__header output-section__header--spaced">
+                                            <h4 class="output-section__title">12월 일별 접속통계 테이블</h4>
+                                            <button type="button" class="btn btn--excel-download btn--small">
+                                                <i class="ico ico-greendownload"></i>
+                                                <span>엑셀 다운로드</span>
+                                            </button>
+                                        </div>
+                                        <div class="output-section__body">
+                                            <!-- 목록 5개 이상 시 세로 스크롤 + 헤더 고정(line5-body), 일별 시 table-scroll--daily + table-inner 사용 -->
+                                            <div class="table-scroll form-tbl stats-tbl" style="--column-count: 15;">
+                                                <div class="table-header">
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell">No.</div>
+                                                        <div class="table-cell">사용자명</div>
+                                                        <div class="table-cell">전체</div>
+                                                        <div class="table-cell">1월</div>
+                                                        <div class="table-cell">2월</div>
+                                                        <div class="table-cell">3월</div>
+                                                        <div class="table-cell">4월</div>
+                                                        <div class="table-cell">5월</div>
+                                                        <div class="table-cell">6월</div>
+                                                        <div class="table-cell">7월</div>
+                                                        <div class="table-cell">8월</div>
+                                                        <div class="table-cell">9월</div>
+                                                        <div class="table-cell">10월</div>
+                                                        <div class="table-cell">11월</div>
+                                                        <div class="table-cell">12월</div>
+                                                    </div>
+                                                </div>
+                                                <div class="table-body line5-body">
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">관리자</div>
+                                                        <div class="table-cell">6,008</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">2,396</div>
+                                                        <div class="table-cell">2,617</div>
+                                                        <div class="table-cell">880</div>
+                                                        <div class="table-cell">113</div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell">2</div>
+                                                        <div class="table-cell">홍길동</div>
+                                                        <div class="table-cell">20</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">7</div>
+                                                        <div class="table-cell">5</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell">3</div>
+                                                        <div class="table-cell">기타</div>
+                                                        <div class="table-cell">6,008</div>
+                                                        <div class="table-cell">7</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">6</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">1</div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell">4</div>
+                                                        <div class="table-cell">관리자</div>
+                                                        <div class="table-cell">6,008</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">2,396</div>
+                                                        <div class="table-cell">2,617</div>
+                                                        <div class="table-cell">880</div>
+                                                        <div class="table-cell">113</div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell">5</div>
+                                                        <div class="table-cell">홍길동</div>
+                                                        <div class="table-cell">20</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">1</div>
+                                                        <div class="table-cell">7</div>
+                                                        <div class="table-cell">5</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                    </div>
+                                                    <div class="table-cell__row">
+                                                        <div class="table-cell">6</div>
+                                                        <div class="table-cell">기타</div>
+                                                        <div class="table-cell">6,008</div>
+                                                        <div class="table-cell">7</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">6</div>
+                                                        <div class="table-cell">0</div>
+                                                        <div class="table-cell">1</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 1일~31일 일별 테이블 (가로 스크롤) -->
+                                    <div class="output-section chart-card">
+                                        <div class="output-section__header output-section__header--spaced">
+                                            <h4 class="output-section__title">12월 일별 접속통계 (1일~31일)</h4>
+                                            <button type="button" class="btn btn--excel-download btn--small">
+                                                <i class="ico ico-greendownload"></i>
+                                                <span>엑셀 다운로드</span>
+                                            </button>
+                                        </div>
+                                        <div class="output-section__body">
+                                            <div class="table-scroll form-tbl form-tbl--wide stats-tbl stats-tbl--daily" style="--column-count: 34;">
+                                                <div class="table-inner">
+                                                    <div class="table-header">
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell">No.</div>
+                                                            <div class="table-cell">사용자명</div>
+                                                            <div class="table-cell">전체</div>
+                                                            <div class="table-cell">1일</div>
+                                                            <div class="table-cell">2일</div>
+                                                            <div class="table-cell">3일</div>
+                                                            <div class="table-cell">4일</div>
+                                                            <div class="table-cell">5일</div>
+                                                            <div class="table-cell">6일</div>
+                                                            <div class="table-cell">7일</div>
+                                                            <div class="table-cell">8일</div>
+                                                            <div class="table-cell">9일</div>
+                                                            <div class="table-cell">10일</div>
+                                                            <div class="table-cell">11일</div>
+                                                            <div class="table-cell">12일</div>
+                                                            <div class="table-cell">13일</div>
+                                                            <div class="table-cell">14일</div>
+                                                            <div class="table-cell">15일</div>
+                                                            <div class="table-cell">16일</div>
+                                                            <div class="table-cell">17일</div>
+                                                            <div class="table-cell">18일</div>
+                                                            <div class="table-cell">19일</div>
+                                                            <div class="table-cell">20일</div>
+                                                            <div class="table-cell">21일</div>
+                                                            <div class="table-cell">22일</div>
+                                                            <div class="table-cell">23일</div>
+                                                            <div class="table-cell">24일</div>
+                                                            <div class="table-cell">25일</div>
+                                                            <div class="table-cell">26일</div>
+                                                            <div class="table-cell">27일</div>
+                                                            <div class="table-cell">28일</div>
+                                                            <div class="table-cell">29일</div>
+                                                            <div class="table-cell">30일</div>
+                                                            <div class="table-cell">31일</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-body line5-body">
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell">1</div>
+                                                            <div class="table-cell">관리자</div>
+                                                            <div class="table-cell">113</div>
+                                                            <div class="table-cell">5</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">4</div><div class="table-cell">6</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">4</div><div class="table-cell">5</div><div class="table-cell">3</div><div class="table-cell">4</div><div class="table-cell">2</div><div class="table-cell">5</div><div class="table-cell">4</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">4</div><div class="table-cell">3</div><div class="table-cell">5</div><div class="table-cell">2</div><div class="table-cell">4</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">3</div><div class="table-cell">4</div><div class="table-cell">2</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">1</div><div class="table-cell">2</div><div class="table-cell">0</div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell">2</div>
+                                                            <div class="table-cell">홍길동</div>
+                                                            <div class="table-cell">20</div>
+                                                            <div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell">3</div>
+                                                            <div class="table-cell">기타</div>
+                                                            <div class="table-cell">14</div>
+                                                            <div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">6</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">7</div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell">4</div>
+                                                            <div class="table-cell">관리자</div>
+                                                            <div class="table-cell">113</div>
+                                                            <div class="table-cell">5</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">4</div><div class="table-cell">6</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">4</div><div class="table-cell">5</div><div class="table-cell">3</div><div class="table-cell">4</div><div class="table-cell">2</div><div class="table-cell">5</div><div class="table-cell">4</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">4</div><div class="table-cell">3</div><div class="table-cell">5</div><div class="table-cell">2</div><div class="table-cell">4</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">3</div><div class="table-cell">4</div><div class="table-cell">2</div><div class="table-cell">3</div><div class="table-cell">2</div><div class="table-cell">1</div><div class="table-cell">2</div><div class="table-cell">0</div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell">5</div>
+                                                            <div class="table-cell">홍길동</div>
+                                                            <div class="table-cell">20</div>
+                                                            <div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div>
+                                                        </div>
+                                                        <div class="table-cell__row">
+                                                            <div class="table-cell">6</div>
+                                                            <div class="table-cell">기타</div>
+                                                            <div class="table-cell">14</div>
+                                                            <div class="table-cell">1</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">6</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">0</div><div class="table-cell">7</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
