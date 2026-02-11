@@ -123,6 +123,8 @@
     color: #6a767c;
     white-space: nowrap;
     flex-shrink: 0;
+    text-align: right;
+    min-width: 60px;
 }
 
 .status-tag {
@@ -137,6 +139,7 @@
     color: #fff;
     white-space: nowrap;
     flex-shrink: 0;
+    min-width: 70px;
 }
 
 .status-tag.complete {

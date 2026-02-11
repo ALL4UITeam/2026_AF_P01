@@ -1060,6 +1060,7 @@ body {
   background: #f6f6f6;
   font-size: 19px;
   border-radius: 10px 10px 0 0;
+  min-height: 73px;
 }
 .output-section__title {
   font-size: 19px;
@@ -2056,6 +2057,14 @@ select:focus {
   cursor: not-allowed;
   border-color: #e0e0e0;
 }
+.form-tbl .form-tbl__link {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 /* =========================
    3. 컬럼 많은 테이블 옵션 (EDM 등)
@@ -2235,6 +2244,12 @@ select:focus {
   font-size: 10px;
   color: #111;
   font-weight: 400;
+}
+.map-tool li:first-child {
+  border-radius: 8px 8px 0 0;
+}
+.map-tool li:last-child {
+  border-radius: 0 0 8px 8px;
 }
 
 .ico-distance {
@@ -3332,6 +3347,8 @@ select:focus {
   color: #6a767c;
   white-space: nowrap;
   flex-shrink: 0;
+  text-align: right;
+  min-width: 60px;
 }
 
 .status-tag {
@@ -3346,6 +3363,7 @@ select:focus {
   color: #fff;
   white-space: nowrap;
   flex-shrink: 0;
+  min-width: 70px;
 }
 
 .status-tag.complete {

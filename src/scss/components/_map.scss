@@ -77,6 +77,12 @@
             color: #111;
             font-weight: 400;
         }
+        &:first-child{
+            border-radius: 8px 8px 0 0;
+        }
+        &:last-child{
+            border-radius: 0 0 8px 8px;
+        }
     }
 }
 
